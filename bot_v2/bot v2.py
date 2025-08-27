@@ -2,7 +2,7 @@ from typing import Optional
 import os
 import asyncio
 import re
-from openai import AsyncOpenAI
+from anthropic import AsyncAnthropic
 import discord
 from discord import app_commands
 from youtube_transcript_api import YouTubeTranscriptApi
@@ -23,13 +23,12 @@ OVERRIDE_USERS = os.getenv("OVERRIDE_USERS")
 ALLOWED_CHANNELS = json.loads(os.getenv("ALLOWED_CHANNELS"))
 OVERRIDE_USERS = json.loads(os.getenv("OVERRIDE_USERS"))
 
-with open("tools.json") as file:
+with open("bot_v2/tools.json") as file:
     TOOLS = json.load(file)
 
-openAIClient = AsyncOpenAI(
-        base_url=config.AI_BASE_URL,
-        api_key=AI_API_KEY
-    )
+claudeClient = AsyncAnthropic(
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+)
 
 # Initialize moondream image recgocnition
 moondream_model = md.vl(api_key=os.getenv("MOONDREAM_API_KEY"))
@@ -155,53 +154,67 @@ async def process_attachments(messageToBot: str, message: discord.message):
 
     return messageToBot
 
+async def execute_tool(tool_name, tool_input):
+    try:
+        if hasattr(tools, tool_name):
+            tool_function = getattr(tools, tool_name)
+            result = tool_function(tool_input)
+            print(f"Got result from tool: {result}")
+            return result
+        else:
+            print("Requested function not found in tools.py")
+            return "Requested tool not found"
+    except Exception as e:
+        print(f"Error calling tool: {e}")
+        return f"Error calling tool: {e}"
+
 async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) -> tuple[str, Optional[discord.Message]]:
     try:
-        completion = await openAIClient.chat.completions.create(
-            model="",
-            messages=conversationToBot,
-            max_tokens=config.MAX_TOKENS,
-            temperature=config.TEMPERATURE,
-            tools=TOOLS
-        )
+        status_followup = None # Variable to hold followup if the bot message is updated to show tool call processing
 
-        status_followup = None
-        if completion.choices[0].message.tool_calls:
-            print("Detected tool call(s)")
-            status_followup = await interaction.followup.send("DenBot is processing tool calls...")
-
-            tool_calls = completion.choices[0].message.tool_calls
-            conversationToBot.append({"role": "assistant", "content": f"<think>{completion.choices[0].message.reasoning_content}</think>"})
-
-            for tool_call in tool_calls:
-                function_name = tool_call.function.name
-                arguments = json.loads(tool_call.function.arguments)
-                print(f"Found function: {function_name} with arguments: {arguments}")
-                
-                try:
-                    if hasattr(tools, function_name):
-                        tool_function = getattr(tools, function_name)
-                        result = tool_function(arguments)
-                        conversationToBot.append({"role": "tool", "content": f"{function_name} returned: {result}"})
-                    else:
-                        print("Request function not found in tools.py")
-                except Exception as e:
-                    print(f"Error calling function: {e}")
-
-            print(f"sending conversation to bot: \n\n{conversationToBot}\n\n")
-
-            completion = await openAIClient.chat.completions.create(
-                model="",
+        # Emulate do while loop, keep running while there are tool calls and quit out once done
+        while True:
+            claudeResponse = await claudeClient.messages.create(
+                model="claude-sonnet-4-20250514",
+                max_tokens=2048,
+                thinking={
+                    "type": "enabled",
+                    "budget_tokens": 1024
+                },
+                system=config.SYSTEM_PROMPT,
                 messages=conversationToBot,
-                max_tokens=config.MAX_TOKENS,
-                temperature=config.TEMPERATURE
+                tools=TOOLS
             )
 
-        response_content = completion.choices[0].message.content
-        
-        print(f"Generated: \n{response_content}")
-        
-        return response_content, status_followup
+            if claudeResponse.stop_reason == "tool_use":
+                print("Detected tool call(s)")
+                status_followup = await interaction.followup.send("DenBot is processing tool calls...")
+                conversationToBot.append({"role": "assistant", "content": claudeResponse.content})
+
+                print(f"Response: {claudeResponse}")        
+
+                tool_content = []
+                for content in claudeResponse.content:
+                    print(f"Found content: {content.type}")
+                    if content.type != "tool_use":
+                        print(f"not tool, skipping")
+                        continue
+                    print(f"Found tool: {content.name}")
+                    tool_result = await execute_tool(content.name, content.input)
+                    tool_content.append({"type": "tool_result", 
+                                         "tool_use_id": content.id,
+                                         "content": tool_result})
+                    
+                conversationToBot.append({"role": "user",
+                                          "content": tool_content})
+                
+            else:
+                # No tool calls, send final message
+                for content in claudeResponse.content:
+                    if content.type == "text":
+                        final_text = content.text
+                print(f"Generated: \n{final_text}")         
+                return final_text, status_followup
             
     except Exception as e:
         print(f"Error: {e}")
@@ -227,7 +240,7 @@ async def handle_chat_request(interaction: discord.Interaction, newUserMessage: 
         conversationToBot = []
         print("Starting new conversation")
 
-    conversationToBot.insert(0, {"role": "system", "content": config.SYSTEM_PROMPT})
+    # conversationToBot.insert(0, {"role": "system", "content": config.SYSTEM_PROMPT})
     conversationToBot.append({"role": "user", "content": latestMessageToBot})
 
     print(f"sending the following conversation to bot:\n{conversationToBot}")
