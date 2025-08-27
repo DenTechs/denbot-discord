@@ -204,3 +204,5 @@ __marimo__/
 
 #testing files not suitable for public
 testing/
+
+conversations.db
