@@ -177,21 +177,23 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
             claudeResponse = await claudeClient.messages.create(
                 model="claude-sonnet-4-20250514",
                 max_tokens=2048,
-                thinking={
-                    "type": "enabled",
-                    "budget_tokens": 1024
-                },
-                system=config.SYSTEM_PROMPT,
+                # thinking={
+                #     "type": "enabled",
+                #     "budget_tokens": 1024
+                # },
+                system=[{"type": "text",
+                        "text": config.SYSTEM_PROMPT,
+                        "cache_control": {"type": "ephemeral"}}],
                 messages=conversationToBot,
                 tools=TOOLS
             )
+
+            #print(claudeResponse)
 
             if claudeResponse.stop_reason == "tool_use":
                 print("Detected tool call(s)")
                 status_followup = await interaction.followup.send("DenBot is processing tool calls...")
                 conversationToBot.append({"role": "assistant", "content": claudeResponse.content})
-
-                print(f"Response: {claudeResponse}")        
 
                 tool_content = []
                 for content in claudeResponse.content:
