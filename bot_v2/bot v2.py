@@ -2,6 +2,7 @@ from typing import Optional
 import os
 import asyncio
 import re
+import logging
 from anthropic import AsyncAnthropic
 import discord
 from discord import app_commands
@@ -14,6 +15,10 @@ import tools
 import moondream as md
 from PIL import Image
 import io
+
+# Configure logging
+logging.basicConfig(filename=config.LOG_FILENAME, level=config.LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s', filemode='a')
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 BOT_API_KEY = os.getenv("BOT_API_KEY")
@@ -100,7 +105,7 @@ def process_youtube(messageToBot: str, message: discord.message):
     # returns message regardless of if its been modified
 
     if "youtu.be" in message.content or "youtube.com" in message.content:
-        print("Found youtube link")
+        logger.info("Found youtube link")
         
         # Regex patterns for different YouTube URL formats
         # Pattern for youtu.be/VIDEO_ID
@@ -115,7 +120,7 @@ def process_youtube(messageToBot: str, message: discord.message):
         
         if match:
             videoID = match.group(1)
-            print(f"Extracted video ID: {videoID}")
+            logger.info(f"Extracted video ID: {videoID}")
 
             FetchedTranscript = ytt_api.fetch(videoID).to_raw_data()
             plainTranscript = ""
@@ -126,23 +131,25 @@ def process_youtube(messageToBot: str, message: discord.message):
                 plainTranscript = f"{plainTranscript[0:2000]} {plainTranscript[-2000:]}" #cut off at 2k characters otherwise wont fit in context
 
             messageToBot += f" The youtube link has a video with the following transcript: {plainTranscript}"
+            logging.debug(f"The youtube link has a video with the following transcript: {plainTranscript}")
             return messageToBot # return message with video transcription appended
         
         else:
-            print("Could not extract video ID from YouTube link")
+            logger.warning("Could not extract video ID from YouTube link")
             return messageToBot # return unmodified message if video id not found
     
-    print("No youtube links found in message")
+    logger.info("No youtube links found in message")
     return messageToBot # return unmodified message if youtube link not found
 
 async def process_attachments(messageToBot: str, message: discord.message):
     if not message.attachments:
         # no attachments found, return messsage without edits
+        logger.info(F"No attachments found")
         return messageToBot
     
     for attachment in message.attachments:
         if "image" in attachment.content_type:
-            print(f"Found image attachments: {attachment.content_type}")
+            logger.info(f"Found image attachments: {attachment.content_type}")
             # download attachment and store it in variable to process
             image_data = await attachment.read()
             image = Image.open(io.BytesIO(image_data))
@@ -150,7 +157,7 @@ async def process_attachments(messageToBot: str, message: discord.message):
             MDResult = moondream_model.caption(image, length="normal")
             imageCaption = MDResult.get("caption")
             messageToBot = messageToBot + f" (An attached image shows: {imageCaption})"
-            print(f"Generated caption for image: {imageCaption}")
+            logger.debug(f"Generated caption for image: {imageCaption}")
 
     return messageToBot
 
@@ -159,13 +166,13 @@ async def execute_tool(tool_name, tool_input):
         if hasattr(tools, tool_name):
             tool_function = getattr(tools, tool_name)
             result = tool_function(tool_input)
-            print(f"Got result from tool: {result}")
+            logger.debug(f"Got result from tool: {result}")
             return result
         else:
-            print("Requested function not found in tools.py")
+            logger.warning("Requested function not found in tools.py")
             return "Requested tool not found"
     except Exception as e:
-        print(f"Error calling tool: {e}")
+        logger.error(f"Error calling tool: {e}")
         return f"Error calling tool: {e}"
 
 async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) -> tuple[str, Optional[discord.Message]]:
@@ -191,17 +198,17 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
             #print(claudeResponse)
 
             if claudeResponse.stop_reason == "tool_use":
-                print("Detected tool call(s)")
+                logger.info("Detected tool call(s)")
                 status_followup = await interaction.followup.send("DenBot is processing tool calls...")
                 conversationToBot.append({"role": "assistant", "content": claudeResponse.content})
 
                 tool_content = []
                 for content in claudeResponse.content:
-                    print(f"Found content: {content.type}")
+                    logger.debug(f"Found content: {content.type}")
                     if content.type != "tool_use":
-                        print(f"not tool, skipping")
+                        logger.debug(f"not tool, skipping")
                         continue
-                    print(f"Found tool: {content.name}")
+                    logger.info(f"Found tool: {content.name}")
                     tool_result = await execute_tool(content.name, content.input)
                     tool_content.append({"type": "tool_result", 
                                          "tool_use_id": content.id,
@@ -215,11 +222,11 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
                 for content in claudeResponse.content:
                     if content.type == "text":
                         final_text = content.text
-                print(f"Generated: \n{final_text}")         
+                logger.info(f"Generated: \n{final_text}")         
                 return final_text, status_followup
             
     except Exception as e:
-        print(f"Error: {e}")
+        logger.error(f"Error: {e}")
 
 async def preprocess_user_message(newUserMessage: discord.message) -> str:
     messageToBot = newUserMessage.content
@@ -231,21 +238,21 @@ async def preprocess_user_message(newUserMessage: discord.message) -> str:
 
     
 async def handle_chat_request(interaction: discord.Interaction, newUserMessage: discord.message, continueConversation = False) -> tuple[str, Optional[discord.Message]]:
-    print(f"Received message '{newUserMessage.content}'")
+    logger.info(f"Received message '{newUserMessage.content}'")
 
     latestMessageToBot = await preprocess_user_message(newUserMessage)
 
     if continueConversation:
         conversationToBot = get_user_context(interaction.user.id)
-        print(f"Continuing conversation with {len(conversationToBot)} messages")
+        logger.info(f"Continuing conversation with {len(conversationToBot)} messages")
     else:
         conversationToBot = []
-        print("Starting new conversation")
+        logger.info("Starting new conversation")
 
     # conversationToBot.insert(0, {"role": "system", "content": config.SYSTEM_PROMPT})
     conversationToBot.append({"role": "user", "content": latestMessageToBot})
 
-    print(f"sending the following conversation to bot:\n{conversationToBot}")
+    logger.debug(f"sending the following conversation to bot:\n{conversationToBot}")
     reply, status_message = await send_to_ai(conversationToBot, interaction)
 
     if continueConversation:
@@ -315,7 +322,7 @@ async def add_to_convo(interaction: discord.Interaction, message: discord.Messag
         append_user_context(interaction.user.id, processedMessage)
         await interaction.followup.send(content="Added message to your conversation history", ephemeral=True)
     except Exception as e:
-        print(f"Error: {e}")
+        logger.error(f"Error: {e}")
 
 @add_to_convo.error
 async def continue_conversation_error(interaction: discord.Interaction, error: app_commands.AppCommandError):

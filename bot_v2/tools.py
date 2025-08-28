@@ -2,6 +2,11 @@ import config
 import requests
 import os
 import json
+import logging
+
+# Configure logging
+logging.basicConfig(filename=config.LOG_FILENAME, level=config.LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s', filemode='a')
+logger = logging.getLogger(__name__)
 
 def test_function(boolean):
     return "blue is the best color"
@@ -14,13 +19,13 @@ def wolfram(search_query):
     url += f"input={query_string}"
     url += f"&appid={WOLFRAM_APPID}"
     url += f"&maxchars={config.WOLFRAM_MAX_CHARS}"
-    print(f"Using url to query wolfram: {url}")
+    logger.debug(f"Using url to query wolfram: {url}")
 
     headers = {
         "Accept": "text/html,application/xhtml+xml,application/xml"
     }
     response = requests.get(url, headers=headers)
-    print(f"response from wolfram: {response.text}")
+    logger.debug(f"response from wolfram: {response.text}")
     return response.text
 
 def threedmark_gpu_performance_lookup(gpu_model):
@@ -42,5 +47,5 @@ def threedmark_gpu_performance_lookup(gpu_model):
 
         return f"{gpu_name} median performance score is: {gpu_performance}"
     except Exception as e:
-        print(f"Error getting gpu performance: {e}")
+        logger.error(f"Error getting gpu performance: {e}")
         return f"Error getting gpu performance: {e}"
