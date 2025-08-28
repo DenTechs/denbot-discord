@@ -123,7 +123,7 @@ def process_youtube(messageToBot: str, message: discord.message):
                 plainTranscript += f"{fragment.get("text")} "
 
             if len(plainTranscript) > 2000:
-                plainTranscript = f"{plainTranscript[0:1000]} {plainTranscript[-1000:]}" #cut off at 2k characters otherwise wont fit in context
+                plainTranscript = f"{plainTranscript[0:2000]} {plainTranscript[-2000:]}" #cut off at 2k characters otherwise wont fit in context
 
             messageToBot += f" The youtube link has a video with the following transcript: {plainTranscript}"
             return messageToBot # return message with video transcription appended
@@ -149,7 +149,7 @@ async def process_attachments(messageToBot: str, message: discord.message):
 
             MDResult = moondream_model.caption(image, length="normal")
             imageCaption = MDResult.get("caption")
-            messageToBot = messageToBot + f"( An attached image shows: {imageCaption})"
+            messageToBot = messageToBot + f" (An attached image shows: {imageCaption})"
             print(f"Generated caption for image: {imageCaption}")
 
     return messageToBot
