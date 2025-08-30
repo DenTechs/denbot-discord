@@ -131,7 +131,7 @@ def process_youtube(messageToBot: str, message: discord.message):
                 plainTranscript = f"{plainTranscript[0:2000]} {plainTranscript[-2000:]}" #cut off at 2k characters otherwise wont fit in context
 
             messageToBot += f" The youtube link has a video with the following transcript: {plainTranscript}"
-            logging.debug(f"The youtube link has a video with the following transcript: {plainTranscript}")
+            logger.debug(f"The youtube link has a video with the following transcript: {plainTranscript}")
             return messageToBot # return message with video transcription appended
         
         else:
@@ -157,7 +157,7 @@ async def process_attachments(messageToBot: str, message: discord.message):
             MDResult = moondream_model.caption(image, length="normal")
             imageCaption = MDResult.get("caption")
             messageToBot = messageToBot + f" (An attached image shows: {imageCaption})"
-            logger.debug(f"Generated caption for image: {imageCaption}")
+            logger.info(f"Generated caption for image: {imageCaption}")
 
     return messageToBot
 
@@ -166,7 +166,7 @@ async def execute_tool(tool_name, tool_input):
         if hasattr(tools, tool_name):
             tool_function = getattr(tools, tool_name)
             result = tool_function(tool_input)
-            logger.debug(f"Got result from tool: {result}")
+            logger.info(f"Got result from tool: {result}")
             return result
         else:
             logger.warning("Requested function not found in tools.py")
@@ -199,7 +199,9 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
 
             if claudeResponse.stop_reason == "tool_use":
                 logger.info("Detected tool call(s)")
-                status_followup = await interaction.followup.send("DenBot is processing tool calls...")
+                # Only do followup once, dont send it multiple times
+                if status_followup is None:
+                    status_followup = await interaction.followup.send("DenBot is processing tool calls...")
                 conversationToBot.append({"role": "assistant", "content": claudeResponse.content})
 
                 tool_content = []
@@ -267,6 +269,7 @@ async def handle_chat_request(interaction: discord.Interaction, newUserMessage: 
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
 @app_commands.check(channel_check)
 async def ask_denbot(interaction: discord.Interaction, message: discord.Message):
+    logger.info(f"User {interaction.user.name} used ask denbot")
     # Defer the response to prevent timeout during processing
     await interaction.response.defer()
 
@@ -281,6 +284,7 @@ async def ask_denbot(interaction: discord.Interaction, message: discord.Message)
 @ask_denbot.error
 async def ask_denbot_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
     if isinstance(error, app_commands.CheckFailure):
+        logger.info(f"User {interaction.user.name} tried to ask denbot but did not have permission.")
         await interaction.response.send_message("You do not have permission to use this.", ephemeral=True)
     else:
         # Handle other errors or re-raise
@@ -291,6 +295,7 @@ async def ask_denbot_error(interaction: discord.Interaction, error: app_commands
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
 @app_commands.check(channel_check)
 async def continue_conversation(interaction: discord.Interaction, message: discord.Message):
+    logger.info(f"User {interaction.user.name} used continue conversation")
     # Defer the response to prevent timeout during processing
     await interaction.response.defer()
 
@@ -304,6 +309,7 @@ async def continue_conversation(interaction: discord.Interaction, message: disco
 @continue_conversation.error
 async def continue_conversation_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
     if isinstance(error, app_commands.CheckFailure):
+        logger.info(f"User {interaction.user.name} tried to continue their conversation history but did not have permission.")
         await interaction.response.send_message("You do not have permission to use this.", ephemeral=True)
     else:
         # Handle other errors or re-raise
@@ -315,11 +321,13 @@ async def continue_conversation_error(interaction: discord.Interaction, error: a
 @app_commands.check(channel_check)
 async def add_to_convo(interaction: discord.Interaction, message: discord.Message):
     try:
+        logger.info(f"User {interaction.user.name} used add to conversation history")
         # Defer the response to prevent timeout during processing
         await interaction.response.defer(ephemeral=True)
 
         processedMessage = await preprocess_user_message(message)
         append_user_context(interaction.user.id, processedMessage)
+        logger.info(f"Added message to conversation history")
         await interaction.followup.send(content="Added message to your conversation history", ephemeral=True)
     except Exception as e:
         logger.error(f"Error: {e}")
@@ -327,6 +335,7 @@ async def add_to_convo(interaction: discord.Interaction, message: discord.Messag
 @add_to_convo.error
 async def continue_conversation_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
     if isinstance(error, app_commands.CheckFailure):
+        logger.info(f"User {interaction.user.name} tried to add to their conversation history but did not have permission.")
         await interaction.response.send_message("You do not have permission to use this.", ephemeral=True)
     else:
         # Handle other errors or re-raise
@@ -337,12 +346,14 @@ async def continue_conversation_error(interaction: discord.Interaction, error: a
 @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
 @app_commands.check(channel_check)
 async def clear_convo(interaction: discord.Interaction, message: discord.Message):
+    logger.info(f"User {interaction.user.name} used clear conversation history")
     clear_user_context(interaction.user.id)
     await interaction.response.send_message(content="Cleared your conversation history", ephemeral=True)
 
 @clear_convo.error
 async def continue_conversation_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
     if isinstance(error, app_commands.CheckFailure):
+        logger.info(f"User {interaction.user.name} tried to clear their conversation history but did not have permission.")
         await interaction.response.send_message("You do not have permission to use this.", ephemeral=True)
     else:
         # Handle other errors or re-raise

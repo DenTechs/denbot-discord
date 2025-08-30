@@ -16,7 +16,7 @@
     },
     {
         "name": "threedmark_gpu_performance_lookup",
-        "description": "Look up a gpu's performance score using 3dmark time spy. The input should be just the gpu name, for example '3080', '9700 xt', '2080 super', etc. Use this whenever you are asked about gpu performance such as 'how fast is the 3090' or 'what's the performance of the 2060 ti'",
+        "description": "Look up a gpu's performance score using 3dmark time spy. The input should be just the gpu name, for example '3080', '9700 xt', '2080 super', etc. Use this whenever you are asked about gpu performance such as 'how fast is the 3090' or 'what's the performance of the 2060 ti'. This function returns a score 0 to 100 for the accuracy of the name lookup. Let the user know if the accuracy is low.",
         "input_schema": {
             "type": "object",
             "properties": {

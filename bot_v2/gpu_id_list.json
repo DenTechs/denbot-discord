@@ -1,0 +1,6942 @@
+[
+    {
+        "id": 0,
+        "name": "Unknown GPU"
+    },
+    {
+        "id": 1,
+        "name": "Generic VGA"
+    },
+    {
+        "id": 2,
+        "name": ""
+    },
+    {
+        "id": 3,
+        "name": "#9 Ticket To Ride"
+    },
+    {
+        "id": 4,
+        "name": "#9 Ticket To Ride IV"
+    },
+    {
+        "id": 5,
+        "name": "3dfx Voodoo Banshee"
+    },
+    {
+        "id": 6,
+        "name": "3dfx Voodoo Graphics"
+    },
+    {
+        "id": 7,
+        "name": "3dfx Voodoo Rush"
+    },
+    {
+        "id": 8,
+        "name": "3Dlabs Glint"
+    },
+    {
+        "id": 9,
+        "name": "3Dlabs Permedia2"
+    },
+    {
+        "id": 10,
+        "name": "ATI 3D Rage II+/IIC"
+    },
+    {
+        "id": 11,
+        "name": "ATI 3D Rage Pro Turbo"
+    },
+    {
+        "id": 12,
+        "name": "ATI Rage 128"
+    },
+    {
+        "id": 13,
+        "name": "Cirrus Logic 546x"
+    },
+    {
+        "id": 14,
+        "name": "Intel i740"
+    },
+    {
+        "id": 15,
+        "name": "Matrox G100"
+    },
+    {
+        "id": 16,
+        "name": "Matrox G200/G250"
+    },
+    {
+        "id": 17,
+        "name": "Matrox Millenium II"
+    },
+    {
+        "id": 18,
+        "name": "Matrox Mystique"
+    },
+    {
+        "id": 19,
+        "name": "NEC PowerVR PCX2"
+    },
+    {
+        "id": 20,
+        "name": "NVIDIA RIVA 128/128ZX"
+    },
+    {
+        "id": 21,
+        "name": "NVIDIA RIVA TNT"
+    },
+    {
+        "id": 22,
+        "name": "Number Nine Ticket To Ride"
+    },
+    {
+        "id": 23,
+        "name": "Number Nine Ticket To Ride IV"
+    },
+    {
+        "id": 24,
+        "name": "Rendition Verite V1000"
+    },
+    {
+        "id": 25,
+        "name": "Rendition Verite V2x00"
+    },
+    {
+        "id": 26,
+        "name": "S3 Graphics Savage3D"
+    },
+    {
+        "id": 27,
+        "name": "S3 Graphics Trio3D"
+    },
+    {
+        "id": 28,
+        "name": "S3 Graphics Virge"
+    },
+    {
+        "id": 29,
+        "name": "Trident 3DImage 9x5"
+    },
+    {
+        "id": 30,
+        "name": "Trident CyberBlade-Series"
+    },
+    {
+        "id": 31,
+        "name": "3dfx Voodoo2"
+    },
+    {
+        "id": 32,
+        "name": "3dfx Voodoo2 SLI"
+    },
+    {
+        "id": 33,
+        "name": "3dfx Voodoo3 2000/3000"
+    },
+    {
+        "id": 34,
+        "name": "NVIDIA RIVA TNT2/Pro"
+    },
+    {
+        "id": 35,
+        "name": "Matrox G400"
+    },
+    {
+        "id": 36,
+        "name": "S3 Graphics Savage4 / Pro"
+    },
+    {
+        "id": 37,
+        "name": "NVIDIA GeForce SDR"
+    },
+    {
+        "id": 38,
+        "name": ""
+    },
+    {
+        "id": 39,
+        "name": ""
+    },
+    {
+        "id": 40,
+        "name": "NVIDIA RIVA TNT2 Ultra"
+    },
+    {
+        "id": 41,
+        "name": "Intel(R) 82810"
+    },
+    {
+        "id": 42,
+        "name": "NVIDIA GeForce DDR"
+    },
+    {
+        "id": 43,
+        "name": "3Dlabs Permedia3"
+    },
+    {
+        "id": 44,
+        "name": "3dfx Voodoo3 3500"
+    },
+    {
+        "id": 45,
+        "name": "VGA Compatible"
+    },
+    {
+        "id": 46,
+        "name": "Matrox G400 MAX"
+    },
+    {
+        "id": 47,
+        "name": "Intel(R) 82810E"
+    },
+    {
+        "id": 48,
+        "name": "S3 Graphics Savage2000"
+    },
+    {
+        "id": 49,
+        "name": "NVIDIA GeForce Quadro"
+    },
+    {
+        "id": 50,
+        "name": "ATI Rage FURY MAXX"
+    },
+    {
+        "id": 51,
+        "name": "3Dlabs Oxygen GVX1"
+    },
+    {
+        "id": 52,
+        "name": "NVIDIA TNT2 m64"
+    },
+    {
+        "id": 53,
+        "name": "NVIDIA Vanta"
+    },
+    {
+        "id": 54,
+        "name": "ATI Rage Mobility"
+    },
+    {
+        "id": 55,
+        "name": "ATI Rage 128 Pro"
+    },
+    {
+        "id": 56,
+        "name": "ATI Rage Mobility 128"
+    },
+    {
+        "id": 57,
+        "name": "ATI 3D Rage LT"
+    },
+    {
+        "id": 58,
+        "name": "ATI Rage LT Pro"
+    },
+    {
+        "id": 59,
+        "name": "PowerVR 250"
+    },
+    {
+        "id": 60,
+        "name": "S3 Graphics Savage4 Xtreme"
+    },
+    {
+        "id": 61,
+        "name": "NVIDIA GeForce2 GTS/Pro/Ti"
+    },
+    {
+        "id": 62,
+        "name": "3dfx Voodoo5 5500"
+    },
+    {
+        "id": 63,
+        "name": "ATI Radeon DDR"
+    },
+    {
+        "id": 64,
+        "name": "NVIDIA GeForce2 MX/MX 400"
+    },
+    {
+        "id": 65,
+        "name": ""
+    },
+    {
+        "id": 66,
+        "name": "NVIDIA GeForce2 Ultra"
+    },
+    {
+        "id": 67,
+        "name": "Intel(R) 82815"
+    },
+    {
+        "id": 68,
+        "name": "ATI Radeon SDR"
+    },
+    {
+        "id": 69,
+        "name": "3dfx Voodoo4 4500"
+    },
+    {
+        "id": 70,
+        "name": "S3 Graphics Savage/MX"
+    },
+    {
+        "id": 71,
+        "name": ""
+    },
+    {
+        "id": 72,
+        "name": ""
+    },
+    {
+        "id": 73,
+        "name": "SIS 6326"
+    },
+    {
+        "id": 74,
+        "name": "Trident Blade-Series"
+    },
+    {
+        "id": 75,
+        "name": "STMicro KYRO"
+    },
+    {
+        "id": 76,
+        "name": "NVIDIA Quadro2/Pro"
+    },
+    {
+        "id": 77,
+        "name": "Matrox G450"
+    },
+    {
+        "id": 78,
+        "name": "Neomagic"
+    },
+    {
+        "id": 79,
+        "name": "NVIDIA GeForce3"
+    },
+    {
+        "id": 80,
+        "name": "ATI Radeon VE"
+    },
+    {
+        "id": 81,
+        "name": "Silicon Motion Lynx/Cougar"
+    },
+    {
+        "id": 82,
+        "name": "STMicro KYRO II"
+    },
+    {
+        "id": 83,
+        "name": "ATI Mobility Radeon"
+    },
+    {
+        "id": 84,
+        "name": "NVIDIA Quadro DCC"
+    },
+    {
+        "id": 85,
+        "name": "Intel(R) 82845G/GL/GE/PE/GV"
+    },
+    {
+        "id": 86,
+        "name": "ATI Radeon 8500 Series"
+    },
+    {
+        "id": 87,
+        "name": "ATI Radeon 7500 Series"
+    },
+    {
+        "id": 88,
+        "name": "S3 Graphics ProSavage"
+    },
+    {
+        "id": 89,
+        "name": "NVIDIA GeForce2 MX 100/200"
+    },
+    {
+        "id": 90,
+        "name": "SiS 650/651/M650/M652/740 series"
+    },
+    {
+        "id": 91,
+        "name": "Generic Workstation"
+    },
+    {
+        "id": 92,
+        "name": "NVIDIA nForce"
+    },
+    {
+        "id": 93,
+        "name": "NVIDIA GeForce3 Ti 500"
+    },
+    {
+        "id": 94,
+        "name": "NVIDIA GeForce3 Ti 200"
+    },
+    {
+        "id": 95,
+        "name": "NVIDIA GeForce2Go"
+    },
+    {
+        "id": 96,
+        "name": "NVIDIA GeForce4 Ti 4600"
+    },
+    {
+        "id": 97,
+        "name": "NVIDIA GeForce4 Ti 4400"
+    },
+    {
+        "id": 98,
+        "name": "NVIDIA GeForce4 Ti 4200"
+    },
+    {
+        "id": 99,
+        "name": "NVIDIA GeForce4 MX 460"
+    },
+    {
+        "id": 100,
+        "name": "NVIDIA GeForce4 MX 440"
+    },
+    {
+        "id": 101,
+        "name": "NVIDIA GeForce4 MX 420"
+    },
+    {
+        "id": 102,
+        "name": "NVIDIA Quadro4 Series"
+    },
+    {
+        "id": 103,
+        "name": ""
+    },
+    {
+        "id": 104,
+        "name": "ATI Fire GL Series"
+    },
+    {
+        "id": 105,
+        "name": "NVIDIA GeForce4 420 Go"
+    },
+    {
+        "id": 106,
+        "name": "NVIDIA GeForce4 440 Go"
+    },
+    {
+        "id": 107,
+        "name": ""
+    },
+    {
+        "id": 108,
+        "name": ""
+    },
+    {
+        "id": 109,
+        "name": "SiS Xabre series"
+    },
+    {
+        "id": 110,
+        "name": "Matrox Parhelia"
+    },
+    {
+        "id": 111,
+        "name": "ATI Radeon 9700"
+    },
+    {
+        "id": 112,
+        "name": "ATI Mobility Radeon 9000"
+    },
+    {
+        "id": 113,
+        "name": ""
+    },
+    {
+        "id": 114,
+        "name": "ATI Radeon 9000"
+    },
+    {
+        "id": 115,
+        "name": "NVIDIA GeForce FX Series"
+    },
+    {
+        "id": 116,
+        "name": "ATI Radeon IGP 320/240"
+    },
+    {
+        "id": 117,
+        "name": "NVIDIA nForce2"
+    },
+    {
+        "id": 118,
+        "name": "S3 Graphics SavageXP"
+    },
+    {
+        "id": 119,
+        "name": "VIA ProSavage Series"
+    },
+    {
+        "id": 120,
+        "name": "ATI Radeon 9100 Series"
+    },
+    {
+        "id": 121,
+        "name": "ATI Radeon 9800"
+    },
+    {
+        "id": 122,
+        "name": "ATI Radeon 9600 Series"
+    },
+    {
+        "id": 123,
+        "name": "NVIDIA GeForce FX 5800 Ultra"
+    },
+    {
+        "id": 124,
+        "name": "NVIDIA GeForce FX 5800"
+    },
+    {
+        "id": 125,
+        "name": "NVIDIA GeForce FX 5600 Ultra"
+    },
+    {
+        "id": 126,
+        "name": "NVIDIA GeForce FX 5600"
+    },
+    {
+        "id": 127,
+        "name": "NVIDIA GeForce FX 5200 Ultra"
+    },
+    {
+        "id": 128,
+        "name": "NVIDIA GeForce FX 5200"
+    },
+    {
+        "id": 129,
+        "name": "NVIDIA Quadro FX Series"
+    },
+    {
+        "id": 130,
+        "name": "NVIDIA GeForce FX 5900 Series"
+    },
+    {
+        "id": 131,
+        "name": "NVIDIA GeForce FX 5900"
+    },
+    {
+        "id": 132,
+        "name": "NVIDIA GeForce FX 5900 Ultra"
+    },
+    {
+        "id": 133,
+        "name": "ATI Radeon 7000 Series"
+    },
+    {
+        "id": 134,
+        "name": "ATI Radeon 7200 Series"
+    },
+    {
+        "id": 135,
+        "name": "ATI Radeon 9200"
+    },
+    {
+        "id": 136,
+        "name": "ATI Radeon 9200 SE"
+    },
+    {
+        "id": 137,
+        "name": "ATI Radeon 9500"
+    },
+    {
+        "id": 138,
+        "name": "ATI Radeon 9700 Pro"
+    },
+    {
+        "id": 139,
+        "name": "ATI Radeon 9800 Pro"
+    },
+    {
+        "id": 140,
+        "name": "NVIDIA GeForce FX go5600"
+    },
+    {
+        "id": 141,
+        "name": "ATI Radeon 9800 XT"
+    },
+    {
+        "id": 142,
+        "name": "NVIDIA GeForce FX 5950 Ultra"
+    },
+    {
+        "id": 143,
+        "name": "NVIDIA GeForce4 Ti 4800"
+    },
+    {
+        "id": 144,
+        "name": "NVIDIA GeForce FX 5600XT"
+    },
+    {
+        "id": 145,
+        "name": "NVIDIA GeForce FX 5700 Ultra"
+    },
+    {
+        "id": 146,
+        "name": "NVIDIA GeForce FX 5700"
+    },
+    {
+        "id": 147,
+        "name": "Intel(R) 82852/82855 GM/GME"
+    },
+    {
+        "id": 148,
+        "name": "ATI Mobility Radeon 9600/9700"
+    },
+    {
+        "id": 149,
+        "name": "XGI Volari Family"
+    },
+    {
+        "id": 150,
+        "name": "NVIDIA GeForce FX 5900XT"
+    },
+    {
+        "id": 151,
+        "name": "ATI Mobility Radeon 9200"
+    },
+    {
+        "id": 152,
+        "name": "Intel(R) 82865G"
+    },
+    {
+        "id": 153,
+        "name": "ATI Radeon 9100 IGP"
+    },
+    {
+        "id": 154,
+        "name": "ATI Radeon IGP 320"
+    },
+    {
+        "id": 155,
+        "name": "ATI Radeon IGP 340"
+    },
+    {
+        "id": 156,
+        "name": "S3 Graphics DeltaChrome"
+    },
+    {
+        "id": 157,
+        "name": "NVIDIA Quadro NVS"
+    },
+    {
+        "id": 158,
+        "name": "NVIDIA GeForce FX go5650"
+    },
+    {
+        "id": 159,
+        "name": "ATI Radeon 9550"
+    },
+    {
+        "id": 160,
+        "name": "ATI Mobility Radeon 9100 IGP"
+    },
+    {
+        "id": 161,
+        "name": "SiS 301C"
+    },
+    {
+        "id": 162,
+        "name": "Intel(R) 82915G/GV/910GL Express Family"
+    },
+    {
+        "id": 163,
+        "name": "VIA/S3G KM400"
+    },
+    {
+        "id": 164,
+        "name": "NVIDIA GeForce4 4200 Go"
+    },
+    {
+        "id": 165,
+        "name": "NVIDIA GeForce FX Go5200"
+    },
+    {
+        "id": 166,
+        "name": "NVIDIA GeForce FX Go5250"
+    },
+    {
+        "id": 167,
+        "name": "ATI Radeon X800"
+    },
+    {
+        "id": 168,
+        "name": "ATI Radeon X800 Pro"
+    },
+    {
+        "id": 169,
+        "name": "ATI Radeon X800 XT"
+    },
+    {
+        "id": 170,
+        "name": "NVIDIA GeForce4 MX 4000"
+    },
+    {
+        "id": 171,
+        "name": "NVIDIA GeForce FX 5500"
+    },
+    {
+        "id": 172,
+        "name": "NVIDIA GeForce FX 5700LE"
+    },
+    {
+        "id": 173,
+        "name": "NVIDIA GeForce FX 5700VE"
+    },
+    {
+        "id": 174,
+        "name": "NVIDIA GeForce 6800"
+    },
+    {
+        "id": 175,
+        "name": "NVIDIA GeForce 6800 Ultra"
+    },
+    {
+        "id": 176,
+        "name": "NVIDIA GeForce 6800 GT"
+    },
+    {
+        "id": 177,
+        "name": "ATI Radeon X300"
+    },
+    {
+        "id": 178,
+        "name": "ATI Radeon X600"
+    },
+    {
+        "id": 179,
+        "name": "ATI Radeon X800 SE"
+    },
+    {
+        "id": 180,
+        "name": "ATI Radeon X800 XT PE"
+    },
+    {
+        "id": 181,
+        "name": "NVIDIA GeForce FX Go5700"
+    },
+    {
+        "id": 182,
+        "name": "Intel(R) 82810-DC100"
+    },
+    {
+        "id": 183,
+        "name": "Intel(R) 82830M"
+    },
+    {
+        "id": 184,
+        "name": "Intel(R) GMA 900"
+    },
+    {
+        "id": 185,
+        "name": "NVIDIA Aladdin TNT2"
+    },
+    {
+        "id": 186,
+        "name": "NVIDIA GeForce 256"
+    },
+    {
+        "id": 187,
+        "name": "NVIDIA GeForce 6200"
+    },
+    {
+        "id": 188,
+        "name": "NVIDIA GeForce 6600"
+    },
+    {
+        "id": 189,
+        "name": "NVIDIA GeForce 6600 GT"
+    },
+    {
+        "id": 190,
+        "name": "NVIDIA GeForce 6800 LE"
+    },
+    {
+        "id": 191,
+        "name": "NVIDIA GeForce 6800 Series GPU"
+    },
+    {
+        "id": 192,
+        "name": "NVIDIA GeForce FX 5100"
+    },
+    {
+        "id": 193,
+        "name": "NVIDIA GeForce FX 5200LE"
+    },
+    {
+        "id": 194,
+        "name": "NVIDIA GeForce FX 5900ZT"
+    },
+    {
+        "id": 195,
+        "name": "NVIDIA GeForce PCX 4300"
+    },
+    {
+        "id": 196,
+        "name": "NVIDIA GeForce PCX 5300"
+    },
+    {
+        "id": 197,
+        "name": "NVIDIA GeForce PCX 5750"
+    },
+    {
+        "id": 198,
+        "name": "NVIDIA GeForce PCX 5900"
+    },
+    {
+        "id": 199,
+        "name": "ATI Radeon X700 Series"
+    },
+    {
+        "id": 200,
+        "name": "NVIDIA GeForce 6800 Go"
+    },
+    {
+        "id": 201,
+        "name": "ATI Radeon X850 Series"
+    },
+    {
+        "id": 202,
+        "name": "ATI Mobility Radeon X800"
+    },
+    {
+        "id": 203,
+        "name": "ATI Radeon X800 XL"
+    },
+    {
+        "id": 204,
+        "name": "ATI Radeon X700 SE"
+    },
+    {
+        "id": 205,
+        "name": "ATI Radeon X850 Pro"
+    },
+    {
+        "id": 206,
+        "name": "ATI Radeon X850 XT"
+    },
+    {
+        "id": 207,
+        "name": "ATI Radeon X850 XT PE"
+    },
+    {
+        "id": 208,
+        "name": "ATI Mobility Radeon 7000 IGP"
+    },
+    {
+        "id": 209,
+        "name": "ATI Mobility Radeon 7500"
+    },
+    {
+        "id": 210,
+        "name": "ATI Mobility Radeon 9500"
+    },
+    {
+        "id": 211,
+        "name": "ATI Mobility Radeon 9800"
+    },
+    {
+        "id": 212,
+        "name": "ATI Mobility Radeon X300"
+    },
+    {
+        "id": 213,
+        "name": "ATI Mobility Radeon X600"
+    },
+    {
+        "id": 214,
+        "name": "ATI Mobility Radeon X600 SE"
+    },
+    {
+        "id": 215,
+        "name": "ATI Mobility Radeon X700"
+    },
+    {
+        "id": 216,
+        "name": "ATI Mobility Radeon X800XT"
+    },
+    {
+        "id": 217,
+        "name": "ATI Radeon 9000 Pro"
+    },
+    {
+        "id": 218,
+        "name": "ATI Radeon 9000 Series"
+    },
+    {
+        "id": 219,
+        "name": "ATI Radeon 9250"
+    },
+    {
+        "id": 220,
+        "name": "ATI Radeon 9600 TX"
+    },
+    {
+        "id": 221,
+        "name": "ATI Radeon 9650"
+    },
+    {
+        "id": 222,
+        "name": "ATI Radeon 9800 SE"
+    },
+    {
+        "id": 223,
+        "name": "ATI Radeon X700 Pro"
+    },
+    {
+        "id": 224,
+        "name": "ATI Radeon X700 XT"
+    },
+    {
+        "id": 225,
+        "name": "ATI Radeon X800 Series"
+    },
+    {
+        "id": 226,
+        "name": "ATI Radeon X850 SE"
+    },
+    {
+        "id": 227,
+        "name": "ATI Radeon XPRESS 200 Series"
+    },
+    {
+        "id": 228,
+        "name": "ATI Radeon XPRESS 200M Series"
+    },
+    {
+        "id": 229,
+        "name": "NVIDIA GeForce 6610 XL"
+    },
+    {
+        "id": 230,
+        "name": "NVIDIA GeForce4 MX 440SE"
+    },
+    {
+        "id": 231,
+        "name": "NVIDIA GeForce4 Ti 4800SE"
+    },
+    {
+        "id": 232,
+        "name": ""
+    },
+    {
+        "id": 233,
+        "name": "NVIDIA GeForce4 460 Go"
+    },
+    {
+        "id": 234,
+        "name": "NVIDIA GeForce4 488 Go"
+    },
+    {
+        "id": 235,
+        "name": "NVIDIA GeForce4 410 Go"
+    },
+    {
+        "id": 236,
+        "name": "NVIDIA GeForce Go 6200"
+    },
+    {
+        "id": 237,
+        "name": "NVIDIA GeForce Go 6600"
+    },
+    {
+        "id": 238,
+        "name": "NVIDIA GeForce FX Go53xx"
+    },
+    {
+        "id": 239,
+        "name": "NVIDIA GeForce FX Go5100"
+    },
+    {
+        "id": 240,
+        "name": "NVIDIA GeForce Go 6800 Ultra"
+    },
+    {
+        "id": 241,
+        "name": "NVIDIA GeForce 7800 GTX"
+    },
+    {
+        "id": 242,
+        "name": "NVIDIA GeForce4 MX Integrated GPU"
+    },
+    {
+        "id": 243,
+        "name": "ATI Radeon X550"
+    },
+    {
+        "id": 244,
+        "name": "ATI Radeon X600 Pro"
+    },
+    {
+        "id": 245,
+        "name": "ATI Radeon X600 XT"
+    },
+    {
+        "id": 246,
+        "name": "ATI Radeon X800 GT"
+    },
+    {
+        "id": 247,
+        "name": "NVIDIA GeForce 7800 GT"
+    },
+    {
+        "id": 248,
+        "name": "NVIDIA GeForce FX 5990 Ultra"
+    },
+    {
+        "id": 249,
+        "name": "NVIDIA GeForce 6600 LE"
+    },
+    {
+        "id": 250,
+        "name": "NVIDIA GeForce Go 6250"
+    },
+    {
+        "id": 251,
+        "name": "Intel(R) GMA 950"
+    },
+    {
+        "id": 252,
+        "name": "Intel(R) Mobile 945GM/GMS/GME, 943/940GML"
+    },
+    {
+        "id": 253,
+        "name": "S3 Graphics GammaChrome"
+    },
+    {
+        "id": 254,
+        "name": "ATI Radeon X1300"
+    },
+    {
+        "id": 255,
+        "name": "ATI Radeon X1800"
+    },
+    {
+        "id": 256,
+        "name": "ATI Radeon X1600"
+    },
+    {
+        "id": 257,
+        "name": "NVIDIA GeForce Go 7800 GTX"
+    },
+    {
+        "id": 258,
+        "name": "S3 Graphics Chrome S25"
+    },
+    {
+        "id": 259,
+        "name": "S3 Graphics Chrome S27"
+    },
+    {
+        "id": 260,
+        "name": "ATI Radeon X1900"
+    },
+    {
+        "id": 261,
+        "name": "ATI Mobility Radeon X1300"
+    },
+    {
+        "id": 262,
+        "name": "NVIDIA GeForce 7300 GS"
+    },
+    {
+        "id": 263,
+        "name": "NVIDIA GeForce Go 6100"
+    },
+    {
+        "id": 264,
+        "name": "NVIDIA GeForce 6100"
+    },
+    {
+        "id": 265,
+        "name": "NVIDIA GeForce 6800 GS"
+    },
+    {
+        "id": 266,
+        "name": "NVIDIA GeForce Go 7400"
+    },
+    {
+        "id": 267,
+        "name": "NVIDIA GeForce 6150"
+    },
+    {
+        "id": 268,
+        "name": "NVIDIA GeForce 6150 LE"
+    },
+    {
+        "id": 269,
+        "name": "NVIDIA GeForce 6500"
+    },
+    {
+        "id": 270,
+        "name": "NVIDIA GeForce 6800 XE"
+    },
+    {
+        "id": 271,
+        "name": "NVIDIA GeForce 6800 XT"
+    },
+    {
+        "id": 272,
+        "name": "NVIDIA GeForce 7800 GS"
+    },
+    {
+        "id": 273,
+        "name": "NVIDIA GeForce 7300 LE"
+    },
+    {
+        "id": 274,
+        "name": "NVIDIA GeForce 6700 XL"
+    },
+    {
+        "id": 275,
+        "name": "ATI Radeon X1800 CrossFire Edition"
+    },
+    {
+        "id": 276,
+        "name": "ATI Radeon X1900 CrossFire Edition"
+    },
+    {
+        "id": 277,
+        "name": "ATI Radeon X1900 XTX"
+    },
+    {
+        "id": 278,
+        "name": "ATI Mobility Radeon X1400"
+    },
+    {
+        "id": 279,
+        "name": "ATI Mobility Radeon X1600"
+    },
+    {
+        "id": 280,
+        "name": "NVIDIA GeForce 7900 GTX"
+    },
+    {
+        "id": 281,
+        "name": "NVIDIA GeForce 7900 GT"
+    },
+    {
+        "id": 282,
+        "name": ""
+    },
+    {
+        "id": 283,
+        "name": "NVIDIA GeForce 7600 GT"
+    },
+    {
+        "id": 284,
+        "name": "ATI Mobility Radeon 9550"
+    },
+    {
+        "id": 285,
+        "name": "ATI Mobility Radeon X700 XL"
+    },
+    {
+        "id": 286,
+        "name": "NVIDIA GeForce Go 6400"
+    },
+    {
+        "id": 287,
+        "name": "NVIDIA GeForce Go 7800"
+    },
+    {
+        "id": 288,
+        "name": "NVIDIA GeForce Go 7300"
+    },
+    {
+        "id": 289,
+        "name": "NVIDIA GeForce4 448 Go"
+    },
+    {
+        "id": 290,
+        "name": "ATI Radeon 9200 Pro"
+    },
+    {
+        "id": 291,
+        "name": "ATI Radeon 9550SE"
+    },
+    {
+        "id": 292,
+        "name": "ATI Radeon 9600 Pro"
+    },
+    {
+        "id": 293,
+        "name": "ATI Radeon 9600 SE"
+    },
+    {
+        "id": 294,
+        "name": "ATI Radeon X300 SE"
+    },
+    {
+        "id": 295,
+        "name": "ATI Radeon X550 XT"
+    },
+    {
+        "id": 296,
+        "name": "ATI Radeon X740 XL"
+    },
+    {
+        "id": 297,
+        "name": "ATI Radeon X800 CrossFire Edition"
+    },
+    {
+        "id": 298,
+        "name": "ATI Radeon X800 GTO"
+    },
+    {
+        "id": 299,
+        "name": "ATI Radeon X800 VE"
+    },
+    {
+        "id": 300,
+        "name": "ATI Radeon X850 CrossFire Edition"
+    },
+    {
+        "id": 301,
+        "name": "NVIDIA GeForce 7300 GT"
+    },
+    {
+        "id": 302,
+        "name": "NVIDIA GeForce 7300 SE"
+    },
+    {
+        "id": 303,
+        "name": "NVIDIA GeForce 7500 LE"
+    },
+    {
+        "id": 304,
+        "name": "NVIDIA GeForce 7600 GS"
+    },
+    {
+        "id": 305,
+        "name": "NVIDIA GeForce 7900 GS"
+    },
+    {
+        "id": 306,
+        "name": "NVIDIA GeForce 7950 GX2"
+    },
+    {
+        "id": 307,
+        "name": "SiS 650/651/740/661FX/741/760 series"
+    },
+    {
+        "id": 308,
+        "name": "NVIDIA GeForce Go 7900 GS"
+    },
+    {
+        "id": 309,
+        "name": "NVIDIA GeForce Go 7900 GTX"
+    },
+    {
+        "id": 310,
+        "name": "NVIDIA GeForce 7950 GT"
+    },
+    {
+        "id": 311,
+        "name": "ATI Radeon 9600 XT"
+    },
+    {
+        "id": 312,
+        "name": "ATI Radeon X1300 Pro"
+    },
+    {
+        "id": 313,
+        "name": "ATI Radeon X1550 Series"
+    },
+    {
+        "id": 314,
+        "name": "ATI Radeon X1650 GTO"
+    },
+    {
+        "id": 315,
+        "name": "ATI Radeon X1650 Series"
+    },
+    {
+        "id": 316,
+        "name": "ATI Radeon X1800 GTO"
+    },
+    {
+        "id": 317,
+        "name": "ATI Radeon X1800XL"
+    },
+    {
+        "id": 318,
+        "name": "ATI Radeon X1900 GT"
+    },
+    {
+        "id": 319,
+        "name": "ATI Radeon X1950 CrossFire Edition"
+    },
+    {
+        "id": 320,
+        "name": "ATI Radeon X1950 Series"
+    },
+    {
+        "id": 321,
+        "name": "ATI Radeon Xpress 1150"
+    },
+    {
+        "id": 322,
+        "name": "NVIDIA GeForce 8800 GTX"
+    },
+    {
+        "id": 323,
+        "name": "NVIDIA GeForce 8800 GTS 320MB/640MB"
+    },
+    {
+        "id": 324,
+        "name": "ATI Radeon X1600 Pro"
+    },
+    {
+        "id": 325,
+        "name": "ATI Radeon X1600 XT"
+    },
+    {
+        "id": 326,
+        "name": "ATI Radeon X1950 Pro"
+    },
+    {
+        "id": 327,
+        "name": "NVIDIA GeForce 7100 GS"
+    },
+    {
+        "id": 328,
+        "name": "NVIDIA GeForce 7650 GS"
+    },
+    {
+        "id": 329,
+        "name": ""
+    },
+    {
+        "id": 330,
+        "name": "ATI Radeon X1950 GT"
+    },
+    {
+        "id": 331,
+        "name": "ATI Radeon X1050"
+    },
+    {
+        "id": 332,
+        "name": ""
+    },
+    {
+        "id": 333,
+        "name": ""
+    },
+    {
+        "id": 334,
+        "name": "NVIDIA GeForce Go 7200"
+    },
+    {
+        "id": 335,
+        "name": "NVIDIA GeForce Go 6150"
+    },
+    {
+        "id": 336,
+        "name": "NVIDIA GeForce 7950 GS"
+    },
+    {
+        "id": 337,
+        "name": "NVIDIA GeForce Go 7950 GTX"
+    },
+    {
+        "id": 338,
+        "name": "NVIDIA GeForce Go 7700"
+    },
+    {
+        "id": 339,
+        "name": "NVIDIA GeForce Go 7600"
+    },
+    {
+        "id": 340,
+        "name": "NVIDIA GeForce Go 7600 GT"
+    },
+    {
+        "id": 341,
+        "name": "NVIDIA GeForce Go 7900 SE"
+    },
+    {
+        "id": 342,
+        "name": "ATI Mobility Radeon X1700"
+    },
+    {
+        "id": 343,
+        "name": "ATI Radeon Xpress 1200"
+    },
+    {
+        "id": 344,
+        "name": "NVIDIA GeForce 8600 GTS"
+    },
+    {
+        "id": 345,
+        "name": "NVIDIA GeForce 8600 GT"
+    },
+    {
+        "id": 346,
+        "name": "NVIDIA GeForce 8500 GT"
+    },
+    {
+        "id": 347,
+        "name": "NVIDIA GeForce 8400 GS"
+    },
+    {
+        "id": 348,
+        "name": "NVIDIA GeForce 8300 GS"
+    },
+    {
+        "id": 349,
+        "name": "ATI Radeon HD 2900 XT"
+    },
+    {
+        "id": 350,
+        "name": "NVIDIA GeForce 8800 Ultra"
+    },
+    {
+        "id": 351,
+        "name": "ATI Radeon HD 2600 XT"
+    },
+    {
+        "id": 352,
+        "name": "ATI Radeon HD 2600 Pro"
+    },
+    {
+        "id": 353,
+        "name": "ATI Radeon HD 2400 XT"
+    },
+    {
+        "id": 354,
+        "name": "ATI Radeon HD 2400 Pro"
+    },
+    {
+        "id": 355,
+        "name": "NVIDIA GeForce 8600M GT"
+    },
+    {
+        "id": 356,
+        "name": "NVIDIA GeForce 8600M GS"
+    },
+    {
+        "id": 357,
+        "name": "NVIDIA GeForce 8400M GT"
+    },
+    {
+        "id": 358,
+        "name": "NVIDIA GeForce 8400M GS"
+    },
+    {
+        "id": 359,
+        "name": "NVIDIA GeForce 8400M G"
+    },
+    {
+        "id": 360,
+        "name": "NVIDIA GeForce 8800"
+    },
+    {
+        "id": 361,
+        "name": "NVIDIA GeForce 8600 GS"
+    },
+    {
+        "id": 362,
+        "name": "NVIDIA GeForce 7190M"
+    },
+    {
+        "id": 363,
+        "name": "NVIDIA GeForce 7150M"
+    },
+    {
+        "id": 364,
+        "name": "NVIDIA GeForce 7000M"
+    },
+    {
+        "id": 365,
+        "name": "NVIDIA GeForce 8600M GTS"
+    },
+    {
+        "id": 366,
+        "name": "NVIDIA GeForce 8700M GT"
+    },
+    {
+        "id": 367,
+        "name": "NVIDIA GeForce Go 7350"
+    },
+    {
+        "id": 368,
+        "name": "NVIDIA GeForce Go 7400 GS/7450"
+    },
+    {
+        "id": 369,
+        "name": "NVIDIA GeForce 6150SE / nForce 430"
+    },
+    {
+        "id": 370,
+        "name": "NVIDIA GeForce 6250"
+    },
+    {
+        "id": 371,
+        "name": "NVIDIA GeForce 6600 VE"
+    },
+    {
+        "id": 372,
+        "name": "NVIDIA GeForce 7025 / nForce 630a"
+    },
+    {
+        "id": 373,
+        "name": "NVIDIA GeForce 7050 / nForce 610i"
+    },
+    {
+        "id": 374,
+        "name": "NVIDIA GeForce 7050 / nForce 630i"
+    },
+    {
+        "id": 375,
+        "name": "NVIDIA GeForce 7050 PV / nForce 630a"
+    },
+    {
+        "id": 376,
+        "name": ""
+    },
+    {
+        "id": 377,
+        "name": "NVIDIA GeForce 7100 / nForce 630i"
+    },
+    {
+        "id": 378,
+        "name": "NVIDIA GeForce 7150 / nForce 630i"
+    },
+    {
+        "id": 379,
+        "name": "NVIDIA GeForce 7350 LE"
+    },
+    {
+        "id": 380,
+        "name": "NVIDIA GeForce 7600 LE"
+    },
+    {
+        "id": 381,
+        "name": ""
+    },
+    {
+        "id": 382,
+        "name": "NVIDIA GeForce 8800 GT"
+    },
+    {
+        "id": 383,
+        "name": "ATI Radeon X1600 Pro/X1300XT"
+    },
+    {
+        "id": 384,
+        "name": "ATI Radeon 2100"
+    },
+    {
+        "id": 385,
+        "name": "ATI Radeon 9550/X1050"
+    },
+    {
+        "id": 386,
+        "name": "ATI Radeon 9600/9550/X1050"
+    },
+    {
+        "id": 387,
+        "name": "ATI Radeon 9600/X1050"
+    },
+    {
+        "id": 388,
+        "name": "ATI Radeon HD 2350"
+    },
+    {
+        "id": 389,
+        "name": "ATI Radeon HD 2400"
+    },
+    {
+        "id": 390,
+        "name": "ATI Radeon HD 2600 X2"
+    },
+    {
+        "id": 391,
+        "name": "ATI Radeon HD 2900 Pro"
+    },
+    {
+        "id": 392,
+        "name": "ATI Radeon HD 3850"
+    },
+    {
+        "id": 393,
+        "name": "ATI Radeon HD 3870"
+    },
+    {
+        "id": 394,
+        "name": "ATI Radeon X1200"
+    },
+    {
+        "id": 395,
+        "name": "ATI Radeon X1300/X1550"
+    },
+    {
+        "id": 396,
+        "name": "ATI Radeon X1300/X1600"
+    },
+    {
+        "id": 397,
+        "name": "ATI Radeon X1300XT/X1600Pro/X1650"
+    },
+    {
+        "id": 398,
+        "name": "ATI Radeon X1600/1650"
+    },
+    {
+        "id": 399,
+        "name": "ATI Radeon X1700 FSC"
+    },
+    {
+        "id": 400,
+        "name": "ATI Radeon X300/X550/X1050"
+    },
+    {
+        "id": 401,
+        "name": "ATI Radeon X550/X700"
+    },
+    {
+        "id": 402,
+        "name": "ATI Radeon X550 XTX"
+    },
+    {
+        "id": 403,
+        "name": "ATI Radeon X600/X550"
+    },
+    {
+        "id": 404,
+        "name": "ATI Radeon X800/X850"
+    },
+    {
+        "id": 405,
+        "name": "ATI Radeon XPRESS"
+    },
+    {
+        "id": 406,
+        "name": "ATI Radeon XPRESS 1100"
+    },
+    {
+        "id": 407,
+        "name": "NVIDIA GeForce 8800 GTS 512MB"
+    },
+    {
+        "id": 408,
+        "name": "Intel(R) GMA 3000"
+    },
+    {
+        "id": 409,
+        "name": "Intel(R) GMA X3100"
+    },
+    {
+        "id": 410,
+        "name": "Intel(R) GMA 3000/3100"
+    },
+    {
+        "id": 411,
+        "name": "ATI Mobility Radeon HD 2300"
+    },
+    {
+        "id": 412,
+        "name": "ATI Mobility Radeon HD 2400"
+    },
+    {
+        "id": 413,
+        "name": "ATI Mobility Radeon HD 2400 XT"
+    },
+    {
+        "id": 414,
+        "name": "ATI Mobility Radeon HD 2600"
+    },
+    {
+        "id": 415,
+        "name": "ATI Mobility Radeon HD 2600 XT"
+    },
+    {
+        "id": 416,
+        "name": "ATI Mobility Radeon X1350"
+    },
+    {
+        "id": 417,
+        "name": "ATI Mobility Radeon X1450"
+    },
+    {
+        "id": 418,
+        "name": "ATI Mobility Radeon X1700 / X2500"
+    },
+    {
+        "id": 419,
+        "name": "ATI Mobility Radeon X1700 XT"
+    },
+    {
+        "id": 420,
+        "name": "ATI Mobility Radeon X1800"
+    },
+    {
+        "id": 421,
+        "name": "ATI Mobility Radeon X1800 XT"
+    },
+    {
+        "id": 422,
+        "name": "ATI Mobility Radeon X1900"
+    },
+    {
+        "id": 423,
+        "name": "ATI Mobility Radeon X2300"
+    },
+    {
+        "id": 424,
+        "name": "NVIDIA GeForce 8800 GS"
+    },
+    {
+        "id": 425,
+        "name": "NVIDIA GeForce 8800M GTX"
+    },
+    {
+        "id": 426,
+        "name": "NVIDIA GeForce 8800M GTS"
+    },
+    {
+        "id": 427,
+        "name": "ATI Radeon HD 2600"
+    },
+    {
+        "id": 428,
+        "name": "ATI Radeon HD 2900 GT"
+    },
+    {
+        "id": 429,
+        "name": "ATI Radeon HD 3200"
+    },
+    {
+        "id": 430,
+        "name": ""
+    },
+    {
+        "id": 431,
+        "name": "ATI Radeon HD 3470"
+    },
+    {
+        "id": 432,
+        "name": "ATI Radeon HD 3600 Series"
+    },
+    {
+        "id": 433,
+        "name": "ATI Radeon HD 3870 X2"
+    },
+    {
+        "id": 434,
+        "name": "ATI Radeon HD 3400"
+    },
+    {
+        "id": 435,
+        "name": ""
+    },
+    {
+        "id": 436,
+        "name": "ATI Radeon HD 3800"
+    },
+    {
+        "id": 437,
+        "name": "NVIDIA GeForce 9600 GT"
+    },
+    {
+        "id": 438,
+        "name": "ATI Radeon HD 2400 LE"
+    },
+    {
+        "id": 439,
+        "name": "NVIDIA GeForce 9800 GX2"
+    },
+    {
+        "id": 440,
+        "name": "NVIDIA GeForce 9800 GTX"
+    },
+    {
+        "id": 441,
+        "name": "NVIDIA GeForce Go 8600 GS"
+    },
+    {
+        "id": 442,
+        "name": "NVIDIA GeForce 8400 SE"
+    },
+    {
+        "id": 443,
+        "name": "NVIDIA GeForce 9300M GS"
+    },
+    {
+        "id": 444,
+        "name": "NVIDIA GeForce 9500M GS"
+    },
+    {
+        "id": 445,
+        "name": "NVIDIA GeForce 9600M GS"
+    },
+    {
+        "id": 446,
+        "name": "NVIDIA GeForce 9650M GS"
+    },
+    {
+        "id": 447,
+        "name": "ATI Radeon HD 3850 X2"
+    },
+    {
+        "id": 448,
+        "name": "ATI Mobility Radeon HD 3850 X2"
+    },
+    {
+        "id": 449,
+        "name": "NVIDIA GeForce GTX 260"
+    },
+    {
+        "id": 450,
+        "name": "NVIDIA GeForce GTX 280"
+    },
+    {
+        "id": 451,
+        "name": ""
+    },
+    {
+        "id": 452,
+        "name": ""
+    },
+    {
+        "id": 453,
+        "name": "NVIDIA GeForce 9600 GSO"
+    },
+    {
+        "id": 454,
+        "name": "S3 Graphics Chrome 400 Series"
+    },
+    {
+        "id": 455,
+        "name": "Intel(R) GMA X3000"
+    },
+    {
+        "id": 456,
+        "name": "Intel(R) GMA X3500"
+    },
+    {
+        "id": 457,
+        "name": "Intel GMA X4500HD"
+    },
+    {
+        "id": 458,
+        "name": "Intel(R) GMA 4500"
+    },
+    {
+        "id": 459,
+        "name": "ATI Radeon 3100"
+    },
+    {
+        "id": 460,
+        "name": "ATI Radeon HD 4870 X2"
+    },
+    {
+        "id": 461,
+        "name": "NVIDIA GeForce 9800M GTS"
+    },
+    {
+        "id": 462,
+        "name": "NVIDIA GeForce 9800M GTX"
+    },
+    {
+        "id": 463,
+        "name": "NVIDIA GeForce 9400 GS"
+    },
+    {
+        "id": 464,
+        "name": "NVIDIA GeForce 9400 GT"
+    },
+    {
+        "id": 465,
+        "name": "NVIDIA GeForce 9800 GT"
+    },
+    {
+        "id": 466,
+        "name": "NVIDIA GeForce 8200M G"
+    },
+    {
+        "id": 467,
+        "name": "Intel GMA X4500MHD"
+    },
+    {
+        "id": 468,
+        "name": "NVIDIA GeForce 9500 GT"
+    },
+    {
+        "id": 469,
+        "name": "NVIDIA GeForce 9600M GT"
+    },
+    {
+        "id": 470,
+        "name": "ATI Mobility Radeon HD 3870 X2"
+    },
+    {
+        "id": 471,
+        "name": "ATI Mobility Radeon HD 3850"
+    },
+    {
+        "id": 472,
+        "name": "ATI Mobility Radeon HD 3430"
+    },
+    {
+        "id": 473,
+        "name": "ATI Mobility Radeon HD 3870"
+    },
+    {
+        "id": 474,
+        "name": "ATI Mobility Radeon HD 3470"
+    },
+    {
+        "id": 475,
+        "name": "ATI Radeon HD 4850 X2"
+    },
+    {
+        "id": 476,
+        "name": "ATI Radeon HD"
+    },
+    {
+        "id": 477,
+        "name": "ATI Radeon HD 3300"
+    },
+    {
+        "id": 478,
+        "name": "ATI Radeon HD 3410"
+    },
+    {
+        "id": 479,
+        "name": "ATI Radeon HD 3550"
+    },
+    {
+        "id": 480,
+        "name": "ATI Radeon HD 3570"
+    },
+    {
+        "id": 481,
+        "name": "ATI Radeon HD 3610"
+    },
+    {
+        "id": 482,
+        "name": "ATI Radeon HD 3690"
+    },
+    {
+        "id": 483,
+        "name": "ATI Radeon HD 3730"
+    },
+    {
+        "id": 484,
+        "name": "ATI Radeon HD 3750"
+    },
+    {
+        "id": 485,
+        "name": "ATI Radeon HD 3830"
+    },
+    {
+        "id": 486,
+        "name": "ATI Radeon HD 4230"
+    },
+    {
+        "id": 487,
+        "name": "ATI Radeon HD 4250"
+    },
+    {
+        "id": 488,
+        "name": "ATI Radeon HD 4350"
+    },
+    {
+        "id": 489,
+        "name": "ATI Radeon HD 4550"
+    },
+    {
+        "id": 490,
+        "name": "ATI Radeon HD 4570"
+    },
+    {
+        "id": 491,
+        "name": "ATI Radeon HD 4580"
+    },
+    {
+        "id": 492,
+        "name": "ATI Radeon HD 4650"
+    },
+    {
+        "id": 493,
+        "name": "ATI Radeon HD 4670"
+    },
+    {
+        "id": 494,
+        "name": "ATI Radeon HD 4730"
+    },
+    {
+        "id": 495,
+        "name": "ATI Radeon HD 4750"
+    },
+    {
+        "id": 496,
+        "name": "ATI Radeon HD 4800 Series"
+    },
+    {
+        "id": 497,
+        "name": "ATI Radeon HD 4870"
+    },
+    {
+        "id": 498,
+        "name": "ATI Radeon HD 4850"
+    },
+    {
+        "id": 499,
+        "name": "ATI Radeon HD 4830"
+    },
+    {
+        "id": 500,
+        "name": "NVIDIA GeForce GTX 285"
+    },
+    {
+        "id": 501,
+        "name": "NVIDIA GeForce 7050 / NVIDIA nForce 620i"
+    },
+    {
+        "id": 502,
+        "name": "NVIDIA GeForce 7800 SLI"
+    },
+    {
+        "id": 503,
+        "name": "NVIDIA GeForce 8100 / nForce 720a"
+    },
+    {
+        "id": 504,
+        "name": "NVIDIA GeForce 8200 "
+    },
+    {
+        "id": 505,
+        "name": "NVIDIA GeForce 8300"
+    },
+    {
+        "id": 506,
+        "name": "NVIDIA GeForce 8400"
+    },
+    {
+        "id": 507,
+        "name": "NVIDIA GeForce 9200 "
+    },
+    {
+        "id": 508,
+        "name": "NVIDIA GeForce 9300 "
+    },
+    {
+        "id": 509,
+        "name": "NVIDIA GeForce 9300 / nForce 730i"
+    },
+    {
+        "id": 510,
+        "name": "NVIDIA GeForce 9300 GE"
+    },
+    {
+        "id": 511,
+        "name": "NVIDIA GeForce 9300 GS"
+    },
+    {
+        "id": 512,
+        "name": "NVIDIA GeForce 9300 SE"
+    },
+    {
+        "id": 513,
+        "name": "NVIDIA GeForce 9400 "
+    },
+    {
+        "id": 514,
+        "name": "NVIDIA GeForce 9500 GS "
+    },
+    {
+        "id": 515,
+        "name": "NVIDIA GeForce 9600 GS"
+    },
+    {
+        "id": 516,
+        "name": "NVIDIA GeForce 9600 GSO 512"
+    },
+    {
+        "id": 517,
+        "name": "NVIDIA GeForce 9800 GTX+"
+    },
+    {
+        "id": 518,
+        "name": "NVIDIA GeForce GTX 295"
+    },
+    {
+        "id": 519,
+        "name": "NVIDIA Tesla C1060"
+    },
+    {
+        "id": 520,
+        "name": "NVIDIA Tesla C870"
+    },
+    {
+        "id": 521,
+        "name": "NVIDIA GeForce 9800M GT"
+    },
+    {
+        "id": 522,
+        "name": "ATI Radeon AMD 760G"
+    },
+    {
+        "id": 523,
+        "name": "NVIDIA GeForce GTS 240"
+    },
+    {
+        "id": 524,
+        "name": "NVIDIA GeForce GTS 250"
+    },
+    {
+        "id": 525,
+        "name": "NVIDIA GeForce GTX 180M/280M"
+    },
+    {
+        "id": 526,
+        "name": "NVIDIA GeForce GTX 260M"
+    },
+    {
+        "id": 527,
+        "name": "NVIDIA GeForce GTX 170M"
+    },
+    {
+        "id": 528,
+        "name": "NVIDIA GeForce GTS 160M"
+    },
+    {
+        "id": 529,
+        "name": "NVIDIA GeForce GT 130M"
+    },
+    {
+        "id": 530,
+        "name": "NVIDIA GeForce G 110M"
+    },
+    {
+        "id": 531,
+        "name": "ATI Mobility Radeon HD 4870"
+    },
+    {
+        "id": 532,
+        "name": "ATI Mobility Radeon HD 4860"
+    },
+    {
+        "id": 533,
+        "name": "ATI Mobility Radeon HD 4850"
+    },
+    {
+        "id": 534,
+        "name": "ATI Mobility Radeon HD 4830"
+    },
+    {
+        "id": 535,
+        "name": "NVIDIA GeForce GTX 180M"
+    },
+    {
+        "id": 536,
+        "name": "ATI Mobility Radeon HD 3650"
+    },
+    {
+        "id": 537,
+        "name": "NVIDIA GeForce 9700M GTS"
+    },
+    {
+        "id": 538,
+        "name": "NVIDIA GeForce GT 140"
+    },
+    {
+        "id": 539,
+        "name": "NVIDIA GeForce G100"
+    },
+    {
+        "id": 540,
+        "name": "NVIDIA GeForce GT 120"
+    },
+    {
+        "id": 541,
+        "name": "NVIDIA GeForce GT 130"
+    },
+    {
+        "id": 542,
+        "name": "NVIDIA GeForce GTX 275"
+    },
+    {
+        "id": 543,
+        "name": "NVIDIA GeForce 9100M G"
+    },
+    {
+        "id": 544,
+        "name": "NVIDIA GeForce 9400M"
+    },
+    {
+        "id": 545,
+        "name": "NVIDIA GeForce 9400M G"
+    },
+    {
+        "id": 546,
+        "name": "NVIDIA GeForce 9500M G"
+    },
+    {
+        "id": 547,
+        "name": "NVIDIA GeForce 9700M GT"
+    },
+    {
+        "id": 548,
+        "name": "ATI Radeon HD 4770"
+    },
+    {
+        "id": 549,
+        "name": "ATI Radeon HD 4890"
+    },
+    {
+        "id": 550,
+        "name": "NVIDIA GeForce 210"
+    },
+    {
+        "id": 551,
+        "name": "NVIDIA GeForce 9100"
+    },
+    {
+        "id": 552,
+        "name": "NVIDIA GeForce 9800 S"
+    },
+    {
+        "id": 553,
+        "name": "NVIDIA GeForce G210"
+    },
+    {
+        "id": 554,
+        "name": "NVIDIA GeForce GT 220"
+    },
+    {
+        "id": 555,
+        "name": "NVIDIA HICx16 + Graphics"
+    },
+    {
+        "id": 556,
+        "name": "NVIDIA ION"
+    },
+    {
+        "id": 557,
+        "name": "NVIDIA ION LE"
+    },
+    {
+        "id": 558,
+        "name": "ATI Radeon HD 4200"
+    },
+    {
+        "id": 559,
+        "name": "ATI Radeon HD 4450"
+    },
+    {
+        "id": 560,
+        "name": "ATI Radeon HD 4590"
+    },
+    {
+        "id": 561,
+        "name": "ATI Radeon HD 4600"
+    },
+    {
+        "id": 562,
+        "name": "ATI Radeon HD 4610"
+    },
+    {
+        "id": 563,
+        "name": "ATI Radeon HD 4700"
+    },
+    {
+        "id": 564,
+        "name": "ATI Radeon HD 4710"
+    },
+    {
+        "id": 565,
+        "name": "ATI Radeon HD 4810"
+    },
+    {
+        "id": 566,
+        "name": "ATI Radeon HD 5850"
+    },
+    {
+        "id": 567,
+        "name": "ATI Radeon HD 5870"
+    },
+    {
+        "id": 568,
+        "name": "NVIDIA GeForce GTS 250M"
+    },
+    {
+        "id": 569,
+        "name": "ATI Radeon HD 5750"
+    },
+    {
+        "id": 570,
+        "name": "ATI Radeon HD 5770"
+    },
+    {
+        "id": 571,
+        "name": "NVIDIA GeForce GT 230M"
+    },
+    {
+        "id": 572,
+        "name": "ATI Radeon HD 5970"
+    },
+    {
+        "id": 573,
+        "name": "NVIDIA GeForce GT 240"
+    },
+    {
+        "id": 574,
+        "name": "NVIDIA GeForce GT 240M"
+    },
+    {
+        "id": 575,
+        "name": "NVIDIA GeForce GT 230"
+    },
+    {
+        "id": 576,
+        "name": "NVIDIA GeForce G210M"
+    },
+    {
+        "id": 577,
+        "name": "NVIDIA GeForce GT 220M"
+    },
+    {
+        "id": 578,
+        "name": "ATI Mobility Radeon HD 4670"
+    },
+    {
+        "id": 579,
+        "name": ""
+    },
+    {
+        "id": 580,
+        "name": ""
+    },
+    {
+        "id": 581,
+        "name": "ATI Radeon HD 4860"
+    },
+    {
+        "id": 582,
+        "name": "ATI Mobility Radeon HD 4650"
+    },
+    {
+        "id": 583,
+        "name": "ATI Mobility Radeon HD 4530/4570"
+    },
+    {
+        "id": 584,
+        "name": "NVIDIA GeForce G102M"
+    },
+    {
+        "id": 585,
+        "name": "ATI Mobility Radeon HD 3670"
+    },
+    {
+        "id": 586,
+        "name": "NVIDIA GeForce G105M"
+    },
+    {
+        "id": 587,
+        "name": "Intel GMA X4500"
+    },
+    {
+        "id": 588,
+        "name": "ATI Radeon HD 3650"
+    },
+    {
+        "id": 589,
+        "name": "ATI Mobility Radeon HD 4330"
+    },
+    {
+        "id": 590,
+        "name": "NVIDIA GeForce G103M"
+    },
+    {
+        "id": 591,
+        "name": "ATI Radeon HD 5670"
+    },
+    {
+        "id": 592,
+        "name": "ATI Mobility Radeon HD 5850"
+    },
+    {
+        "id": 593,
+        "name": "NVIDIA GeForce 310M"
+    },
+    {
+        "id": 594,
+        "name": "ATI Radeon HD 5570"
+    },
+    {
+        "id": 595,
+        "name": "Intel HD Graphics Mobile"
+    },
+    {
+        "id": 596,
+        "name": "Intel HD Graphics"
+    },
+    {
+        "id": 597,
+        "name": "ATI Mobility Radeon HD 5870"
+    },
+    {
+        "id": 598,
+        "name": "ATI Mobility Radeon HD 5730"
+    },
+    {
+        "id": 599,
+        "name": ""
+    },
+    {
+        "id": 600,
+        "name": "ATI Mobility Radeon HD 5470"
+    },
+    {
+        "id": 601,
+        "name": "ATI Mobility Radeon HD 5650/5750"
+    },
+    {
+        "id": 602,
+        "name": "NVIDIA GeForce GT 330M"
+    },
+    {
+        "id": 603,
+        "name": "NVIDIA GeForce GTS 360M"
+    },
+    {
+        "id": 604,
+        "name": "NVIDIA GeForce GT 335M"
+    },
+    {
+        "id": 605,
+        "name": "ATI Radeon HD 5450"
+    },
+    {
+        "id": 606,
+        "name": "NVIDIA GeForce GTX 470"
+    },
+    {
+        "id": 607,
+        "name": "NVIDIA GeForce GTX 480"
+    },
+    {
+        "id": 608,
+        "name": "ATI Radeon HD 4290"
+    },
+    {
+        "id": 609,
+        "name": "NVIDIA GeForce GTX 320M"
+    },
+    {
+        "id": 610,
+        "name": "NVIDIA GeForce GTX 325M"
+    },
+    {
+        "id": 611,
+        "name": "ATI Radeon HD 5830"
+    },
+    {
+        "id": 612,
+        "name": "NVIDIA GeForce GTX 285M"
+    },
+    {
+        "id": 613,
+        "name": "NVIDIA GeForce GT 320M"
+    },
+    {
+        "id": 614,
+        "name": "NVIDIA GeForce GT 320"
+    },
+    {
+        "id": 615,
+        "name": "NVIDIA GeForce GT 330"
+    },
+    {
+        "id": 616,
+        "name": "NVIDIA GeForce 310"
+    },
+    {
+        "id": 617,
+        "name": "NVIDIA GeForce GTX 465"
+    },
+    {
+        "id": 618,
+        "name": "Volari XGI XP5 / V3"
+    },
+    {
+        "id": 619,
+        "name": "NVIDIA GeForce GTX 460"
+    },
+    {
+        "id": 620,
+        "name": "NVIDIA GeForce 320M"
+    },
+    {
+        "id": 621,
+        "name": "ATI Mobility Radeon HD 5430"
+    },
+    {
+        "id": 622,
+        "name": "ATI Radeon HD 3000"
+    },
+    {
+        "id": 623,
+        "name": ""
+    },
+    {
+        "id": 624,
+        "name": ""
+    },
+    {
+        "id": 625,
+        "name": "NVIDIA GeForce GTX 480M"
+    },
+    {
+        "id": 626,
+        "name": ""
+    },
+    {
+        "id": 627,
+        "name": ""
+    },
+    {
+        "id": 628,
+        "name": "Intel HD Graphics 3000 (i7)"
+    },
+    {
+        "id": 629,
+        "name": "ATI Mobility Radeon HD 4200"
+    },
+    {
+        "id": 630,
+        "name": ""
+    },
+    {
+        "id": 631,
+        "name": "AMD Radeon HD 6850"
+    },
+    {
+        "id": 632,
+        "name": "NVIDIA GeForce GTX 580"
+    },
+    {
+        "id": 633,
+        "name": "NVIDIA GeForce GT 430"
+    },
+    {
+        "id": 634,
+        "name": "NVIDIA GeForce GTS 450"
+    },
+    {
+        "id": 635,
+        "name": "ATI FirePro 2260"
+    },
+    {
+        "id": 636,
+        "name": "NVIDIA GeForce GTX 570"
+    },
+    {
+        "id": 637,
+        "name": "NVIDIA GeForce GTX 460 SE"
+    },
+    {
+        "id": 638,
+        "name": "AMD Radeon HD 6970"
+    },
+    {
+        "id": 639,
+        "name": "AMD Radeon HD 6950"
+    },
+    {
+        "id": 640,
+        "name": "ATI Radeon HD 5550"
+    },
+    {
+        "id": 641,
+        "name": "Intel HD Graphics 2000"
+    },
+    {
+        "id": 642,
+        "name": "NVIDIA GeForce GT 415M"
+    },
+    {
+        "id": 643,
+        "name": "NVIDIA GeForce GT 420"
+    },
+    {
+        "id": 644,
+        "name": "NVIDIA GeForce GT 420M"
+    },
+    {
+        "id": 645,
+        "name": "NVIDIA GeForce GT 425M"
+    },
+    {
+        "id": 646,
+        "name": "NVIDIA GeForce GT 435M"
+    },
+    {
+        "id": 647,
+        "name": ""
+    },
+    {
+        "id": 648,
+        "name": "NVIDIA GeForce GT 445M"
+    },
+    {
+        "id": 649,
+        "name": "NVIDIA GeForce GT 520M"
+    },
+    {
+        "id": 650,
+        "name": ""
+    },
+    {
+        "id": 651,
+        "name": "NVIDIA GeForce GT 540M"
+    },
+    {
+        "id": 652,
+        "name": "NVIDIA GeForce GT 550M"
+    },
+    {
+        "id": 653,
+        "name": ""
+    },
+    {
+        "id": 654,
+        "name": "NVIDIA GeForce GTX 470M"
+    },
+    {
+        "id": 655,
+        "name": "NVIDIA GeForce GTX 485M"
+    },
+    {
+        "id": 656,
+        "name": "NVIDIA GeForce GTX 560 Ti"
+    },
+    {
+        "id": 657,
+        "name": "ATI FirePro 2270"
+    },
+    {
+        "id": 658,
+        "name": "ATI FirePro V5800"
+    },
+    {
+        "id": 659,
+        "name": "NVIDIA GeForce GTX 460M"
+    },
+    {
+        "id": 660,
+        "name": "NVIDIA Quadro FX 5800"
+    },
+    {
+        "id": 661,
+        "name": "ATI Mobility Radeon HD 5450"
+    },
+    {
+        "id": 662,
+        "name": "Parallels Video Adapter"
+    },
+    {
+        "id": 663,
+        "name": "AMD Radeon HD 6990"
+    },
+    {
+        "id": 664,
+        "name": "AMD Radeon HD 6750M"
+    },
+    {
+        "id": 665,
+        "name": "NVIDIA GeForce GTX 550 Ti"
+    },
+    {
+        "id": 666,
+        "name": "AMD Radeon HD 6310"
+    },
+    {
+        "id": 667,
+        "name": "NVIDIA GeForce GTX 590"
+    },
+    {
+        "id": 668,
+        "name": "AMD Radeon HD 6450"
+    },
+    {
+        "id": 669,
+        "name": "AMD Radeon HD 6470M"
+    },
+    {
+        "id": 670,
+        "name": "AMD Radeon HD 6970M / 6990M"
+    },
+    {
+        "id": 671,
+        "name": "ATI Mobility Radeon HD 5570"
+    },
+    {
+        "id": 672,
+        "name": "Intel HD Graphics 3000 Mobile"
+    },
+    {
+        "id": 673,
+        "name": "Intel HD Graphics 3000 (i5)"
+    },
+    {
+        "id": 674,
+        "name": "Intel GMA 3150"
+    },
+    {
+        "id": 675,
+        "name": "NVIDIA GeForce GT 520"
+    },
+    {
+        "id": 676,
+        "name": "NVIDIA GeForce GTX 560"
+    },
+    {
+        "id": 677,
+        "name": "NVIDIA Tesla C2050"
+    },
+    {
+        "id": 678,
+        "name": "AMD Radeon HD 6770M"
+    },
+    {
+        "id": 679,
+        "name": "NVIDIA GeForce GT 555M"
+    },
+    {
+        "id": 680,
+        "name": "AMD Radeon HD 6370M"
+    },
+    {
+        "id": 681,
+        "name": "NVIDIA GeForce GTX 560M"
+    },
+    {
+        "id": 682,
+        "name": "AMD Radeon HD 6570"
+    },
+    {
+        "id": 683,
+        "name": "NVIDIA GeForce GT 525M"
+    },
+    {
+        "id": 684,
+        "name": ""
+    },
+    {
+        "id": 685,
+        "name": "NVIDIA GeForce GT 440"
+    },
+    {
+        "id": 686,
+        "name": "AMD Radeon HD 6620G"
+    },
+    {
+        "id": 687,
+        "name": "AMD Radeon HD 6250"
+    },
+    {
+        "id": 688,
+        "name": "AMD Radeon HD 6670"
+    },
+    {
+        "id": 689,
+        "name": "AMD Radeon HD 6850M"
+    },
+    {
+        "id": 690,
+        "name": "AMD Radeon HD 6790"
+    },
+    {
+        "id": 691,
+        "name": "AMD Radeon HD 6750"
+    },
+    {
+        "id": 692,
+        "name": "AMD Radeon HD 6770"
+    },
+    {
+        "id": 693,
+        "name": "AMD Radeon HD 5670"
+    },
+    {
+        "id": 694,
+        "name": "NVIDIA Quadro 5000"
+    },
+    {
+        "id": 695,
+        "name": "AMD Radeon HD 6550D"
+    },
+    {
+        "id": 696,
+        "name": "NVIDIA NVS 3100M"
+    },
+    {
+        "id": 697,
+        "name": ""
+    },
+    {
+        "id": 698,
+        "name": "NVIDIA Quadro 4000"
+    },
+    {
+        "id": 699,
+        "name": "NVIDIA Quadro FX 880M"
+    },
+    {
+        "id": 700,
+        "name": "NVIDIA GeForce GTX 580M"
+    },
+    {
+        "id": 701,
+        "name": ""
+    },
+    {
+        "id": 702,
+        "name": "AMD Radeon HD 6330M"
+    },
+    {
+        "id": 703,
+        "name": ""
+    },
+    {
+        "id": 704,
+        "name": "AMD Radeon HD 6530D"
+    },
+    {
+        "id": 705,
+        "name": "AMD Radeon HD 6870"
+    },
+    {
+        "id": 706,
+        "name": "AMD Radeon HD 6480G"
+    },
+    {
+        "id": 707,
+        "name": "AMD Radeon HD 6520G"
+    },
+    {
+        "id": 708,
+        "name": "ATI Radeon HD 3450"
+    },
+    {
+        "id": 709,
+        "name": "ATI FirePro V4800"
+    },
+    {
+        "id": 710,
+        "name": "ATI FirePro V7800"
+    },
+    {
+        "id": 711,
+        "name": "ATI Mobility FireGL V5250"
+    },
+    {
+        "id": 712,
+        "name": "ATI Mobility Radeon HD 530v"
+    },
+    {
+        "id": 713,
+        "name": "ATI Mobility Radeon HD 540v"
+    },
+    {
+        "id": 714,
+        "name": "ATI Mobility Radeon HD 545v"
+    },
+    {
+        "id": 715,
+        "name": ""
+    },
+    {
+        "id": 716,
+        "name": "Intel GMA 500"
+    },
+    {
+        "id": 717,
+        "name": "NVIDIA GeForce 315"
+    },
+    {
+        "id": 718,
+        "name": "NVIDIA GeForce 315M"
+    },
+    {
+        "id": 719,
+        "name": "NVIDIA GeForce 405"
+    },
+    {
+        "id": 720,
+        "name": "NVIDIA GeForce GT 340"
+    },
+    {
+        "id": 721,
+        "name": "NVIDIA GeForce GT 530"
+    },
+    {
+        "id": 722,
+        "name": "NVIDIA GeForce GTS 350M"
+    },
+    {
+        "id": 723,
+        "name": ""
+    },
+    {
+        "id": 724,
+        "name": "NVIDIA NVS 4200M"
+    },
+    {
+        "id": 725,
+        "name": "NVIDIA NVS 5100M"
+    },
+    {
+        "id": 726,
+        "name": "NVIDIA Quadro 1000M"
+    },
+    {
+        "id": 727,
+        "name": "NVIDIA Quadro 2000"
+    },
+    {
+        "id": 728,
+        "name": "NVIDIA Quadro 2000M"
+    },
+    {
+        "id": 729,
+        "name": "NVIDIA Quadro 3000M"
+    },
+    {
+        "id": 730,
+        "name": "NVIDIA Quadro 600"
+    },
+    {
+        "id": 731,
+        "name": "NVIDIA Quadro 6000"
+    },
+    {
+        "id": 732,
+        "name": "NVIDIA Quadro FX 1800M"
+    },
+    {
+        "id": 733,
+        "name": "NVIDIA Quadro FX 2700M"
+    },
+    {
+        "id": 734,
+        "name": "NVIDIA Quadro FX 2800M"
+    },
+    {
+        "id": 735,
+        "name": "NVIDIA Quadro FX 3600M"
+    },
+    {
+        "id": 736,
+        "name": "NVIDIA Quadro FX 3700M"
+    },
+    {
+        "id": 737,
+        "name": "NVIDIA Quadro FX 3800M"
+    },
+    {
+        "id": 738,
+        "name": "NVIDIA Quadro FX 770M"
+    },
+    {
+        "id": 739,
+        "name": "NVIDIA Quadro NVS 160M"
+    },
+    {
+        "id": 740,
+        "name": "SiS Mirage 3"
+    },
+    {
+        "id": 741,
+        "name": "VIA Chrome9 HC"
+    },
+    {
+        "id": 742,
+        "name": "VIA UniChrome Pro"
+    },
+    {
+        "id": 743,
+        "name": "VMWare SVGA 3D"
+    },
+    {
+        "id": 744,
+        "name": "VMWare SVGA II"
+    },
+    {
+        "id": 745,
+        "name": "NVIDIA GeForce GTX 570M"
+    },
+    {
+        "id": 746,
+        "name": "NVIDIA Dual GeForce GTX 580 - Asus Mars II"
+    },
+    {
+        "id": 747,
+        "name": "AMD Radeon HD 6990M"
+    },
+    {
+        "id": 748,
+        "name": "NVIDIA GeForce GT 545"
+    },
+    {
+        "id": 749,
+        "name": "AMD Radeon HD 7660G"
+    },
+    {
+        "id": 750,
+        "name": "AMD Radeon HD 6410D"
+    },
+    {
+        "id": 751,
+        "name": "Trinity Devastator Lite Mobile"
+    },
+    {
+        "id": 752,
+        "name": "AMD Radeon HD 6320"
+    },
+    {
+        "id": 753,
+        "name": "NVIDIA GeForce GTX 460 v2"
+    },
+    {
+        "id": 754,
+        "name": "NVIDIA GeForce GT 520MX"
+    },
+    {
+        "id": 755,
+        "name": "NVIDIA Quadro 4000M"
+    },
+    {
+        "id": 756,
+        "name": "NVIDIA GeForce 410M"
+    },
+    {
+        "id": 757,
+        "name": "NVIDIA GeForce GTX 560 Ti 448"
+    },
+    {
+        "id": 758,
+        "name": "AMD Radeon HD 7970"
+    },
+    {
+        "id": 759,
+        "name": "AMD Radeon HD 7950"
+    },
+    {
+        "id": 760,
+        "name": "AMD Radeon HD 7750"
+    },
+    {
+        "id": 761,
+        "name": "AMD Radeon HD 7770"
+    },
+    {
+        "id": 762,
+        "name": "AMD Radeon HD 6650M"
+    },
+    {
+        "id": 763,
+        "name": "AMD Radeon HD 6490M"
+    },
+    {
+        "id": 764,
+        "name": "AMD Radeon HD 7850"
+    },
+    {
+        "id": 765,
+        "name": "AMD Radeon HD 7870"
+    },
+    {
+        "id": 766,
+        "name": "NVIDIA GeForce GTX 560 SE"
+    },
+    {
+        "id": 767,
+        "name": "NVIDIA GeForce GTX 680"
+    },
+    {
+        "id": 768,
+        "name": "NVIDIA GeForce GTX 555 (OEM)"
+    },
+    {
+        "id": 769,
+        "name": "NVIDIA GeForce GTX 675M"
+    },
+    {
+        "id": 770,
+        "name": "Intel HD Graphics 4000"
+    },
+    {
+        "id": 771,
+        "name": "Intel HD Graphics 4000 Mobile"
+    },
+    {
+        "id": 772,
+        "name": "Intel HD Graphics 2500"
+    },
+    {
+        "id": 773,
+        "name": "NVIDIA GeForce GTX 670M"
+    },
+    {
+        "id": 774,
+        "name": "NVIDIA GeForce GTX 660M"
+    },
+    {
+        "id": 775,
+        "name": "NVIDIA GeForce GT 650M"
+    },
+    {
+        "id": 776,
+        "name": "NVIDIA GeForce GT 640M"
+    },
+    {
+        "id": 777,
+        "name": "NVIDIA GeForce GT 640M LE"
+    },
+    {
+        "id": 778,
+        "name": "NVIDIA GeForce GT 630M"
+    },
+    {
+        "id": 779,
+        "name": "NVIDIA GeForce GT 620M"
+    },
+    {
+        "id": 780,
+        "name": "NVIDIA GeForce 610M"
+    },
+    {
+        "id": 781,
+        "name": "NVIDIA GeForce GT 645"
+    },
+    {
+        "id": 782,
+        "name": "NVIDIA GeForce GT 640 (DDR3)"
+    },
+    {
+        "id": 783,
+        "name": "NVIDIA GeForce GT 630"
+    },
+    {
+        "id": 784,
+        "name": "NVIDIA GeForce GT 620"
+    },
+    {
+        "id": 785,
+        "name": "NVIDIA GeForce 605"
+    },
+    {
+        "id": 786,
+        "name": "NVIDIA GeForce GT 635M"
+    },
+    {
+        "id": 787,
+        "name": "AMD Radeon HD 7430M"
+    },
+    {
+        "id": 788,
+        "name": "AMD Radeon HD 7450M"
+    },
+    {
+        "id": 789,
+        "name": "AMD Radeon HD 7470M"
+    },
+    {
+        "id": 790,
+        "name": "AMD Radeon HD 7490M"
+    },
+    {
+        "id": 791,
+        "name": "AMD Radeon HD 7510M"
+    },
+    {
+        "id": 792,
+        "name": "AMD Radeon HD 7530M"
+    },
+    {
+        "id": 793,
+        "name": "AMD Radeon HD 7550M"
+    },
+    {
+        "id": 794,
+        "name": "AMD Radeon HD 7570M"
+    },
+    {
+        "id": 795,
+        "name": "AMD Radeon HD 7590M"
+    },
+    {
+        "id": 796,
+        "name": "AMD Radeon HD 7610M"
+    },
+    {
+        "id": 797,
+        "name": "AMD Radeon HD 7630M"
+    },
+    {
+        "id": 798,
+        "name": "AMD Radeon HD 7650M"
+    },
+    {
+        "id": 799,
+        "name": "AMD Radeon HD 7670M"
+    },
+    {
+        "id": 800,
+        "name": "AMD Radeon HD 7690M"
+    },
+    {
+        "id": 801,
+        "name": "AMD Radeon HD 7690M XT"
+    },
+    {
+        "id": 802,
+        "name": "AMD Radeon HD 7730M"
+    },
+    {
+        "id": 803,
+        "name": "AMD Radeon HD 7750M"
+    },
+    {
+        "id": 804,
+        "name": "AMD Radeon HD 7770M"
+    },
+    {
+        "id": 805,
+        "name": "AMD Radeon HD 7850M"
+    },
+    {
+        "id": 806,
+        "name": "AMD Radeon HD 7870M"
+    },
+    {
+        "id": 807,
+        "name": "AMD Radeon HD 7970M"
+    },
+    {
+        "id": 808,
+        "name": "Intel GMA 3650"
+    },
+    {
+        "id": 809,
+        "name": "NVIDIA GeForce GTX 670"
+    },
+    {
+        "id": 810,
+        "name": "AMD Radeon HD 7620G"
+    },
+    {
+        "id": 811,
+        "name": "NVIDIA GeForce GTX 690"
+    },
+    {
+        "id": 812,
+        "name": "NVIDIA GeForce GTX 680M"
+    },
+    {
+        "id": 813,
+        "name": "NVIDIA GeForce GT 640 (GDDR5)"
+    },
+    {
+        "id": 814,
+        "name": "AMD FirePro v7900"
+    },
+    {
+        "id": 815,
+        "name": "AMD FirePro 3D v8800"
+    },
+    {
+        "id": 816,
+        "name": "AMD FirePro 3D v9800"
+    },
+    {
+        "id": 817,
+        "name": "NVIDIA GeForce GTX 660 Ti"
+    },
+    {
+        "id": 818,
+        "name": "NVIDIA Quadro K5000M"
+    },
+    {
+        "id": 819,
+        "name": "NVIDIA Quadro K4000M"
+    },
+    {
+        "id": 820,
+        "name": "NVIDIA GeForce GTX 660"
+    },
+    {
+        "id": 821,
+        "name": "AMD Radeon HD 7480D"
+    },
+    {
+        "id": 822,
+        "name": "AMD Radeon HD 7540D"
+    },
+    {
+        "id": 823,
+        "name": "AMD Radeon HD 7560D"
+    },
+    {
+        "id": 824,
+        "name": "AMD Radeon HD 7660D"
+    },
+    {
+        "id": 825,
+        "name": "AMD Radeon HD 7520G"
+    },
+    {
+        "id": 826,
+        "name": "AMD Radeon HD 7500G"
+    },
+    {
+        "id": 827,
+        "name": "AMD Radeon HD 7640G"
+    },
+    {
+        "id": 828,
+        "name": ""
+    },
+    {
+        "id": 829,
+        "name": "AMD Radeon HD 6290"
+    },
+    {
+        "id": 830,
+        "name": "NVIDIA GeForce GTX 650"
+    },
+    {
+        "id": 831,
+        "name": "AMD Radeon HD 6930"
+    },
+    {
+        "id": 832,
+        "name": "NVIDIA GeForce GTX 650 Ti"
+    },
+    {
+        "id": 833,
+        "name": "NVIDIA GeForce GTX 680MX"
+    },
+    {
+        "id": 834,
+        "name": "NVIDIA GeForce GTX 675MX"
+    },
+    {
+        "id": 835,
+        "name": "NVIDIA GeForce GTX 670MX"
+    },
+    {
+        "id": 836,
+        "name": "NVIDIA GeForce GT 610"
+    },
+    {
+        "id": 837,
+        "name": "Intel GMA 3600"
+    },
+    {
+        "id": 838,
+        "name": "AMD Radeon HD 7990"
+    },
+    {
+        "id": 839,
+        "name": "AMD Radeon HD 7870 XT"
+    },
+    {
+        "id": 840,
+        "name": "AMD Radeon HD 7420G"
+    },
+    {
+        "id": 841,
+        "name": "NVIDIA GeForce GT 645M"
+    },
+    {
+        "id": 842,
+        "name": "AMD Radeon HD 7570"
+    },
+    {
+        "id": 843,
+        "name": "AMD FirePro M6000"
+    },
+    {
+        "id": 844,
+        "name": "NVIDIA GeForce GTX Titan"
+    },
+    {
+        "id": 845,
+        "name": "NVIDIA Quadro K2000M"
+    },
+    {
+        "id": 846,
+        "name": "AMD Radeon HD 7790"
+    },
+    {
+        "id": 847,
+        "name": "NVIDIA GeForce GTX 650 Ti Boost"
+    },
+    {
+        "id": 848,
+        "name": "NVIDIA GeForce GT 750M"
+    },
+    {
+        "id": 849,
+        "name": "NVIDIA GeForce GT 745M"
+    },
+    {
+        "id": 850,
+        "name": "NVIDIA GeForce GT 740M"
+    },
+    {
+        "id": 851,
+        "name": "NVIDIA GeForce GT 735M"
+    },
+    {
+        "id": 852,
+        "name": "NVIDIA GeForce GT 730M"
+    },
+    {
+        "id": 853,
+        "name": "NVIDIA GeForce GT 720M"
+    },
+    {
+        "id": 854,
+        "name": "NVIDIA GeForce 710M"
+    },
+    {
+        "id": 855,
+        "name": "AMD Radeon HD 8750M"
+    },
+    {
+        "id": 856,
+        "name": "AMD Radeon HD 8570M"
+    },
+    {
+        "id": 857,
+        "name": ""
+    },
+    {
+        "id": 858,
+        "name": ""
+    },
+    {
+        "id": 859,
+        "name": ""
+    },
+    {
+        "id": 860,
+        "name": "Intel HD Graphics 3000 (i3)"
+    },
+    {
+        "id": 861,
+        "name": "AMD Radeon HD 8650G"
+    },
+    {
+        "id": 862,
+        "name": "AMD Radeon HD 8550G"
+    },
+    {
+        "id": 863,
+        "name": "AMD Radeon HD 8450G"
+    },
+    {
+        "id": 864,
+        "name": "AMD Radeon HD 8350G"
+    },
+    {
+        "id": 865,
+        "name": "NVIDIA GeForce GTX 780"
+    },
+    {
+        "id": 866,
+        "name": "AMD FirePro W5000"
+    },
+    {
+        "id": 867,
+        "name": "AMD FirePro W7000"
+    },
+    {
+        "id": 868,
+        "name": "AMD FirePro W8000"
+    },
+    {
+        "id": 869,
+        "name": "NVIDIA GeForce GTX 770"
+    },
+    {
+        "id": 870,
+        "name": "Intel HD Graphics 4600"
+    },
+    {
+        "id": 871,
+        "name": "Intel HD Graphics 4600 Mobile"
+    },
+    {
+        "id": 872,
+        "name": "AMD Radeon HD 8670D"
+    },
+    {
+        "id": 873,
+        "name": "AMD Radeon HD 8570D"
+    },
+    {
+        "id": 874,
+        "name": "AMD Radeon HD 8470D"
+    },
+    {
+        "id": 875,
+        "name": "Intel HD Graphics 5000"
+    },
+    {
+        "id": 876,
+        "name": "NVIDIA GeForce GTX 780M"
+    },
+    {
+        "id": 877,
+        "name": "NVIDIA GeForce GTX 770M"
+    },
+    {
+        "id": 878,
+        "name": "NVIDIA GeForce GTX 765M"
+    },
+    {
+        "id": 879,
+        "name": "NVIDIA GeForce GTX 760M"
+    },
+    {
+        "id": 880,
+        "name": "AMD Radeon HD 8970M"
+    },
+    {
+        "id": 881,
+        "name": "NVIDIA GeForce GTX 760"
+    },
+    {
+        "id": 882,
+        "name": "NVIDIA NVS 5200M"
+    },
+    {
+        "id": 883,
+        "name": "NVIDIA NVS 5400M"
+    },
+    {
+        "id": 884,
+        "name": "AMD Radeon HD 7350"
+    },
+    {
+        "id": 885,
+        "name": "AMD FirePro V4900"
+    },
+    {
+        "id": 886,
+        "name": "AMD FirePro M4000"
+    },
+    {
+        "id": 887,
+        "name": "NVIDIA GeForce GT 630 (GK208)"
+    },
+    {
+        "id": 888,
+        "name": "NVIDIA GeForce GT 640 (GK208)"
+    },
+    {
+        "id": 889,
+        "name": "Intel HD Graphics (Ivy Bridge Mobile)"
+    },
+    {
+        "id": 890,
+        "name": "AMD Radeon HD 8570"
+    },
+    {
+        "id": 891,
+        "name": "AMD Radeon HD 7600G"
+    },
+    {
+        "id": 892,
+        "name": "AMD Radeon HD 7470"
+    },
+    {
+        "id": 893,
+        "name": "AMD Radeon R7 250"
+    },
+    {
+        "id": 894,
+        "name": "AMD Radeon R7 260X"
+    },
+    {
+        "id": 895,
+        "name": "AMD Radeon R9 270"
+    },
+    {
+        "id": 896,
+        "name": "AMD Radeon R9 270X"
+    },
+    {
+        "id": 897,
+        "name": "AMD Radeon R9 280X"
+    },
+    {
+        "id": 898,
+        "name": "AMD Radeon HD 8670"
+    },
+    {
+        "id": 899,
+        "name": "AMD Radeon HD 8860"
+    },
+    {
+        "id": 900,
+        "name": "Intel Iris Pro Graphics 5200 Mobile"
+    },
+    {
+        "id": 901,
+        "name": "Intel Iris Graphics 5100 Mobile"
+    },
+    {
+        "id": 902,
+        "name": ""
+    },
+    {
+        "id": 903,
+        "name": "Intel HD Graphics 4200 Mobile"
+    },
+    {
+        "id": 904,
+        "name": "Intel HD Graphics 4400 Mobile"
+    },
+    {
+        "id": 905,
+        "name": "AMD Radeon R9 290X"
+    },
+    {
+        "id": 906,
+        "name": "AMD Radeon R9 290"
+    },
+    {
+        "id": 907,
+        "name": "NVIDIA Quadro K5000"
+    },
+    {
+        "id": 908,
+        "name": "NVIDIA GeForce GTX 780 Ti"
+    },
+    {
+        "id": 909,
+        "name": "EVGA GeForce GTX 780 Ti K|NGP|N Classified"
+    },
+    {
+        "id": 910,
+        "name": "Intel HD Graphics (Bay Trail Mobile)"
+    },
+    {
+        "id": 911,
+        "name": "AMD Radeon R7 260"
+    },
+    {
+        "id": 912,
+        "name": "AMD Radeon HD 8870M"
+    },
+    {
+        "id": 913,
+        "name": "AMD FirePro M6100"
+    },
+    {
+        "id": 914,
+        "name": "AMD FirePro V5900"
+    },
+    {
+        "id": 915,
+        "name": "AMD Radeon HD 8890M"
+    },
+    {
+        "id": 916,
+        "name": "NVIDIA Quadro K4000"
+    },
+    {
+        "id": 917,
+        "name": "AMD FirePro D300"
+    },
+    {
+        "id": 918,
+        "name": "AMD FirePro D500"
+    },
+    {
+        "id": 919,
+        "name": "AMD FirePro D700"
+    },
+    {
+        "id": 920,
+        "name": "AMD Radeon R7"
+    },
+    {
+        "id": 921,
+        "name": "NVIDIA GeForce GTX 645"
+    },
+    {
+        "id": 922,
+        "name": "AMD Radeon HD 8790M"
+    },
+    {
+        "id": 923,
+        "name": "AMD Radeon HD 8670M"
+    },
+    {
+        "id": 924,
+        "name": "AMD Radeon R7 240"
+    },
+    {
+        "id": 925,
+        "name": "Intel Iris Pro Graphics 5200"
+    },
+    {
+        "id": 926,
+        "name": "AMD Radeon R7 250X"
+    },
+    {
+        "id": 927,
+        "name": "AMD Radeon R7 265"
+    },
+    {
+        "id": 928,
+        "name": "NVIDIA GeForce GTX 750 Ti"
+    },
+    {
+        "id": 929,
+        "name": "NVIDIA GeForce GTX Titan Black"
+    },
+    {
+        "id": 930,
+        "name": "NVIDIA GeForce GT 755M"
+    },
+    {
+        "id": 931,
+        "name": "AMD Radeon R9 280"
+    },
+    {
+        "id": 932,
+        "name": "Intel HD Graphics 4400"
+    },
+    {
+        "id": 933,
+        "name": "AMD Radeon HD 8180"
+    },
+    {
+        "id": 934,
+        "name": "NVIDIA GeForce GTX 880M"
+    },
+    {
+        "id": 935,
+        "name": "NVIDIA GeForce GTX 750"
+    },
+    {
+        "id": 936,
+        "name": "AMD Radeon R9 295X2"
+    },
+    {
+        "id": 937,
+        "name": "AMD Radeon HD 8400"
+    },
+    {
+        "id": 938,
+        "name": "AMD Radeon HD 8280"
+    },
+    {
+        "id": 939,
+        "name": "AMD Radeon HD 8240"
+    },
+    {
+        "id": 940,
+        "name": "Intel HD Graphics (Haswell Mobile)"
+    },
+    {
+        "id": 941,
+        "name": "NVIDIA Quadro K600"
+    },
+    {
+        "id": 942,
+        "name": "AMD Radeon HD 8850M"
+    },
+    {
+        "id": 943,
+        "name": "AMD Radeon HD 8330"
+    },
+    {
+        "id": 944,
+        "name": "AMD Radeon HD 8730"
+    },
+    {
+        "id": 945,
+        "name": "AMD Radeon HD 7340"
+    },
+    {
+        "id": 946,
+        "name": "AMD Radeon HD 7450"
+    },
+    {
+        "id": 947,
+        "name": "AMD Radeon R7 M265"
+    },
+    {
+        "id": 948,
+        "name": "AMD Radeon HD 7310"
+    },
+    {
+        "id": 949,
+        "name": "AMD Radeon HD 8210"
+    },
+    {
+        "id": 950,
+        "name": "AMD Radeon R5 M230"
+    },
+    {
+        "id": 951,
+        "name": "AMD Radeon HD 6510"
+    },
+    {
+        "id": 952,
+        "name": "AMD Radeon HD 7510"
+    },
+    {
+        "id": 953,
+        "name": "AMD Radeon HD 8510"
+    },
+    {
+        "id": 954,
+        "name": "AMD Radeon HD 8250"
+    },
+    {
+        "id": 955,
+        "name": ""
+    },
+    {
+        "id": 956,
+        "name": ""
+    },
+    {
+        "id": 957,
+        "name": "NVIDIA GeForce GTX 870M"
+    },
+    {
+        "id": 958,
+        "name": "NVIDIA GeForce GTX 860M"
+    },
+    {
+        "id": 959,
+        "name": "NVIDIA GeForce GTX 760 192-bit"
+    },
+    {
+        "id": 960,
+        "name": "NVIDIA Quadro K2000"
+    },
+    {
+        "id": 961,
+        "name": "NVIDIA GeForce 840M"
+    },
+    {
+        "id": 962,
+        "name": "NVIDIA GeForce GTX 850M"
+    },
+    {
+        "id": 963,
+        "name": "NVIDIA Quadro K2100M"
+    },
+    {
+        "id": 964,
+        "name": "NVIDIA Quadro K1100M"
+    },
+    {
+        "id": 965,
+        "name": "NVIDIA Quadro K1000M"
+    },
+    {
+        "id": 966,
+        "name": "NVIDIA Quadro K2000D"
+    },
+    {
+        "id": 967,
+        "name": "NVIDIA Quadro K3100M"
+    },
+    {
+        "id": 968,
+        "name": "Intel HD Graphics (Haswell)"
+    },
+    {
+        "id": 969,
+        "name": "Intel HD Graphics (Ivy Bridge)"
+    },
+    {
+        "id": 970,
+        "name": "NVIDIA GeForce GTX Titan Z"
+    },
+    {
+        "id": 971,
+        "name": "AMD Radeon HD 8490"
+    },
+    {
+        "id": 972,
+        "name": "NVIDIA GeForce GT 740"
+    },
+    {
+        "id": 973,
+        "name": "NVIDIA GeForce GT 730"
+    },
+    {
+        "id": 974,
+        "name": "AMD Radeon R7 (A8-7600)"
+    },
+    {
+        "id": 975,
+        "name": "AMD Radeon R5 (A6-7400K/A6 PRO-7400B)"
+    },
+    {
+        "id": 976,
+        "name": "AMD Radeon R7 M260"
+    },
+    {
+        "id": 977,
+        "name": "AMD Radeon R7 M260X"
+    },
+    {
+        "id": 978,
+        "name": "AMD Radeon HD 8610G"
+    },
+    {
+        "id": 979,
+        "name": "ATI FirePro M7740"
+    },
+    {
+        "id": 980,
+        "name": "AMD Radeon R9 285"
+    },
+    {
+        "id": 981,
+        "name": "Intel HD Graphics 5300 Mobile"
+    },
+    {
+        "id": 982,
+        "name": "NVIDIA GeForce GTX 970"
+    },
+    {
+        "id": 983,
+        "name": "NVIDIA GeForce GTX 980"
+    },
+    {
+        "id": 984,
+        "name": "Intel GMA"
+    },
+    {
+        "id": 985,
+        "name": "AMD Radeon HD 8510G"
+    },
+    {
+        "id": 986,
+        "name": "NVIDIA GeForce GTX 970M"
+    },
+    {
+        "id": 987,
+        "name": "NVIDIA GeForce GTX 980M"
+    },
+    {
+        "id": 988,
+        "name": "AMD Radeon R5 Graphics (A8-6410)"
+    },
+    {
+        "id": 989,
+        "name": "NVIDIA GeForce GT 720"
+    },
+    {
+        "id": 990,
+        "name": "NVIDIA GeForce 830M"
+    },
+    {
+        "id": 991,
+        "name": "NVIDIA GeForce GTX 745"
+    },
+    {
+        "id": 992,
+        "name": "NVIDIA Quadro K610M"
+    },
+    {
+        "id": 993,
+        "name": "AMD Radeon HD 8370D"
+    },
+    {
+        "id": 994,
+        "name": "AMD FirePro W8100"
+    },
+    {
+        "id": 995,
+        "name": "NVIDIA Quadro K4100M"
+    },
+    {
+        "id": 996,
+        "name": "EVGA Geforce GTX 980 K|NGP|N"
+    },
+    {
+        "id": 997,
+        "name": "AMD Radeon HD 7670"
+    },
+    {
+        "id": 998,
+        "name": "AMD Radeon R5 M255"
+    },
+    {
+        "id": 999,
+        "name": "AMD Radeon R7 (Kaveri Mobile)"
+    },
+    {
+        "id": 1000,
+        "name": "NVIDIA Quadro K2200"
+    },
+    {
+        "id": 1001,
+        "name": "NVIDIA Quadro K6000"
+    },
+    {
+        "id": 1002,
+        "name": ""
+    },
+    {
+        "id": 1003,
+        "name": "NVIDIA Quadro K3000M"
+    },
+    {
+        "id": 1004,
+        "name": "AMD FirePro W4100"
+    },
+    {
+        "id": 1005,
+        "name": "AMD FirePro W7100"
+    },
+    {
+        "id": 1006,
+        "name": "NVIDIA GeForce GTX 965M"
+    },
+    {
+        "id": 1007,
+        "name": "AMD FirePro S10000"
+    },
+    {
+        "id": 1008,
+        "name": "NVIDIA Tesla K40"
+    },
+    {
+        "id": 1009,
+        "name": "NVIDIA Quadro K620"
+    },
+    {
+        "id": 1010,
+        "name": "NVIDIA GeForce GTX 960"
+    },
+    {
+        "id": 1011,
+        "name": "AMD Radeon R7 (A8-7650K)"
+    },
+    {
+        "id": 1012,
+        "name": "AMD Radeon R5 220"
+    },
+    {
+        "id": 1013,
+        "name": "NVIDIA GeForce 820M"
+    },
+    {
+        "id": 1014,
+        "name": "Intel HD Graphics 5500"
+    },
+    {
+        "id": 1015,
+        "name": "Intel HD Graphics 6000"
+    },
+    {
+        "id": 1016,
+        "name": "Intel Iris Graphics 6100"
+    },
+    {
+        "id": 1017,
+        "name": "AMD Radeon R5 (A8-7100)"
+    },
+    {
+        "id": 1018,
+        "name": "NVIDIA GTX TITAN X"
+    },
+    {
+        "id": 1019,
+        "name": "NVIDIA GeForce GTX 960M"
+    },
+    {
+        "id": 1020,
+        "name": "AMD Radeon R9 M275X"
+    },
+    {
+        "id": 1021,
+        "name": "NVIDIA GeForce 940M"
+    },
+    {
+        "id": 1022,
+        "name": "AMD Radeon HD R9 380 OEM"
+    },
+    {
+        "id": 1023,
+        "name": "AMD Radeon HD R9 370 OEM"
+    },
+    {
+        "id": 1024,
+        "name": "AMD Radeon R7 360"
+    },
+    {
+        "id": 1025,
+        "name": "AMD Radeon HD R5 330 OEM"
+    },
+    {
+        "id": 1026,
+        "name": "AMD Radeon HD R5 340 OEM"
+    },
+    {
+        "id": 1027,
+        "name": "AMD Radeon HD R7 340 OEM"
+    },
+    {
+        "id": 1028,
+        "name": "AMD Radeon HD R7 350 OEM"
+    },
+    {
+        "id": 1029,
+        "name": "AMD Radeon HD R9 M375"
+    },
+    {
+        "id": 1030,
+        "name": "AMD Radeon HD R7 M360"
+    },
+    {
+        "id": 1031,
+        "name": "AMD Radeon HD R5 M330"
+    },
+    {
+        "id": 1032,
+        "name": "AMD Radeon R9 M370X"
+    },
+    {
+        "id": 1033,
+        "name": "NVIDIA GeForce GTX 980 Ti"
+    },
+    {
+        "id": 1034,
+        "name": "AMD FirePro M5100"
+    },
+    {
+        "id": 1035,
+        "name": "AMD Radeon R9 390X"
+    },
+    {
+        "id": 1036,
+        "name": "AMD Radeon R9 390"
+    },
+    {
+        "id": 1037,
+        "name": "AMD Radeon R9 380"
+    },
+    {
+        "id": 1038,
+        "name": "AMD Radeon R9 Fury X"
+    },
+    {
+        "id": 1039,
+        "name": "Intel Iris Pro Graphics 6200"
+    },
+    {
+        "id": 1040,
+        "name": "NVIDIA GeForce GTX 660 (Alienware OEM)"
+    },
+    {
+        "id": 1041,
+        "name": "AMD R6 (Kaveri Mobile)"
+    },
+    {
+        "id": 1042,
+        "name": "NVIDIA GeForce GTX 980 Ti K|ngp|n"
+    },
+    {
+        "id": 1043,
+        "name": "AMD FirePro V3900"
+    },
+    {
+        "id": 1044,
+        "name": "NVIDIA Quadro 410"
+    },
+    {
+        "id": 1045,
+        "name": "Intel HD Graphics 530"
+    },
+    {
+        "id": 1046,
+        "name": "AMD R6 (Carrizo Mobile)"
+    },
+    {
+        "id": 1047,
+        "name": "NVIDIA Quadro M4000"
+    },
+    {
+        "id": 1048,
+        "name": "NVIDIA Quadro M5000"
+    },
+    {
+        "id": 1049,
+        "name": "NVIDIA Quadro K4200"
+    },
+    {
+        "id": 1050,
+        "name": "AMD Radeon R9 M280X"
+    },
+    {
+        "id": 1051,
+        "name": "AMD Radeon R9 Fury"
+    },
+    {
+        "id": 1052,
+        "name": "AMD Radeon R7 370"
+    },
+    {
+        "id": 1053,
+        "name": "AMD Radeon R7 (Carrizo Mobile)"
+    },
+    {
+        "id": 1054,
+        "name": "NVIDIA GeForce GTX 950"
+    },
+    {
+        "id": 1055,
+        "name": "AMD Radeon R9 Nano"
+    },
+    {
+        "id": 1056,
+        "name": "Intel HD Graphics 6000 Mobile"
+    },
+    {
+        "id": 1057,
+        "name": "NVIDIA Quadro M6000"
+    },
+    {
+        "id": 1058,
+        "name": "Intel HD Graphics 530 Mobile"
+    },
+    {
+        "id": 1059,
+        "name": "NVIDIA GeForce 920M"
+    },
+    {
+        "id": 1060,
+        "name": "NVIDIA GeForce 950M"
+    },
+    {
+        "id": 1061,
+        "name": "NVIDIA GeForce GTX 980 (Notebook)"
+    },
+    {
+        "id": 1062,
+        "name": "AMD FirePro W5100"
+    },
+    {
+        "id": 1063,
+        "name": "Intel HD Graphics 520 Mobile"
+    },
+    {
+        "id": 1064,
+        "name": "NVIDIA GeForce 940M (Surface Book)"
+    },
+    {
+        "id": 1065,
+        "name": "Intel HD Graphics (Cherry Trail Mobile)"
+    },
+    {
+        "id": 1066,
+        "name": "AMD Radeon R9 380X"
+    },
+    {
+        "id": 1067,
+        "name": "AMD Radeon R9 255"
+    },
+    {
+        "id": 1068,
+        "name": "NVIDIA GeForce GTX 980M (EVGA SC-17)"
+    },
+    {
+        "id": 1069,
+        "name": "AMD Radeon R9 M390X"
+    },
+    {
+        "id": 1070,
+        "name": "NVIDIA Quadro K5100M"
+    },
+    {
+        "id": 1071,
+        "name": ""
+    },
+    {
+        "id": 1072,
+        "name": "Intel HD Graphics (Braswell Mobile)"
+    },
+    {
+        "id": 1073,
+        "name": "AMD FirePro V3700"
+    },
+    {
+        "id": 1074,
+        "name": "AMD Radeon R9 M395X"
+    },
+    {
+        "id": 1075,
+        "name": "AMD Radeon R4 (A6-7310)"
+    },
+    {
+        "id": 1076,
+        "name": "Intel Iris Graphics 540"
+    },
+    {
+        "id": 1077,
+        "name": "AMD Radeon R7 (A10-7890K)"
+    },
+    {
+        "id": 1078,
+        "name": "Intel HD Graphics P530"
+    },
+    {
+        "id": 1079,
+        "name": "NVIDIA Quadro M1000M"
+    },
+    {
+        "id": 1080,
+        "name": "Intel HD Graphics 515 Mobile"
+    },
+    {
+        "id": 1081,
+        "name": "Intel HD Graphics 510"
+    },
+    {
+        "id": 1082,
+        "name": "AMD Radeon HD 7650A"
+    },
+    {
+        "id": 1083,
+        "name": "NVIDIA Quadro M2000M"
+    },
+    {
+        "id": 1084,
+        "name": "AMD Radeon R5 M335"
+    },
+    {
+        "id": 1085,
+        "name": "NVIDIA GeForce GTX 1080"
+    },
+    {
+        "id": 1086,
+        "name": "AMD Radeon Pro Duo"
+    },
+    {
+        "id": 1087,
+        "name": "AMD Radeon R7 360 Redline Series"
+    },
+    {
+        "id": 1088,
+        "name": "Intel Iris Pro Graphics 580"
+    },
+    {
+        "id": 1089,
+        "name": "AMD FirePro W9100"
+    },
+    {
+        "id": 1090,
+        "name": "NVIDIA GeForce GTX 1070"
+    },
+    {
+        "id": 1091,
+        "name": "NVIDIA GeForce GT 710"
+    },
+    {
+        "id": 1092,
+        "name": "AMD Radeon RX 480"
+    },
+    {
+        "id": 1093,
+        "name": "AMD Radeon R7 (A10-7860K)"
+    },
+    {
+        "id": 1094,
+        "name": "Intel Iris Graphics 550"
+    },
+    {
+        "id": 1095,
+        "name": "Intel Iris Graphics 520"
+    },
+    {
+        "id": 1096,
+        "name": "NVIDIA GeForce GTX 1060-6GB"
+    },
+    {
+        "id": 1097,
+        "name": "NVIDIA Titan X (Pascal)"
+    },
+    {
+        "id": 1098,
+        "name": "NVIDIA GeForce 930M"
+    },
+    {
+        "id": 1099,
+        "name": "NVIDIA GeForce 940MX"
+    },
+    {
+        "id": 1100,
+        "name": "AMD Radeon R7 250E"
+    },
+    {
+        "id": 1101,
+        "name": "AMD Radeon RX 470"
+    },
+    {
+        "id": 1102,
+        "name": "AMD Radeon RX 460"
+    },
+    {
+        "id": 1103,
+        "name": "NVIDIA GeForce GTX 1060-3GB"
+    },
+    {
+        "id": 1104,
+        "name": "NVIDIA GeForce GTX 1080 (Notebook)"
+    },
+    {
+        "id": 1105,
+        "name": "NVIDIA GeForce GTX 1070 (Notebook)"
+    },
+    {
+        "id": 1106,
+        "name": "NVIDIA GeForce GTX 1060 (Notebook)"
+    },
+    {
+        "id": 1107,
+        "name": "Intel HD Graphics 620"
+    },
+    {
+        "id": 1108,
+        "name": "NVIDIA Quadro K420"
+    },
+    {
+        "id": 1109,
+        "name": "NVIDIA Quadro M3000M"
+    },
+    {
+        "id": 1110,
+        "name": "NVIDIA GeForce GTX 1050"
+    },
+    {
+        "id": 1111,
+        "name": "NVIDIA GeForce GTX 1050 Ti"
+    },
+    {
+        "id": 1112,
+        "name": "AMD Radeon R5 Bristol Ridge"
+    },
+    {
+        "id": 1113,
+        "name": "NVIDIA GeForce GTX 1050 Ti (Notebook)"
+    },
+    {
+        "id": 1114,
+        "name": "NVIDIA GeForce GTX 1050 (Notebook)"
+    },
+    {
+        "id": 1115,
+        "name": "Intel HD Graphics 505"
+    },
+    {
+        "id": 1116,
+        "name": "NVIDIA Quadro P5000"
+    },
+    {
+        "id": 1117,
+        "name": "NVIDIA Quadro P6000"
+    },
+    {
+        "id": 1118,
+        "name": "Intel HD Graphics 610"
+    },
+    {
+        "id": 1119,
+        "name": "Intel HD Graphics 630"
+    },
+    {
+        "id": 1120,
+        "name": "AMD Radeon Pro 460"
+    },
+    {
+        "id": 1121,
+        "name": "AMD Radeon R9 360"
+    },
+    {
+        "id": 1122,
+        "name": "AMD Radeon R9 M385X"
+    },
+    {
+        "id": 1123,
+        "name": "Intel HD Graphics 630 Mobile"
+    },
+    {
+        "id": 1124,
+        "name": "AMD Radeon RX 470 (Laptop)"
+    },
+    {
+        "id": 1125,
+        "name": "NVIDIA Quadro M2000"
+    },
+    {
+        "id": 1126,
+        "name": "NVIDIA Quadro M600M"
+    },
+    {
+        "id": 1127,
+        "name": "NVIDIA GeForce GTX 1080 Ti"
+    },
+    {
+        "id": 1128,
+        "name": "NVIDIA Titan Xp"
+    },
+    {
+        "id": 1129,
+        "name": "AMD Radeon R5 Bristol Ridge Mobile"
+    },
+    {
+        "id": 1130,
+        "name": "AMD Radeon RX 580"
+    },
+    {
+        "id": 1131,
+        "name": "AMD Radeon RX 570"
+    },
+    {
+        "id": 1132,
+        "name": "AMD Radeon RX 560"
+    },
+    {
+        "id": 1133,
+        "name": "AMD Radeon RX 550"
+    },
+    {
+        "id": 1134,
+        "name": "AMD Radeon Pro WX 5100"
+    },
+    {
+        "id": 1135,
+        "name": "AMD Radeon R5 M430"
+    },
+    {
+        "id": 1136,
+        "name": "Intel Iris Plus Graphics 650"
+    },
+    {
+        "id": 1137,
+        "name": "AMD Radeon R5 Stoney Ridge Mobile"
+    },
+    {
+        "id": 1138,
+        "name": "NVIDIA GeForce GT 1030"
+    },
+    {
+        "id": 1139,
+        "name": "Intel Iris Plus Graphics 640"
+    },
+    {
+        "id": 1140,
+        "name": "AMD Radeon Vega Frontier Edition"
+    },
+    {
+        "id": 1141,
+        "name": "NVIDIA GeForce MX150"
+    },
+    {
+        "id": 1142,
+        "name": "NVIDIA GeForce GT 625"
+    },
+    {
+        "id": 1143,
+        "name": "Intel HD Graphics 610 Mobile"
+    },
+    {
+        "id": 1144,
+        "name": "AMD Radeon R3 (notebook)"
+    },
+    {
+        "id": 1145,
+        "name": "NVIDIA NVS 315"
+    },
+    {
+        "id": 1146,
+        "name": "AMD Radeon R7 (Carrizo)"
+    },
+    {
+        "id": 1147,
+        "name": "AMD Radeon R7 Bristol Ridge Mobile"
+    },
+    {
+        "id": 1148,
+        "name": "AMD Radeon R5 Carrizo Mobile"
+    },
+    {
+        "id": 1149,
+        "name": "AMD Radeon R5 Carrizo"
+    },
+    {
+        "id": 1150,
+        "name": "AMD Radeon RX Vega 56"
+    },
+    {
+        "id": 1151,
+        "name": "AMD Radeon RX Vega 64"
+    },
+    {
+        "id": 1152,
+        "name": "AMD Radeon RX Vega 64 Liquid"
+    },
+    {
+        "id": 1153,
+        "name": "Intel HD Graphics 615"
+    },
+    {
+        "id": 1154,
+        "name": "AMD Radeon RX 580 (Laptop)"
+    },
+    {
+        "id": 1155,
+        "name": "NVIDIA Quadro M1200"
+    },
+    {
+        "id": 1156,
+        "name": "Intel UHD Graphics 620"
+    },
+    {
+        "id": 1157,
+        "name": "AMD Radeon R5 (A8-7410)"
+    },
+    {
+        "id": 1158,
+        "name": "AMD Radeon 530"
+    },
+    {
+        "id": 1159,
+        "name": "NVIDIA Quadro P3000"
+    },
+    {
+        "id": 1160,
+        "name": "NVIDIA Quadro P4000"
+    },
+    {
+        "id": 1161,
+        "name": "NVIDIA GeForce 920MX"
+    },
+    {
+        "id": 1162,
+        "name": "Intel UHD Graphics 630"
+    },
+    {
+        "id": 1163,
+        "name": "NVIDIA Quadro P5000 (Notebook)"
+    },
+    {
+        "id": 1164,
+        "name": "NVIDIA GeForce GTX 1070 Ti"
+    },
+    {
+        "id": 1165,
+        "name": "AMD Radeon Pro WX 4100"
+    },
+    {
+        "id": 1166,
+        "name": "AMD Radeon Pro WX 7100"
+    },
+    {
+        "id": 1167,
+        "name": "AMD Radeon Pro WX 3100"
+    },
+    {
+        "id": 1168,
+        "name": "AMD Radeon Pro WX 2100"
+    },
+    {
+        "id": 1169,
+        "name": "AMD Radeon Pro WX 9100"
+    },
+    {
+        "id": 1170,
+        "name": "AMD Radeon Pro SSG"
+    },
+    {
+        "id": 1171,
+        "name": "AMD Radeon R7 Bristol Ridge"
+    },
+    {
+        "id": 1172,
+        "name": "AMD Radeon R5 430"
+    },
+    {
+        "id": 1173,
+        "name": "NVIDIA Titan Xp Collector's Edition"
+    },
+    {
+        "id": 1174,
+        "name": "NVIDIA Titan V"
+    },
+    {
+        "id": 1175,
+        "name": "Intel HD Graphics P630"
+    },
+    {
+        "id": 1176,
+        "name": "AMD Radeon R4 Mobile"
+    },
+    {
+        "id": 1177,
+        "name": "Intel HD Graphics 510 Mobile"
+    },
+    {
+        "id": 1178,
+        "name": "AMD Radeon Pro 580 (iMac)"
+    },
+    {
+        "id": 1179,
+        "name": "AMD Radeon Pro 575 (iMac)"
+    },
+    {
+        "id": 1180,
+        "name": "AMD Radeon Pro 570 (iMac)"
+    },
+    {
+        "id": 1181,
+        "name": "AMD Radeon RX Vega 11 Mobile"
+    },
+    {
+        "id": 1182,
+        "name": "AMD Radeon Vega 8"
+    },
+    {
+        "id": 1183,
+        "name": "AMD Radeon Vega 6 Mobile"
+    },
+    {
+        "id": 1184,
+        "name": "AMD Radeon Vega 3 Mobile"
+    },
+    {
+        "id": 1185,
+        "name": "AMD Radeon Vega 8 Mobile"
+    },
+    {
+        "id": 1186,
+        "name": "AMD Radeon Vega 10 Mobile"
+    },
+    {
+        "id": 1187,
+        "name": "NVIDIA Quadro P2000"
+    },
+    {
+        "id": 1188,
+        "name": "AMD Radeon R7 M440"
+    },
+    {
+        "id": 1189,
+        "name": "AMD Radeon R8 M350DX"
+    },
+    {
+        "id": 1190,
+        "name": "AMD Radeon R8 M445DX"
+    },
+    {
+        "id": 1191,
+        "name": "Intel HD Graphics 500"
+    },
+    {
+        "id": 1192,
+        "name": "Intel UHD Graphics 630 Mobile"
+    },
+    {
+        "id": 1193,
+        "name": "Intel Iris Plus Graphics 655"
+    },
+    {
+        "id": 1194,
+        "name": "AMD Radeon RX Vega M GH Graphics"
+    },
+    {
+        "id": 1195,
+        "name": "AMD Radeon RX Vega M GL Graphics"
+    },
+    {
+        "id": 1196,
+        "name": "NVIDIA Quadro GV100"
+    },
+    {
+        "id": 1197,
+        "name": "NVIDIA Quadro M620"
+    },
+    {
+        "id": 1198,
+        "name": "NVIDIA GeForce GTX 1060-5GB"
+    },
+    {
+        "id": 1199,
+        "name": "NVIDIA GeForce 930MX"
+    },
+    {
+        "id": 1200,
+        "name": "AMD FirePro W2100"
+    },
+    {
+        "id": 1201,
+        "name": "Intel UHD Graphics P630 Mobile"
+    },
+    {
+        "id": 1202,
+        "name": "Intel UHD Graphics P630"
+    },
+    {
+        "id": 1203,
+        "name": "NVIDIA GeForce GT 1030 (DDR4)"
+    },
+    {
+        "id": 1204,
+        "name": "NVIDIA Quadro M4000M"
+    },
+    {
+        "id": 1205,
+        "name": "AMD Radeon R5 M240"
+    },
+    {
+        "id": 1206,
+        "name": "Intel HD Graphics 500 Mobile"
+    },
+    {
+        "id": 1207,
+        "name": "Intel UHD Graphics 605 Mobile"
+    },
+    {
+        "id": 1208,
+        "name": "NVIDIA GeForce RTX 2080"
+    },
+    {
+        "id": 1209,
+        "name": "NVIDIA GeForce RTX 2080 Ti"
+    },
+    {
+        "id": 1210,
+        "name": "Intel UHD Graphics 610"
+    },
+    {
+        "id": 1211,
+        "name": "Intel UHD Graphics 600"
+    },
+    {
+        "id": 1212,
+        "name": "NVIDIA Quadro K5200"
+    },
+    {
+        "id": 1213,
+        "name": "NVIDIA Quadro K1200"
+    },
+    {
+        "id": 1214,
+        "name": "NVIDIA GeForce RTX 2070"
+    },
+    {
+        "id": 1215,
+        "name": "NVIDIA Quadro M2200"
+    },
+    {
+        "id": 1216,
+        "name": "NVIDIA Quadro P600 (Notebook)"
+    },
+    {
+        "id": 1217,
+        "name": "NVIDIA GeForce MX130"
+    },
+    {
+        "id": 1218,
+        "name": "AMD Radeon R5 340X"
+    },
+    {
+        "id": 1219,
+        "name": ""
+    },
+    {
+        "id": 1220,
+        "name": ""
+    },
+    {
+        "id": 1221,
+        "name": ""
+    },
+    {
+        "id": 1222,
+        "name": ""
+    },
+    {
+        "id": 1223,
+        "name": ""
+    },
+    {
+        "id": 1224,
+        "name": ""
+    },
+    {
+        "id": 1225,
+        "name": ""
+    },
+    {
+        "id": 1226,
+        "name": ""
+    },
+    {
+        "id": 1227,
+        "name": ""
+    },
+    {
+        "id": 1228,
+        "name": "AMD Radeon RX 590"
+    },
+    {
+        "id": 1229,
+        "name": "ATI FireGL V7600"
+    },
+    {
+        "id": 1230,
+        "name": "NVIDIA Quadro P1000 (Notebook)"
+    },
+    {
+        "id": 1231,
+        "name": "NVIDIA Quadro P600"
+    },
+    {
+        "id": 1232,
+        "name": "NVIDIA Quadro P2000 (Notebook)"
+    },
+    {
+        "id": 1233,
+        "name": "AMD Radeon Pro WX 7100 (Mobile)"
+    },
+    {
+        "id": 1234,
+        "name": "NVIDIA Titan RTX"
+    },
+    {
+        "id": 1235,
+        "name": "AMD Radeon Pro WX 3100 (Mobile)"
+    },
+    {
+        "id": 1236,
+        "name": "NVIDIA GeForce RTX 2060"
+    },
+    {
+        "id": 1237,
+        "name": "AMD Radeon R5 230"
+    },
+    {
+        "id": 1238,
+        "name": "AMD Radeon RX 550 (Laptop)"
+    },
+    {
+        "id": 1239,
+        "name": "AMD Radeon RX 540 (Laptop)"
+    },
+    {
+        "id": 1240,
+        "name": "AMD Radeon RX 560 (Laptop)"
+    },
+    {
+        "id": 1241,
+        "name": "AMD Radeon RX 570 (Laptop)"
+    },
+    {
+        "id": 1242,
+        "name": "NVIDIA GeForce RTX 2060 (Notebook)"
+    },
+    {
+        "id": 1243,
+        "name": "NVIDIA GeForce RTX 2070 (Notebook)"
+    },
+    {
+        "id": 1244,
+        "name": "NVIDIA GeForce RTX 2080 (Notebook)"
+    },
+    {
+        "id": 1245,
+        "name": "AMD Radeon VII"
+    },
+    {
+        "id": 1246,
+        "name": "AMD Radeon Pro Vega 20"
+    },
+    {
+        "id": 1247,
+        "name": "Intel HD Graphics P630 Mobile"
+    },
+    {
+        "id": 1248,
+        "name": "NVIDIA Quadro M5000M"
+    },
+    {
+        "id": 1249,
+        "name": "AMD Radeon RX 560X (Laptop)"
+    },
+    {
+        "id": 1250,
+        "name": "NVIDIA GeForce GTX 1660 Ti"
+    },
+    {
+        "id": 1251,
+        "name": "NVIDIA Quadro RTX 6000"
+    },
+    {
+        "id": 1252,
+        "name": "NVIDIA GeForce GTX 1060-3GB (Notebook)"
+    },
+    {
+        "id": 1253,
+        "name": "NVIDIA GeForce GTX 1660"
+    },
+    {
+        "id": 1254,
+        "name": "NVIDIA GeForce RTX 2080 Max-Q"
+    },
+    {
+        "id": 1255,
+        "name": "NVIDIA GeForce RTX 2070 Max-Q"
+    },
+    {
+        "id": 1256,
+        "name": "NVIDIA GeForce RTX 2060 Max-Q (Notebook)"
+    },
+    {
+        "id": 1257,
+        "name": "NVIDIA GeForce GTX 1080 Max-Q"
+    },
+    {
+        "id": 1258,
+        "name": "NVIDIA GeForce GTX 1070 Max-Q"
+    },
+    {
+        "id": 1259,
+        "name": "NVIDIA GeForce GTX 1060 Max-Q"
+    },
+    {
+        "id": 1260,
+        "name": "NVIDIA GeForce GTX 1050 Max-Q"
+    },
+    {
+        "id": 1261,
+        "name": "NVIDIA GeForce GTX 1050 Ti Max-Q"
+    },
+    {
+        "id": 1262,
+        "name": "NVIDIA Quadro RTX 5000"
+    },
+    {
+        "id": 1263,
+        "name": "NVIDIA GeForce GTX 1650"
+    },
+    {
+        "id": 1264,
+        "name": "NVIDIA GeForce GTX 1650 (Notebook)"
+    },
+    {
+        "id": 1265,
+        "name": "Intel Iris Pro Graphics P580"
+    },
+    {
+        "id": 1266,
+        "name": "NVIDIA GeForce GTX 1660 Ti (Notebook)"
+    },
+    {
+        "id": 1267,
+        "name": "NVIDIA GeForce GTX 1660 Ti Max-Q"
+    },
+    {
+        "id": 1268,
+        "name": "AMD Radeon Pro WX 4130 (Mobile)"
+    },
+    {
+        "id": 1269,
+        "name": "AMD Radeon Pro WX 4150 (Mobile)"
+    },
+    {
+        "id": 1270,
+        "name": "AMD Radeon Pro WX 4170 (Mobile)"
+    },
+    {
+        "id": 1271,
+        "name": "AMD Radeon E9260"
+    },
+    {
+        "id": 1272,
+        "name": "AMD Radeon E8870"
+    },
+    {
+        "id": 1273,
+        "name": "NVIDIA Quadro P4000 (Notebook)"
+    },
+    {
+        "id": 1274,
+        "name": "NVIDIA Quadro P4000 Max-Q"
+    },
+    {
+        "id": 1275,
+        "name": "NVIDIA Quadro NVS 810"
+    },
+    {
+        "id": 1276,
+        "name": "NVIDIA Quadro P400"
+    },
+    {
+        "id": 1277,
+        "name": "AMD Radeon 520"
+    },
+    {
+        "id": 1278,
+        "name": "NVIDIA GeForce RTX 2060 SUPER"
+    },
+    {
+        "id": 1279,
+        "name": "NVIDIA GeForce RTX 2070 SUPER"
+    },
+    {
+        "id": 1280,
+        "name": "AMD FirePro W6150M"
+    },
+    {
+        "id": 1281,
+        "name": "AMD FirePro W5170M"
+    },
+    {
+        "id": 1282,
+        "name": "NVIDIA Quadro P4200"
+    },
+    {
+        "id": 1283,
+        "name": "NVIDIA Quadro P4200 Max-Q"
+    },
+    {
+        "id": 1284,
+        "name": "AMD Radeon RX 5700"
+    },
+    {
+        "id": 1285,
+        "name": "AMD Radeon RX 5700 XT"
+    },
+    {
+        "id": 1286,
+        "name": "AMD Radeon RX 5700 XT 50th Anniversary"
+    },
+    {
+        "id": 1287,
+        "name": "AMD Radeon RX Vega 11"
+    },
+    {
+        "id": 1288,
+        "name": "NVIDIA GeForce MX250 (10W)"
+    },
+    {
+        "id": 1289,
+        "name": "NVIDIA GeForce MX250 (25W)"
+    },
+    {
+        "id": 1290,
+        "name": "NVIDIA GeForce RTX 2080 SUPER"
+    },
+    {
+        "id": 1291,
+        "name": "NVIDIA Tesla T4"
+    },
+    {
+        "id": 1292,
+        "name": "AMD Radeon RX 580 2048SP"
+    },
+    {
+        "id": 1293,
+        "name": "AMD Radeon Pro 575"
+    },
+    {
+        "id": 1294,
+        "name": "NVIDIA Quadro P3200"
+    },
+    {
+        "id": 1295,
+        "name": "AMD Radeon RX 550X (Laptop)"
+    },
+    {
+        "id": 1296,
+        "name": "Intel UHD Graphics 10th Gen Mobile"
+    },
+    {
+        "id": 1297,
+        "name": "Intel Iris Pro Graphics 10th Gen Mobile"
+    },
+    {
+        "id": 1298,
+        "name": "NVIDIA Quadro RTX 8000"
+    },
+    {
+        "id": 1299,
+        "name": "NVIDIA Quadro RTX 4000"
+    },
+    {
+        "id": 1300,
+        "name": "NVIDIA Quadro RTX 4000 (notebook)"
+    },
+    {
+        "id": 1301,
+        "name": "AMD Radeon Vega 9 Mobile"
+    },
+    {
+        "id": 1302,
+        "name": "NVIDIA GeForce GTX 1660 SUPER"
+    },
+    {
+        "id": 1303,
+        "name": "NVIDIA GeForce GTX 1650 SUPER"
+    },
+    {
+        "id": 1304,
+        "name": "NVIDIA Quadro P5200"
+    },
+    {
+        "id": 1305,
+        "name": "NVIDIA Quadro RTX 5000 (Notebook)"
+    },
+    {
+        "id": 1306,
+        "name": "NVIDIA Quadro RTX 5000 Max-Q"
+    },
+    {
+        "id": 1307,
+        "name": "NVIDIA GeForce GTX 1650 Max-Q"
+    },
+    {
+        "id": 1308,
+        "name": "NVIDIA Quadro P620 (Notebook)"
+    },
+    {
+        "id": 1309,
+        "name": "AMD Radeon Pro 5500M"
+    },
+    {
+        "id": 1310,
+        "name": "AMD Radeon RX 5500 XT"
+    },
+    {
+        "id": 1311,
+        "name": "NVIDIA GeForce 825M"
+    },
+    {
+        "id": 1312,
+        "name": "AMD Radeon Vega 3"
+    },
+    {
+        "id": 1313,
+        "name": "AMD Radeon RX 5600 XT"
+    },
+    {
+        "id": 1314,
+        "name": "AMD Radeon RX 5500M"
+    },
+    {
+        "id": 1315,
+        "name": "NVIDIA Quadro P620"
+    },
+    {
+        "id": 1316,
+        "name": "AMD Radeon R3"
+    },
+    {
+        "id": 1317,
+        "name": "AMD Radeon RX Vega 6 (Ryzen 4000 Mobile)"
+    },
+    {
+        "id": 1318,
+        "name": "AMD Radeon RX Vega 7 (Ryzen 4000 Mobile)"
+    },
+    {
+        "id": 1319,
+        "name": "AMD Radeon RX Vega 8 (Ryzen 4000 Mobile)"
+    },
+    {
+        "id": 1320,
+        "name": "AMD Radeon RX Vega 2"
+    },
+    {
+        "id": 1321,
+        "name": "AMD Radeon RX Vega 5 (Ryzen 4000 Mobile)"
+    },
+    {
+        "id": 1322,
+        "name": "AMD Radeon RX 480 (notebook)"
+    },
+    {
+        "id": 1323,
+        "name": "AMD Radeon Pro W5700"
+    },
+    {
+        "id": 1324,
+        "name": "NVIDIA GeForce RTX 2070 SUPER (Notebook)"
+    },
+    {
+        "id": 1325,
+        "name": "NVIDIA GeForce RTX 2070 SUPER Max-Q"
+    },
+    {
+        "id": 1326,
+        "name": "NVIDIA GeForce RTX 2080 SUPER Max-Q"
+    },
+    {
+        "id": 1327,
+        "name": "NVIDIA GeForce RTX 2080 SUPER (Notebook)"
+    },
+    {
+        "id": 1328,
+        "name": "Intel UHD Graphics (Comet Lake)"
+    },
+    {
+        "id": 1329,
+        "name": "NVIDIA GeForce GTX 1650 Ti (Notebook)"
+    },
+    {
+        "id": 1330,
+        "name": "NVIDIA GeForce GTX 1650 Ti Max-Q"
+    },
+    {
+        "id": 1331,
+        "name": "NVIDIA GeForce RTX 2060 (Notebook refresh)"
+    },
+    {
+        "id": 1332,
+        "name": "NVIDIA GeForce RTX 2070 (Notebook refresh)"
+    },
+    {
+        "id": 1333,
+        "name": "NVIDIA Quadro T2000 (Notebook)"
+    },
+    {
+        "id": 1334,
+        "name": "AMD Radeon RX 5600M"
+    },
+    {
+        "id": 1335,
+        "name": "AMD Radeon RX 5700M"
+    },
+    {
+        "id": 1336,
+        "name": "AMD Radeon Pro W5500"
+    },
+    {
+        "id": 1337,
+        "name": "NVIDIA GeForce MX110"
+    },
+    {
+        "id": 1338,
+        "name": "NVIDIA GeForce RTX 3080"
+    },
+    {
+        "id": 1339,
+        "name": "NVIDIA GeForce RTX 3090"
+    },
+    {
+        "id": 1340,
+        "name": "AMD Radeon Vega 6"
+    },
+    {
+        "id": 1341,
+        "name": "AMD Radeon Pro V7350X2"
+    },
+    {
+        "id": 1342,
+        "name": "NVIDIA GeForce RTX 3070"
+    },
+    {
+        "id": 1343,
+        "name": "NVIDIA Quadro T1000 (notebook)"
+    },
+    {
+        "id": 1344,
+        "name": "NVIDIA Quadro T1000 Max-Q"
+    },
+    {
+        "id": 1345,
+        "name": "NVIDIA Quadro P1000"
+    },
+    {
+        "id": 1346,
+        "name": "NVIDIA Quadro P2200"
+    },
+    {
+        "id": 1347,
+        "name": "AMD Radeon RX 6800"
+    },
+    {
+        "id": 1348,
+        "name": "AMD Radeon RX 6800 XT"
+    },
+    {
+        "id": 1349,
+        "name": "Intel Iris Xe Graphics G7 96EU"
+    },
+    {
+        "id": 1350,
+        "name": "Intel Iris Xe Graphics G4"
+    },
+    {
+        "id": 1351,
+        "name": "Intel Iris Xe Graphics G7 80EU"
+    },
+    {
+        "id": 1352,
+        "name": "NVIDIA GeForce RTX 3060 Ti"
+    },
+    {
+        "id": 1353,
+        "name": "AMD Radeon RX 6900 XT"
+    },
+    {
+        "id": 1354,
+        "name": "AMD Radeon RX 5500"
+    },
+    {
+        "id": 1355,
+        "name": "AMD Radeon RX Vega 8 (Ryzen 4000)"
+    },
+    {
+        "id": 1356,
+        "name": "AMD Radeon RX Vega 7 (Ryzen 4000)"
+    },
+    {
+        "id": 1357,
+        "name": "NVIDIA GeForce RTX 2070 Max-Q (refresh)"
+    },
+    {
+        "id": 1358,
+        "name": "AMD Radeon R5 (A4)"
+    },
+    {
+        "id": 1359,
+        "name": "NVIDIA GeForce GTX 750 GM206"
+    },
+    {
+        "id": 1360,
+        "name": "AMD Radeon RX Vega 3"
+    },
+    {
+        "id": 1361,
+        "name": "Intel UHD Graphics 617"
+    },
+    {
+        "id": 1362,
+        "name": "Intel Iris Xe MAX"
+    },
+    {
+        "id": 1363,
+        "name": "AMD Radeon Vega 8 (Cezanne)"
+    },
+    {
+        "id": 1364,
+        "name": "AMD Radeon Vega 7 Mobile (Cezanne)"
+    },
+    {
+        "id": 1365,
+        "name": "AMD Radeon Vega 6 Mobile (Cezanne)"
+    },
+    {
+        "id": 1366,
+        "name": "AMD Radeon Vega 8 2000MHz (Cezanne)"
+    },
+    {
+        "id": 1367,
+        "name": "AMD Radeon Vega 8 1900MHz (Cezanne)"
+    },
+    {
+        "id": 1368,
+        "name": "NVIDIA GeForce RTX 3060 (notebook)"
+    },
+    {
+        "id": 1369,
+        "name": "NVIDIA GeForce RTX 3060 Max-Q"
+    },
+    {
+        "id": 1370,
+        "name": "NVIDIA GeForce RTX 3070 (notebook)"
+    },
+    {
+        "id": 1371,
+        "name": "NVIDIA GeForce RTX 3070 Max-Q"
+    },
+    {
+        "id": 1372,
+        "name": "NVIDIA GeForce RTX 3080 (notebook)"
+    },
+    {
+        "id": 1373,
+        "name": "NVIDIA GeForce RTX 3080 Max-Q"
+    },
+    {
+        "id": 1374,
+        "name": "NVIDIA GeForce MX350"
+    },
+    {
+        "id": 1375,
+        "name": "NVIDIA GeForce RTX 3060"
+    },
+    {
+        "id": 1376,
+        "name": "AMD Radeon RX 6700 XT"
+    },
+    {
+        "id": 1377,
+        "name": "NVIDIA Quadro FX 5600"
+    },
+    {
+        "id": 1378,
+        "name": "NVIDIA Quadro RTX 4000 Max-Q"
+    },
+    {
+        "id": 1379,
+        "name": "NVIDIA Quadro RTX A6000"
+    },
+    {
+        "id": 1380,
+        "name": "Intel UHD Graphics 750 (11th gen desktop)"
+    },
+    {
+        "id": 1381,
+        "name": "AMD Radeon R2 Mobile Graphics"
+    },
+    {
+        "id": 1382,
+        "name": "AMD Radeon Vega 7 (Cezanne)"
+    },
+    {
+        "id": 1383,
+        "name": "AMD Radeon RX Vega 8 2000MHz (Ryzen 4000)"
+    },
+    {
+        "id": 1384,
+        "name": "Intel UHD Graphics for 11th Gen Intel Processors"
+    },
+    {
+        "id": 1385,
+        "name": "VIA Chrome9 HS IGP"
+    },
+    {
+        "id": 1386,
+        "name": "NVIDIA GeForce RTX 3050 (notebook)"
+    },
+    {
+        "id": 1387,
+        "name": "NVIDIA GeForce RTX 3050 Ti (notebook)"
+    },
+    {
+        "id": 1388,
+        "name": "AMD Radeon RX 6800M"
+    },
+    {
+        "id": 1389,
+        "name": "NVIDIA GeForce RTX 3080 Ti"
+    },
+    {
+        "id": 1390,
+        "name": "AMD Radeon Pro W6800"
+    },
+    {
+        "id": 1391,
+        "name": "NVIDIA GeForce RTX 3070 Ti"
+    },
+    {
+        "id": 1392,
+        "name": "NVIDIA GeForce GT 1010"
+    },
+    {
+        "id": 1393,
+        "name": "Intel Iris Xe DG1"
+    },
+    {
+        "id": 1394,
+        "name": "NVIDIA Quadro T2000 Max-Q"
+    },
+    {
+        "id": 1395,
+        "name": "NVIDIA GeForce RTX 3070 LHR"
+    },
+    {
+        "id": 1396,
+        "name": "NVIDIA GeForce RTX 3080 LHR"
+    },
+    {
+        "id": 1397,
+        "name": "NVIDIA GeForce RTX 3060 Ti LHR"
+    },
+    {
+        "id": 1398,
+        "name": "NVIDIA RTX A5000"
+    },
+    {
+        "id": 1399,
+        "name": "NVIDIA RTX A4000"
+    },
+    {
+        "id": 1400,
+        "name": "NVIDIA RTX A4000 Mobile"
+    },
+    {
+        "id": 1401,
+        "name": "NVIDIA Quadro RTX 3000 Mobile"
+    },
+    {
+        "id": 1402,
+        "name": "NVIDIA Quadro RTX 3000 Max-Q"
+    },
+    {
+        "id": 1403,
+        "name": "AMD Radeon RX 6600M"
+    },
+    {
+        "id": 1404,
+        "name": "AMD Radeon Pro W6600M"
+    },
+    {
+        "id": 1405,
+        "name": "AMD Radeon RX 6700M"
+    },
+    {
+        "id": 1406,
+        "name": "AMD Radeon RX 6600 XT"
+    },
+    {
+        "id": 1407,
+        "name": "NVIDIA GeForce MX450 25W"
+    },
+    {
+        "id": 1408,
+        "name": "NVIDIA GeForce MX450 30.5W 8Gbps"
+    },
+    {
+        "id": 1409,
+        "name": "NVIDIA GeForce MX450 30.5W 10Gbps"
+    },
+    {
+        "id": 1410,
+        "name": "NVIDIA GeForce RTX 3060 GA104"
+    },
+    {
+        "id": 1411,
+        "name": "AMD Radeon RX 5300M"
+    },
+    {
+        "id": 1412,
+        "name": "AMD Radeon Pro 5300"
+    },
+    {
+        "id": 1413,
+        "name": "AMD Radeon Pro 5300M"
+    },
+    {
+        "id": 1414,
+        "name": "AMD Radeon RX 6600"
+    },
+    {
+        "id": 1415,
+        "name": "Intel UHD Graphics 770 (12th gen desktop)"
+    },
+    {
+        "id": 1416,
+        "name": "NVIDIA Quadro GP100"
+    },
+    {
+        "id": 1417,
+        "name": "AMD Radeon Pro WX 3200 Mobile"
+    },
+    {
+        "id": 1418,
+        "name": "AMD Radeon Vega 6 (Renoir)"
+    },
+    {
+        "id": 1419,
+        "name": "AMD Radeon Vega 7 (Renoir)"
+    },
+    {
+        "id": 1420,
+        "name": "AMD Radeon Vega 8 (Renoir)"
+    },
+    {
+        "id": 1421,
+        "name": "NVIDIA RTX A2000"
+    },
+    {
+        "id": 1422,
+        "name": "NVIDIA RTX A2000 Mobile"
+    },
+    {
+        "id": 1423,
+        "name": "NVIDIA GeForce RTX 2060 12 GB"
+    },
+    {
+        "id": 1424,
+        "name": "AMD Radeon Vega 7 (Lucienne)"
+    },
+    {
+        "id": 1425,
+        "name": "Intel UHD Graphics 730 (11th gen desktop)"
+    },
+    {
+        "id": 1426,
+        "name": "Intel UHD Graphics 730 (12th gen desktop)"
+    },
+    {
+        "id": 1427,
+        "name": "Intel UHD Graphics 710 (12th gen desktop)"
+    },
+    {
+        "id": 1428,
+        "name": "Intel UHD Graphics for 12th Gen Intel Processors"
+    },
+    {
+        "id": 1429,
+        "name": "NVIDIA GeForce RTX 3080 12 GB"
+    },
+    {
+        "id": 1430,
+        "name": "AMD Radeon Pro W6800X"
+    },
+    {
+        "id": 1431,
+        "name": "AMD Radeon Pro W6800X Duo"
+    },
+    {
+        "id": 1432,
+        "name": "AMD Radeon RX 6500 XT"
+    },
+    {
+        "id": 1433,
+        "name": "NVIDIA GeForce RTX 3080 Ti (notebook)"
+    },
+    {
+        "id": 1434,
+        "name": "NVIDIA GeForce RTX 3070 Ti (notebook)"
+    },
+    {
+        "id": 1435,
+        "name": "NVIDIA GeForce RTX 3050"
+    },
+    {
+        "id": 1436,
+        "name": "NVIDIA T400"
+    },
+    {
+        "id": 1437,
+        "name": "ATI FireGL V8650"
+    },
+    {
+        "id": 1438,
+        "name": "AMD Radeon Pro W6600"
+    },
+    {
+        "id": 1439,
+        "name": "AMD Radeon Pro W6600X"
+    },
+    {
+        "id": 1440,
+        "name": "AMD Radeon 680M"
+    },
+    {
+        "id": 1441,
+        "name": "AMD Radeon RX 6800S"
+    },
+    {
+        "id": 1442,
+        "name": "AMD Radeon RX 6700S"
+    },
+    {
+        "id": 1443,
+        "name": "AMD Radeon RX 6600S"
+    },
+    {
+        "id": 1444,
+        "name": "NVIDIA Quadro FX 380 LP"
+    },
+    {
+        "id": 1445,
+        "name": "NVIDIA NVS 300"
+    },
+    {
+        "id": 1446,
+        "name": "NVIDIA GeForce MX330"
+    },
+    {
+        "id": 1447,
+        "name": "NVIDIA T600"
+    },
+    {
+        "id": 1448,
+        "name": "NVIDIA T600 Mobile"
+    },
+    {
+        "id": 1449,
+        "name": "Intel UHD Graphics (Jasper Lake Pentium)"
+    },
+    {
+        "id": 1450,
+        "name": "AMD Radeon R7 M370"
+    },
+    {
+        "id": 1451,
+        "name": "AMD Radeon R7 A365"
+    },
+    {
+        "id": 1452,
+        "name": "AMD Radeon R7 M365"
+    },
+    {
+        "id": 1453,
+        "name": "AMD Radeon R7 M350"
+    },
+    {
+        "id": 1454,
+        "name": "AMD Radeon 8000M series"
+    },
+    {
+        "id": 1455,
+        "name": "NVIDIA RTX A5500"
+    },
+    {
+        "id": 1456,
+        "name": "NVIDIA RTX A5500 (notebook)"
+    },
+    {
+        "id": 1457,
+        "name": "NVIDIA RTX A4500"
+    },
+    {
+        "id": 1458,
+        "name": "NVIDIA RTX A4500 (notebook)"
+    },
+    {
+        "id": 1459,
+        "name": "NVIDIA RTX A3000 (notebook)"
+    },
+    {
+        "id": 1460,
+        "name": "NVIDIA T1200 (notebook)"
+    },
+    {
+        "id": 1461,
+        "name": "NVIDIA RTX A5000 (notebook)"
+    },
+    {
+        "id": 1462,
+        "name": "NVIDIA T500 (notebook)"
+    },
+    {
+        "id": 1463,
+        "name": "NVIDIA GeForce RTX 3090 Ti"
+    },
+    {
+        "id": 1464,
+        "name": "Intel Arc A350M"
+    },
+    {
+        "id": 1465,
+        "name": "AMD Radeon Pro 5600M"
+    },
+    {
+        "id": 1466,
+        "name": "Intel UHD Graphics for 12th Gen Intel Processors Mobile"
+    },
+    {
+        "id": 1467,
+        "name": "12th Gen Intel UHD Graphics 48EU"
+    },
+    {
+        "id": 1468,
+        "name": "12th Gen Intel UHD Graphics 64EU"
+    },
+    {
+        "id": 1469,
+        "name": "AMD Radeon RX 6650 XT"
+    },
+    {
+        "id": 1470,
+        "name": "AMD Radeon RX 6750 XT"
+    },
+    {
+        "id": 1471,
+        "name": "AMD Radeon RX 6950 XT"
+    },
+    {
+        "id": 1472,
+        "name": "Intel UHD Graphics 770 (12th gen mobile)"
+    },
+    {
+        "id": 1473,
+        "name": "Intel UHD Graphics 770 (12th gen mobile 1450MHz)"
+    },
+    {
+        "id": 1474,
+        "name": "12th Gen Intel UHD Graphics 16EU"
+    },
+    {
+        "id": 1475,
+        "name": "Intel UHD Graphics 770 (12th gen mobile 1350MHz)"
+    },
+    {
+        "id": 1476,
+        "name": "AMD Radeon 625"
+    },
+    {
+        "id": 1477,
+        "name": "NVIDIA GeForce GTX 1630"
+    },
+    {
+        "id": 1478,
+        "name": "AMD Radeon RX 6400"
+    },
+    {
+        "id": 1479,
+        "name": "Intel Arc A370M"
+    },
+    {
+        "id": 1480,
+        "name": "Intel Arc A730M"
+    },
+    {
+        "id": 1481,
+        "name": "Intel Arc A550M"
+    },
+    {
+        "id": 1482,
+        "name": "Intel Arc A770M"
+    },
+    {
+        "id": 1483,
+        "name": "Intel Arc A380"
+    },
+    {
+        "id": 1484,
+        "name": "Intel Iris Xe (12th gen notebook)"
+    },
+    {
+        "id": 1485,
+        "name": "AMD Radeon RX 6700"
+    },
+    {
+        "id": 1486,
+        "name": "NVIDIA Tesla M40"
+    },
+    {
+        "id": 1487,
+        "name": "NVIDIA Tesla M40 24 GB"
+    },
+    {
+        "id": 1488,
+        "name": "AMD Radeon Pro W6400"
+    },
+    {
+        "id": 1489,
+        "name": "AMD Radeon RX 590 GME"
+    },
+    {
+        "id": 1490,
+        "name": "Intel UHD Graphics (Jasper Lake Celeron)"
+    },
+    {
+        "id": 1491,
+        "name": "AMD Radeon RX 6500M"
+    },
+    {
+        "id": 1492,
+        "name": "AMD Radeon HD 6500M"
+    },
+    {
+        "id": 1493,
+        "name": "AMD Radeon RX 6650M"
+    },
+    {
+        "id": 1494,
+        "name": "AMD Radeon RX 6650M XT"
+    },
+    {
+        "id": 1495,
+        "name": "AMD Radeon RX 6300M"
+    },
+    {
+        "id": 1496,
+        "name": "NVIDIA T1000"
+    },
+    {
+        "id": 1497,
+        "name": "AMD Radeon HD 8690M"
+    },
+    {
+        "id": 1498,
+        "name": "NVIDIA T550 Mobile"
+    },
+    {
+        "id": 1499,
+        "name": "AMD Radeon 660M"
+    },
+    {
+        "id": 1500,
+        "name": "NVIDIA GeForce MX550"
+    },
+    {
+        "id": 1501,
+        "name": "Intel UHD Graphics 630 Mobile (1100 MHz)"
+    },
+    {
+        "id": 1502,
+        "name": "Intel UHD Graphics 630 Mobile (1150 MHz)"
+    },
+    {
+        "id": 1503,
+        "name": "Intel UHD Graphics 630 Mobile (1250 MHz)"
+    },
+    {
+        "id": 1504,
+        "name": "Intel HD Graphics P4000"
+    },
+    {
+        "id": 1505,
+        "name": "AMD Radeon R5 240 OEM"
+    },
+    {
+        "id": 1506,
+        "name": "AMD Radeon Graphics (Raphael)"
+    },
+    {
+        "id": 1507,
+        "name": "Intel Arc A750"
+    },
+    {
+        "id": 1508,
+        "name": "Intel Arc A770"
+    },
+    {
+        "id": 1509,
+        "name": "NVIDIA GeForce RTX 4090"
+    },
+    {
+        "id": 1510,
+        "name": "Intel UHD Graphics 770 (13th gen)"
+    },
+    {
+        "id": 1511,
+        "name": "Intel UHD Graphics 770 (13th gen 1600 MHz)"
+    },
+    {
+        "id": 1512,
+        "name": "Intel UHD Graphics 770 (13th gen 1650 MHz)"
+    },
+    {
+        "id": 1513,
+        "name": "NVIDIA P106-090"
+    },
+    {
+        "id": 1514,
+        "name": "NVIDIA P106-100"
+    },
+    {
+        "id": 1515,
+        "name": "NVIDIA P104-100"
+    },
+    {
+        "id": 1516,
+        "name": "NVIDIA P104-101"
+    },
+    {
+        "id": 1517,
+        "name": "NVIDIA P102-100"
+    },
+    {
+        "id": 1518,
+        "name": "NVIDIA P102-101"
+    },
+    {
+        "id": 1519,
+        "name": "Intel UHD Graphics (11th gen mobile)"
+    },
+    {
+        "id": 1520,
+        "name": "NVIDIA GeForce RTX 4080"
+    },
+    {
+        "id": 1521,
+        "name": "NVIDIA RTX A4500 (Embedded)"
+    },
+    {
+        "id": 1522,
+        "name": "NVIDIA RTX A2000 12 GB"
+    },
+    {
+        "id": 1523,
+        "name": "NVIDIA RTX A2000 Embedded"
+    },
+    {
+        "id": 1524,
+        "name": "NVIDIA RTX A2000 Mobile 8 GB"
+    },
+    {
+        "id": 1525,
+        "name": "AMD Radeon RX 7900 XT"
+    },
+    {
+        "id": 1526,
+        "name": "AMD Radeon RX 7900 XTX"
+    },
+    {
+        "id": 1527,
+        "name": "AMD Radeon Vega 6 Mobile 1600 MHz (Cezanne)"
+    },
+    {
+        "id": 1528,
+        "name": "Intel UHD Graphics P750"
+    },
+    {
+        "id": 1529,
+        "name": "NVIDIA GeForce RTX 3060 Ti GDDR6X"
+    },
+    {
+        "id": 1530,
+        "name": "NVIDIA GeForce RTX 4070 Ti"
+    },
+    {
+        "id": 1531,
+        "name": "Intel UHD Graphics 730 (13th gen desktop)"
+    },
+    {
+        "id": 1532,
+        "name": "Intel UHD Graphics 770 (13th gen 1550 MHz)"
+    },
+    {
+        "id": 1533,
+        "name": "13th Gen Intel UHD Graphics 32EU"
+    },
+    {
+        "id": 1534,
+        "name": "13th Gen Intel UHD Graphics 32EU 1600 MHz"
+    },
+    {
+        "id": 1535,
+        "name": "13th Gen Intel UHD Graphics 32EU 1550 MHz"
+    },
+    {
+        "id": 1536,
+        "name": "13th Gen Intel UHD Graphics 16EU"
+    },
+    {
+        "id": 1537,
+        "name": "13th Gen Intel UHD Graphics 64EU"
+    },
+    {
+        "id": 1538,
+        "name": "13th Gen Intel UHD Graphics 32EU 1500 MHz"
+    },
+    {
+        "id": 1539,
+        "name": "13th Gen Intel UHD Graphics 16EU 1500 MHz"
+    },
+    {
+        "id": 1540,
+        "name": "13th Gen Intel UHD Graphics 16EU 1450 MHz"
+    },
+    {
+        "id": 1541,
+        "name": "13th Gen Intel UHD Graphics 48EU"
+    },
+    {
+        "id": 1542,
+        "name": "NVIDIA GeForce RTX 3060 8 GB"
+    },
+    {
+        "id": 1543,
+        "name": "NVIDIA GeForce RTX 2050 (notebook)"
+    },
+    {
+        "id": 1544,
+        "name": "Intel UHD Graphics 615"
+    },
+    {
+        "id": 1545,
+        "name": "NVIDIA RTX 4090 (notebook)"
+    },
+    {
+        "id": 1546,
+        "name": "NVIDIA RTX 4080 (notebook)"
+    },
+    {
+        "id": 1547,
+        "name": "Intel Iris Xe Graphics"
+    },
+    {
+        "id": 1548,
+        "name": "NVIDIA RTX 4060 (notebook)"
+    },
+    {
+        "id": 1549,
+        "name": "NVIDIA RTX 4050 (notebook)"
+    },
+    {
+        "id": 1550,
+        "name": "NVIDIA RTX 4070 (notebook)"
+    },
+    {
+        "id": 1551,
+        "name": "AMD Radeon 610M"
+    },
+    {
+        "id": 1552,
+        "name": "AMD Radeon 760M"
+    },
+    {
+        "id": 1553,
+        "name": "AMD Radeon 780M"
+    },
+    {
+        "id": 1554,
+        "name": "AMD Radeon RX 560 XT"
+    },
+    {
+        "id": 1555,
+        "name": "13th Gen Intel UHD Graphics (generic)"
+    },
+    {
+        "id": 1556,
+        "name": "NVIDIA Tesla P100 PCIe 16 GB"
+    },
+    {
+        "id": 1557,
+        "name": "NVIDIA Tesla P100 PCIe 12 GB"
+    },
+    {
+        "id": 1558,
+        "name": "NVIDIA Tesla P100 SXM2"
+    },
+    {
+        "id": 1559,
+        "name": "AMD Radeon Vega 7 (Barcelo-R)"
+    },
+    {
+        "id": 1560,
+        "name": "NVIDIA Tesla P4"
+    },
+    {
+        "id": 1561,
+        "name": "NVIDIA GeForce RTX 4070"
+    },
+    {
+        "id": 1562,
+        "name": "AMD Steam Deck GPU"
+    },
+    {
+        "id": 1563,
+        "name": "ATI FireGL V7700"
+    },
+    {
+        "id": 1564,
+        "name": "AMD FireStream 9170"
+    },
+    {
+        "id": 1565,
+        "name": "Zhaoxin ZX-D C-860"
+    },
+    {
+        "id": 1566,
+        "name": "NVIDIA GeForce RTX 3050 6 GB (notebook)"
+    },
+    {
+        "id": 1567,
+        "name": "NVIDIA RTX 4000 Mobile Ada Generation"
+    },
+    {
+        "id": 1568,
+        "name": "AMD Radeon RX 7600S"
+    },
+    {
+        "id": 1569,
+        "name": "12th Gen Intel UHD Graphics 24EU"
+    },
+    {
+        "id": 1570,
+        "name": "NVIDIA GeForce RTX 4060 Ti 8 GB"
+    },
+    {
+        "id": 1571,
+        "name": "NVIDIA GeForce RTX 3080 Ti 20 GB"
+    },
+    {
+        "id": 1572,
+        "name": "AMD Radeon RX 7600"
+    },
+    {
+        "id": 1573,
+        "name": "Intel HD Graphics 405"
+    },
+    {
+        "id": 1574,
+        "name": "AMD ROG Ally Extreme GPU"
+    },
+    {
+        "id": 1575,
+        "name": "NVIDIA GeForce RTX 4060"
+    },
+    {
+        "id": 1576,
+        "name": "NVIDIA RTX 4000 SFF Ada Generation"
+    },
+    {
+        "id": 1577,
+        "name": "Intel Iris Xe Graphics (13th gen notebook)"
+    },
+    {
+        "id": 1578,
+        "name": "NVIDIA RTX A500 Mobile"
+    },
+    {
+        "id": 1579,
+        "name": "NVIDIA GeForce RTX 4060 Ti 16 GB"
+    },
+    {
+        "id": 1580,
+        "name": "NVIDIA Tesla P40"
+    },
+    {
+        "id": 1581,
+        "name": "NVIDIA RTX 3500 Mobile Ada Generation"
+    },
+    {
+        "id": 1582,
+        "name": "AMD Radeon RX 7900 GRE"
+    },
+    {
+        "id": 1583,
+        "name": "Intel Arc A530M"
+    },
+    {
+        "id": 1584,
+        "name": "Intel Arc A570M"
+    },
+    {
+        "id": 1585,
+        "name": "NVIDIA Tesla C2075 512 Core"
+    },
+    {
+        "id": 1586,
+        "name": "AMD Radeon PRO W7900"
+    },
+    {
+        "id": 1587,
+        "name": "AMD Radeon PRO W7800"
+    },
+    {
+        "id": 1588,
+        "name": "AMD Radeon PRO W7600"
+    },
+    {
+        "id": 1589,
+        "name": "AMD Radeon PRO W7500"
+    },
+    {
+        "id": 1590,
+        "name": "AMD Radeon RX 5600"
+    },
+    {
+        "id": 1591,
+        "name": "Matrox Millenium P650"
+    },
+    {
+        "id": 1592,
+        "name": "AMD Radeon RX 7700 XT"
+    },
+    {
+        "id": 1593,
+        "name": "AMD Radeon RX 7800 XT"
+    },
+    {
+        "id": 1594,
+        "name": "AMD Radeon RX 7700S"
+    },
+    {
+        "id": 1595,
+        "name": "AMD ROG Ally GPU"
+    },
+    {
+        "id": 1596,
+        "name": "Intel Arc A580"
+    },
+    {
+        "id": 1597,
+        "name": "NVIDIA RTX 2000 Mobile Ada Generation"
+    },
+    {
+        "id": 1598,
+        "name": "Intel UHD Graphics 770 (14th gen)"
+    },
+    {
+        "id": 1599,
+        "name": "Intel UHD Graphics 770 (14th gen) 1500 MHz"
+    },
+    {
+        "id": 1600,
+        "name": "Intel UHD Graphics 770 (14th gen) 1550 MHz"
+    },
+    {
+        "id": 1601,
+        "name": "Intel UHD Graphics 770"
+    },
+    {
+        "id": 1602,
+        "name": "AMD Radeon RX 7900M"
+    },
+    {
+        "id": 1603,
+        "name": "AMD Radeon PRO W7700"
+    },
+    {
+        "id": 1604,
+        "name": "ATI FireMV 2250"
+    },
+    {
+        "id": 1605,
+        "name": "AMD Radeon RX 6600 LE"
+    },
+    {
+        "id": 1606,
+        "name": "NVIDIA GeForce GT 705"
+    },
+    {
+        "id": 1607,
+        "name": "Intel UHD Graphics for 14th Gen Intel Processors"
+    },
+    {
+        "id": 1608,
+        "name": "Intel UHD Graphics 730 (14th gen desktop)"
+    },
+    {
+        "id": 1609,
+        "name": "Intel UHD Graphics 710 (14th gen desktop)"
+    },
+    {
+        "id": 1610,
+        "name": "Intel Graphics (14th gen)"
+    },
+    {
+        "id": 1611,
+        "name": "AMD Radeon RX 7600M XT"
+    },
+    {
+        "id": 1612,
+        "name": "NVIDIA RTX A500 Embedded"
+    },
+    {
+        "id": 1613,
+        "name": "Intel Arc Graphics"
+    },
+    {
+        "id": 1614,
+        "name": "NVIDIA GeForce RTX 4070 SUPER"
+    },
+    {
+        "id": 1615,
+        "name": "NVIDIA GeForce RTX 4070 Ti SUPER"
+    },
+    {
+        "id": 1616,
+        "name": "AMD Radeon RX 7600 XT"
+    },
+    {
+        "id": 1617,
+        "name": "Intel UHD Graphics 730"
+    },
+    {
+        "id": 1618,
+        "name": "AMD Radeon 780M (desktop)"
+    },
+    {
+        "id": 1619,
+        "name": "AMD Radeon 760M (desktop)"
+    },
+    {
+        "id": 1620,
+        "name": "NVIDIA GeForce RTX 4080 SUPER"
+    },
+    {
+        "id": 1621,
+        "name": "NVIDIA GeForce RTX 4090 D"
+    },
+    {
+        "id": 1622,
+        "name": "AMD Radeon 740M"
+    },
+    {
+        "id": 1623,
+        "name": "AMD Radeon RX 6750 GRE 12 GB"
+    },
+    {
+        "id": 1624,
+        "name": "Intel Arc A350"
+    },
+    {
+        "id": 1625,
+        "name": "Intel Arc A310"
+    },
+    {
+        "id": 1626,
+        "name": "NVIDIA RTX 5000 Ada Generation"
+    },
+    {
+        "id": 1627,
+        "name": "NVIDIA Quadro RTX 5000 Mobile Refresh"
+    },
+    {
+        "id": 1628,
+        "name": "NVIDIA RTX 5000 Embedded Ada Generation"
+    },
+    {
+        "id": 1629,
+        "name": "NVIDIA RTX 5000 Mobile Ada Generation"
+    },
+    {
+        "id": 1630,
+        "name": "NVIDIA RTX 4000 Ada Generation"
+    },
+    {
+        "id": 1631,
+        "name": "NVIDIA RTX 3000 Mobile Ada Generation"
+    },
+    {
+        "id": 1632,
+        "name": "NVIDIA RTX 2000 Ada Generation"
+    },
+    {
+        "id": 1633,
+        "name": "NVIDIA RTX 4500 Ada Generation"
+    },
+    {
+        "id": 1634,
+        "name": "NVIDIA RTX A3000 Mobile 12 GB"
+    },
+    {
+        "id": 1635,
+        "name": "NVIDIA RTX A1000 Mobile"
+    },
+    {
+        "id": 1636,
+        "name": "NVIDIA RTX A1000 Mobile 6 GB"
+    },
+    {
+        "id": 1637,
+        "name": "NVIDIA RTX A1000 Embedded"
+    },
+    {
+        "id": 1638,
+        "name": "AMD Radeon RX 6850M XT"
+    },
+    {
+        "id": 1639,
+        "name": "AMD Radeon Pro WX 3200"
+    },
+    {
+        "id": 1640,
+        "name": "AMD Radeon 740M (desktop)"
+    },
+    {
+        "id": 1641,
+        "name": "NVIDIA GeForce RTX 3050 6 GB"
+    },
+    {
+        "id": 1642,
+        "name": "NVIDIA Tesla M6 Mobile"
+    },
+    {
+        "id": 1643,
+        "name": "NVIDIA Tesla M60"
+    },
+    {
+        "id": 1644,
+        "name": "12th Gen Intel UHD Graphics 32EU"
+    },
+    {
+        "id": 1645,
+        "name": "NVIDIA T1000 8 GB"
+    },
+    {
+        "id": 1646,
+        "name": "AMD Radeon Vega 8 (Barcelo-R)"
+    },
+    {
+        "id": 1647,
+        "name": "AMD Radeon Pro VII"
+    },
+    {
+        "id": 1648,
+        "name": "Intel Arc Pro A60"
+    },
+    {
+        "id": 1649,
+        "name": "AMD Radeon RX 6300"
+    },
+    {
+        "id": 1650,
+        "name": "AMD Radeon Vega 6 (Barcelo-R)"
+    },
+    {
+        "id": 1651,
+        "name": "Moore Threads MTT S80"
+    },
+    {
+        "id": 1652,
+        "name": "NVIDIA RTX 6000 Ada Generation"
+    },
+    {
+        "id": 1653,
+        "name": "AMD Radeon 890M"
+    },
+    {
+        "id": 1654,
+        "name": "AMD Radeon 880M"
+    },
+    {
+        "id": 1655,
+        "name": "AMD Radeon 620 Mobile"
+    },
+    {
+        "id": 1656,
+        "name": "AMD Radeon R8 M365DX"
+    },
+    {
+        "id": 1657,
+        "name": "AMD Radeon R7 M340"
+    },
+    {
+        "id": 1658,
+        "name": "AMD Radeon R8 M535DX"
+    },
+    {
+        "id": 1659,
+        "name": "AMD Radeon R7 M460"
+    },
+    {
+        "id": 1660,
+        "name": "AMD Radeon R7 A360"
+    },
+    {
+        "id": 1661,
+        "name": "AMD Radeon 530X Mobile"
+    },
+    {
+        "id": 1662,
+        "name": "AMD Radeon 535 Mobile"
+    },
+    {
+        "id": 1663,
+        "name": "AMD Radeon Graphics (Granite Ridge)"
+    },
+    {
+        "id": 1664,
+        "name": "NVIDIA GeForce RTX 4070 GDDR6"
+    },
+    {
+        "id": 1665,
+        "name": "NVIDIA Quadro M6000 24 GB"
+    },
+    {
+        "id": 1666,
+        "name": "NVIDIA RTX A500"
+    },
+    {
+        "id": 1667,
+        "name": "NVIDIA RTX 1000 Mobile Ada Generation"
+    },
+    {
+        "id": 1668,
+        "name": "Intel Arc Pro A40/A50"
+    },
+    {
+        "id": 1669,
+        "name": "Intel Graphics (Ultra 200 Series)"
+    },
+    {
+        "id": 1670,
+        "name": "NVIDIA RTX 500 Mobile Ada Generation"
+    },
+    {
+        "id": 1671,
+        "name": "AMD Radeon RX 6550M"
+    },
+    {
+        "id": 1672,
+        "name": "Intel Arc Graphics (Lunar Lake)"
+    },
+    {
+        "id": 1673,
+        "name": "NVIDIA L40S"
+    },
+    {
+        "id": 1674,
+        "name": "AMD Radeon RX 6750 GRE 10 GB"
+    },
+    {
+        "id": 1675,
+        "name": "NVIDIA RTX 2000 Embedded Ada Generation"
+    },
+    {
+        "id": 1676,
+        "name": "Intel Arc B580"
+    },
+    {
+        "id": 1677,
+        "name": "NVIDIA RTX 2000E Ada Generation"
+    },
+    {
+        "id": 1678,
+        "name": "AMD Radeon RX 7800M"
+    },
+    {
+        "id": 1679,
+        "name": "13th/14th Gen Intel UHD Graphics (mobile)"
+    },
+    {
+        "id": 1680,
+        "name": "Intel Arc B570"
+    },
+    {
+        "id": 1681,
+        "name": "NVIDIA RTX A400"
+    },
+    {
+        "id": 1682,
+        "name": "NVIDIA RTX A1000"
+    },
+    {
+        "id": 1683,
+        "name": "Qualcomm Adreno X1-45"
+    },
+    {
+        "id": 1684,
+        "name": "Qualcomm Adreno X1-85"
+    },
+    {
+        "id": 1685,
+        "name": "Intel Graphics (Twin Lake)"
+    },
+    {
+        "id": 1686,
+        "name": "NVIDIA GeForce RTX 5090"
+    },
+    {
+        "id": 1687,
+        "name": "NVIDIA GeForce RTX 5090 D"
+    },
+    {
+        "id": 1688,
+        "name": "NVIDIA GeForce RTX 5080"
+    },
+    {
+        "id": 1689,
+        "name": "AMD Radeon RX 7650 GRE"
+    },
+    {
+        "id": 1690,
+        "name": "Intel Arc 140T GPU"
+    },
+    {
+        "id": 1691,
+        "name": "Intel Graphics (Arrow Lake Mobile)"
+    },
+    {
+        "id": 1692,
+        "name": "Intel Arc 130T GPU"
+    },
+    {
+        "id": 1693,
+        "name": "AMD Radeon 8040S Graphics"
+    },
+    {
+        "id": 1694,
+        "name": "AMD Radeon 8050S Graphics"
+    },
+    {
+        "id": 1695,
+        "name": "AMD Radeon 8060S Graphics"
+    },
+    {
+        "id": 1696,
+        "name": "NVIDIA GeForce RTX 5070 Ti"
+    },
+    {
+        "id": 1697,
+        "name": "AMD Radeon 860M"
+    },
+    {
+        "id": 1698,
+        "name": "AMD Radeon 840M"
+    },
+    {
+        "id": 1699,
+        "name": "NVIDIA A800"
+    },
+    {
+        "id": 1700,
+        "name": "NVIDIA GeForce RTX 5070"
+    },
+    {
+        "id": 1701,
+        "name": "AMD Radeon RX 9070"
+    },
+    {
+        "id": 1702,
+        "name": "AMD Radeon RX 9070 XT"
+    },
+    {
+        "id": 1703,
+        "name": "Intel Arc A750E Graphics"
+    },
+    {
+        "id": 1704,
+        "name": "NVIDIA Quadro 400"
+    },
+    {
+        "id": 1705,
+        "name": "NVIDIA GeForce RTX 5090 (notebook)"
+    },
+    {
+        "id": 1706,
+        "name": "NVIDIA GeForce RTX 5080 (notebook)"
+    },
+    {
+        "id": 1707,
+        "name": "NVIDIA Tesla P6 Mobile"
+    },
+    {
+        "id": 1708,
+        "name": "Zhaoxin C-1190"
+    },
+    {
+        "id": 1709,
+        "name": "NVIDIA GeForce RTX 5060 Ti"
+    },
+    {
+        "id": 1710,
+        "name": "NVIDIA GeForce RTX 5060 Ti 16 GB"
+    },
+    {
+        "id": 1711,
+        "name": "NVIDIA GeForce RTX 5070 Ti (notebook)"
+    },
+    {
+        "id": 1712,
+        "name": "NVIDIA GeForce RTX 5070 (notebook)"
+    },
+    {
+        "id": 1713,
+        "name": "AMD RX 640"
+    },
+    {
+        "id": 1714,
+        "name": "NVIDIA RTX PRO 6000 Blackwell"
+    },
+    {
+        "id": 1715,
+        "name": "NVIDIA RTX PRO 1000 Blackwell Mobile"
+    },
+    {
+        "id": 1716,
+        "name": "NVIDIA RTX PRO 2000 Blackwell Mobile"
+    },
+    {
+        "id": 1717,
+        "name": "NVIDIA RTX PRO 3000 Blackwell Mobile"
+    },
+    {
+        "id": 1718,
+        "name": "NVIDIA RTX PRO 4000 Blackwell Mobile"
+    },
+    {
+        "id": 1719,
+        "name": "NVIDIA RTX PRO 5000 Blackwell Mobile"
+    },
+    {
+        "id": 1720,
+        "name": "NVIDIA GeForce RTX 5060"
+    },
+    {
+        "id": 1721,
+        "name": "NVIDIA GeForce RTX 5060 (notebook)"
+    },
+    {
+        "id": 1722,
+        "name": "AMD Radeon RX 9060 XT"
+    },
+    {
+        "id": 1723,
+        "name": "AMD Radeon RX 9060 XT 16 GB"
+    },
+    {
+        "id": 1724,
+        "name": "AMD Radeon RX 9070 GRE"
+    },
+    {
+        "id": 1725,
+        "name": "NVIDIA GeForce RTX 5050"
+    },
+    {
+        "id": 1726,
+        "name": "NVIDIA GeForce RTX 5050 (notebook)"
+    },
+    {
+        "id": 1727,
+        "name": "AMD Radeon AI PRO R9700"
+    },
+    {
+        "id": 1728,
+        "name": "NVIDIA GeForce MX570"
+    },
+    {
+        "id": 1729,
+        "name": "NVIDIA GeForce MX570 A"
+    },
+    {
+        "id": 1730,
+        "name": "AMD Radeon PRO W7400"
+    },
+    {
+        "id": 1731,
+        "name": "AMD Radeon RX 7400"
+    },
+    {
+        "id": 1732,
+        "name": "AMD Radeon RX 9060"
+    },
+    {
+        "id": 1733,
+        "name": "NVIDIA RTX 5090 D v2"
+    },
+    {
+        "id": 1734,
+        "name": "NVIDIA Quadro 5000M"
+    }
+]
