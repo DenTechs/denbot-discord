@@ -125,7 +125,7 @@ def process_youtube(messageToBot: str, message: discord.message):
             FetchedTranscript = ytt_api.fetch(videoID).to_raw_data()
             plainTranscript = ""
             for fragment in FetchedTranscript:
-                plainTranscript += f"{fragment.get("text")} "
+                plainTranscript += f"""{fragment.get("text")} """
 
             if len(plainTranscript) > 2000:
                 plainTranscript = f"{plainTranscript[0:2000]} {plainTranscript[-2000:]}" #cut off at 2k characters otherwise wont fit in context
