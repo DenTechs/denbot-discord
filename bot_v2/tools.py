@@ -10,9 +10,6 @@ from thefuzz import process
 logging.basicConfig(filename=config.LOG_FILENAME, level=config.LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s', filemode='a')
 logger = logging.getLogger(__name__)
 
-def test_function(boolean):
-    return "blue is the best color"
-
 def wolfram(search_query):
     query_string = search_query.get("search_query")
 
