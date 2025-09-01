@@ -1,6 +1,6 @@
 # DenBot Discord Bot
 
-A Discord bot that uses AI to respond to messages, process YouTube links, analyze images, and provide tools like Wolfram Alpha and GPU performance lookups.
+A Discord bot that uses AI to respond to messages, process YouTube links, analyze images, and provide tools like Wolfram Alpha and GPU performance lookups. Immitates an exagerated version of DenTech's personality.
 
 ## Features
 
