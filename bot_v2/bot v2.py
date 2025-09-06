@@ -210,7 +210,7 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
                     if content.type != "tool_use":
                         logger.debug(f"not tool, skipping")
                         continue
-                    logger.info(f"Found tool: {content.name}")
+                    logger.info(f"Found tool: {content.name} with input: {content.input}")
                     tool_result = await execute_tool(content.name, content.input)
                     tool_content.append({"type": "tool_result", 
                                          "tool_use_id": content.id,
