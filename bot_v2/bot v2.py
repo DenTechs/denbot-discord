@@ -15,6 +15,8 @@ import tools
 import moondream as md
 from PIL import Image
 import io
+import html
+import requests
 
 # Configure logging
 logging.basicConfig(filename=config.LOG_FILENAME, level=config.LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s', filemode='a')
@@ -141,6 +143,92 @@ def process_youtube(messageToBot: str, message: discord.message):
     logger.info("No youtube links found in message")
     return messageToBot # return unmodified message if youtube link not found
 
+async def process_reddit(messageToBot: str, message: discord.message) -> str:
+    text = message.content
+    pattern = r'https?://(?:www\.)?(?:reddit|rxddit)\.com[^\s]*'
+
+    matches = re.findall(pattern, text)
+    for link in matches:
+        try:
+            logger.info(f"Processing Reddit link: {link}")
+            link = link.replace("rxddit.com", "reddit.com")
+            if not link.endswith("/"):
+                link += "/"
+            link += ".json"
+            unescaped_link = html.unescape(link)
+
+            headers = {'User-Agent': 'Mozilla/5.0'}
+            page = requests.get(unescaped_link, headers=headers)
+            page_json = page.json()
+            
+            # Safely extract post data with null checks
+            post_data = page_json[0].get("data", {}).get("children", [])
+            if not post_data:
+                logger.warning("No post data found in Reddit JSON")
+                continue
+                
+            post = post_data[0].get("data", {})
+            subreddit = post.get("subreddit_name_prefixed", "unknown subreddit")
+            logger.info(f"Subreddit: {subreddit}")
+            title = post.get("title", "No title")
+            logger.info(f"Title: {title}")
+            body_text = post.get("selftext", "")
+            logger.info(f"Text: {body_text}")
+            
+            # Build the basic Reddit post info
+            reddit_info = f" A reddit link leads to a post from the {subreddit} subreddit.\nTitle: {title}"
+            if body_text:
+                reddit_info += f"\nText: {body_text}"
+            
+            # Check for image and process with moondream if available
+            image_description = ""
+            preview = post.get("preview")
+            if preview and preview.get("images"):
+                try:
+                    # Look for image with width 640
+                    images = preview.get("images", [])
+                    if images and images[0].get("resolutions"):
+                        resolutions = images[0].get("resolutions", [])
+                        image_url = None
+                        
+                        # Find resolution with width 640
+                        for resolution in resolutions:
+                            if resolution.get("width") == 640:
+                                image_url = resolution.get("url")
+                                break
+                        
+                        # If no 640 width found, use the first available resolution
+                        if not image_url and resolutions:
+                            image_url = resolutions[0].get("url")
+                            
+                        if image_url:
+                            # Unescape HTML entities in the URL
+                            image_url = html.unescape(image_url)
+                            logger.info(f"Found Reddit image URL: {image_url}")
+                            
+                            # Download and process the image with moondream
+                            image_response = requests.get(image_url, headers=headers)
+                            if image_response.status_code == 200:
+                                image = Image.open(io.BytesIO(image_response.content))
+                                MDResult = moondream_model.caption(image, length="normal")
+                                image_caption = MDResult.get("caption", "Unable to generate caption")
+                                image_description = f"\nImage: {image_caption}"
+                                logger.info(f"Generated caption for Reddit image: {image_caption}")
+                            else:
+                                logger.warning(f"Failed to download Reddit image: {image_response.status_code}")
+                except Exception as e:
+                    logger.error(f"Error processing Reddit image: {e}")
+                    image_description = "\nImage: Unable to process image"
+            
+            messageToBot += reddit_info + image_description + "\n"
+            
+        except Exception as e:
+            logger.error(f"Error processing Reddit link {link}: {e}")
+            messageToBot += f" A reddit link was found but could not be processed.\n"
+    
+    return messageToBot
+        
+
 async def process_attachments(messageToBot: str, message: discord.message):
     if not message.attachments:
         # no attachments found, return messsage without edits
@@ -233,6 +321,7 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
 async def preprocess_user_message(newUserMessage: discord.message) -> str:
     messageToBot = newUserMessage.content
     messageToBot = process_youtube(messageToBot, newUserMessage)
+    messageToBot = await process_reddit(messageToBot, newUserMessage)
 
     messageToBot = await process_attachments(messageToBot, newUserMessage)
 
