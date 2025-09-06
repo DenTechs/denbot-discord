@@ -7,6 +7,7 @@ A Discord bot that uses AI to respond to messages, process YouTube links, analyz
 - AI-powered responses using Anthropic Claude
 - YouTube transcript processing
 - Image recognition and captioning with Moondream
+- Reddit post reading with image recognition
 - Tool integration (Wolfram Alpha, 3DMark GPU lookup)
 - Conversation history management
 - Channel and user permission controls
