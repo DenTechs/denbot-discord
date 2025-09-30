@@ -270,7 +270,7 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
         # Emulate do while loop, keep running while there are tool calls and quit out once done
         while True:
             claudeResponse = await claudeClient.messages.create(
-                model="claude-sonnet-4-20250514",
+                model=config.MODEL_NAME,
                 max_tokens=2048,
                 # thinking={
                 #     "type": "enabled",

@@ -2,6 +2,7 @@ AI_BASE_URL = "http://localhost:1234/v1"
 MAX_TOKENS = 512
 TEMPERATURE = 0.6
 MAX_ATTEMPTS = 3
+MODEL_NAME = "claude-sonnet-4-5-20250929"
 
 WOLFRAM_MAX_CHARS = 500
 
