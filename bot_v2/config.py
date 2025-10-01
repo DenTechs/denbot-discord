@@ -6,6 +6,8 @@ MODEL_NAME = "claude-sonnet-4-5-20250929"
 
 WOLFRAM_MAX_CHARS = 500
 
+MAX_CONVERSATION_LENGTH = 30  # Maximum number of messages per user conversation
+
 # Logging configuration
 # Available levels: DEBUG, INFO, WARNING, ERROR, CRITICAL
 LOG_LEVEL = "INFO"

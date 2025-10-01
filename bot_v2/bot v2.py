@@ -24,9 +24,7 @@ logger = logging.getLogger(__name__)
 
 load_dotenv()
 BOT_API_KEY = os.getenv("BOT_API_KEY")
-AI_API_KEY = os.getenv("AI_API_KEY")
-ALLOWED_CHANNELS = os.getenv("ALLOWED_CHANNELS")
-OVERRIDE_USERS = os.getenv("OVERRIDE_USERS")
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 ALLOWED_CHANNELS = json.loads(os.getenv("ALLOWED_CHANNELS"))
 OVERRIDE_USERS = json.loads(os.getenv("OVERRIDE_USERS"))
 
@@ -34,7 +32,7 @@ with open("bot_v2/tools.json") as file:
     TOOLS = json.load(file)
 
 claudeClient = AsyncAnthropic(
-    api_key = os.getenv("ANTHROPIC_API_KEY")
+    api_key = ANTHROPIC_API_KEY
 )
 
 # Initialize moondream image recgocnition
@@ -83,6 +81,8 @@ def add_user_context(userID: int, userMessage: str, botResponse:str):
     if userID in userConversations:
         userConversations[userID].append({"role": "user", "content": userMessage})
         userConversations[userID].append({"role": "assistant", "content": botResponse})
+        # Trim conversation if it exceeds the limit
+        userConversations[userID] = trim_conversation(userConversations[userID])
     else:
         userConversations[userID] = [{"role": "user", "content": userMessage},
                                      {"role": "assistant", "content": botResponse}]
@@ -90,17 +90,37 @@ def add_user_context(userID: int, userMessage: str, botResponse:str):
 def append_user_context(userID: int, userMessage: str):
     if userID in userConversations:
         userConversations[userID].append({"role": "user", "content": userMessage})
+        # Trim conversation if it exceeds the limit
+        userConversations[userID] = trim_conversation(userConversations[userID])
     else:
         userConversations[userID] = [{"role": "user", "content": userMessage}]
 
         
 def set_user_context(userID: int, userMessage: str, botResponse:str):
-    userConversations[userID] = [{"role": "user", "content": userMessage},
-                                     {"role": "assistant", "content": botResponse}]
+    conversation = [{"role": "user", "content": userMessage},
+                   {"role": "assistant", "content": botResponse}]
+    # Apply trimming even for new conversations (shouldn't be needed but for consistency)
+    userConversations[userID] = trim_conversation(conversation)
     
 def clear_user_context(userID: int):
     userConversations[userID] = []
+
+def trim_conversation(conversation: list) -> list:
+    """
+    Trim conversation to stay within MAX_CONVERSATION_LENGTH limit.
+    Keeps the most recent messages and maintains user-assistant pairs.
+    """
+    if len(conversation) <= config.MAX_CONVERSATION_LENGTH:
+        return conversation
     
+    # Calculate how many messages to keep
+    messages_to_keep = config.MAX_CONVERSATION_LENGTH
+    
+    # Start from the end and work backwards to keep recent messages
+    trimmed = conversation[-messages_to_keep:]
+    
+    logger.info(f"Trimmed conversation from {len(conversation)} to {len(trimmed)} messages")
+    return trimmed
 
 def process_youtube(messageToBot: str, message: discord.message):
     # searches received message for youtube link, if found appends the transcript to the end of the message
@@ -130,7 +150,7 @@ def process_youtube(messageToBot: str, message: discord.message):
                 plainTranscript += f"""{fragment.get("text")} """
 
             if len(plainTranscript) > 2000:
-                plainTranscript = f"{plainTranscript[0:2000]} {plainTranscript[-2000:]}" #cut off at 2k characters otherwise wont fit in context
+                plainTranscript = f"{plainTranscript[0:2000]} {plainTranscript[-2000:]}" #cut off at 4k characters otherwise wont fit in context
 
             messageToBot += f" The youtube link has a video with the following transcript: {plainTranscript}"
             logger.debug(f"The youtube link has a video with the following transcript: {plainTranscript}")
@@ -257,17 +277,27 @@ async def process_attachments(messageToBot: str, message: discord.message):
 
 async def execute_tool(tool_name, tool_input):
     try:
+        # Validate tool_name
+        if not tool_name or not isinstance(tool_name, str):
+            logger.error(f"Invalid tool name: {tool_name}")
+            return "Invalid tool name provided"
+        
+        # Validate tool_input
+        if tool_input is None:
+            logger.error(f"Tool input is None for tool: {tool_name}")
+            return f"No input provided for tool: {tool_name}"
+        
         if hasattr(tools, tool_name):
             tool_function = getattr(tools, tool_name)
             result = tool_function(tool_input)
             logger.info(f"Got result from tool: {result}")
             return result
         else:
-            logger.warning("Requested function not found in tools.py")
-            return "Requested tool not found"
+            logger.warning(f"Requested function '{tool_name}' not found in tools.py")
+            return f"Requested tool '{tool_name}' not found"
     except Exception as e:
-        logger.error(f"Error calling tool: {e}")
-        return f"Error calling tool: {e}"
+        logger.error(f"Error calling tool '{tool_name}': {e}")
+        return f"Error calling tool '{tool_name}': {e}"
 
 async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) -> tuple[str, Optional[discord.Message]]:
     try:
@@ -323,6 +353,7 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
             
     except Exception as e:
         logger.error(f"Error: {e}")
+        return f"Failed to generate text", None
 
 async def preprocess_user_message(newUserMessage: discord.message) -> str:
     messageToBot = newUserMessage.content
@@ -434,7 +465,7 @@ async def add_to_convo(interaction: discord.Interaction, message: discord.Messag
         logger.error(f"Error: {e}")
 
 @add_to_convo.error
-async def continue_conversation_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+async def add_to_convo_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
     if isinstance(error, app_commands.CheckFailure):
         logger.info(f"User {interaction.user.name} tried to add to their conversation history but did not have permission.")
         await interaction.response.send_message("You do not have permission to use this.", ephemeral=True)
@@ -452,7 +483,7 @@ async def clear_convo(interaction: discord.Interaction, message: discord.Message
     await interaction.response.send_message(content="Cleared your conversation history", ephemeral=True)
 
 @clear_convo.error
-async def continue_conversation_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
+async def clear_convo_error(interaction: discord.Interaction, error: app_commands.AppCommandError):
     if isinstance(error, app_commands.CheckFailure):
         logger.info(f"User {interaction.user.name} tried to clear their conversation history but did not have permission.")
         await interaction.response.send_message("You do not have permission to use this.", ephemeral=True)
