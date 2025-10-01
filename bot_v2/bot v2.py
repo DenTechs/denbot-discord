@@ -236,16 +236,22 @@ async def process_attachments(messageToBot: str, message: discord.message):
         return messageToBot
     
     for attachment in message.attachments:
-        if "image" in attachment.content_type:
-            logger.info(f"Found image attachments: {attachment.content_type}")
-            # download attachment and store it in variable to process
-            image_data = await attachment.read()
-            image = Image.open(io.BytesIO(image_data))
+        try:
+            if "image" in attachment.content_type:
+                logger.info(f"Found image attachment: {attachment.filename} ({attachment.content_type})")
+                # download attachment and store it in variable to process
+                image_data = await attachment.read()
+                image = Image.open(io.BytesIO(image_data))
 
-            MDResult = moondream_model.caption(image, length="normal")
-            imageCaption = MDResult.get("caption")
-            messageToBot = messageToBot + f" (An attached image shows: {imageCaption})"
-            logger.info(f"Generated caption for image: {imageCaption}")
+                MDResult = moondream_model.caption(image, length="normal")
+                imageCaption = MDResult.get("caption")
+                messageToBot = messageToBot + f" (An attached image shows: {imageCaption})"
+                logger.info(f"Generated caption for image {attachment.filename}: {imageCaption}")
+            else:
+                logger.info(f"Skipping non-image attachment: {attachment.filename} ({attachment.content_type})")
+        except Exception as e:
+            logger.error(f"Error processing attachment {attachment.filename}: {e}")
+            messageToBot = messageToBot + f" (An attached image could not be processed: {attachment.filename})"
 
     return messageToBot
 
@@ -347,9 +353,15 @@ async def handle_chat_request(interaction: discord.Interaction, newUserMessage: 
     reply, status_message = await send_to_ai(conversationToBot, interaction)
 
     if continueConversation:
-        add_user_context(interaction.user.id, newUserMessage.content, reply)
+        add_user_context(interaction.user.id, latestMessageToBot, reply)
+        logger.info(f"Added processed message to conversation history for user {interaction.user.id}")
     else:
-        set_user_context(interaction.user.id, newUserMessage.content, reply)
+        set_user_context(interaction.user.id, latestMessageToBot, reply)
+        logger.info(f"Set new conversation history for user {interaction.user.id}")
+    
+    # Log if the processed message differs from original (indicates attachment processing occurred)
+    if latestMessageToBot != newUserMessage.content:
+        logger.info(f"Processed message differs from original - attachments were processed and stored")
 
     return reply, status_message
 
