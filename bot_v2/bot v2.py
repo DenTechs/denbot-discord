@@ -491,5 +491,5 @@ async def clear_convo_error(interaction: discord.Interaction, error: app_command
         # Handle other errors or re-raise
         raise error
 
-
-client.run(BOT_API_KEY)
+if __name__ == "__main__":
+    client.run(BOT_API_KEY)
