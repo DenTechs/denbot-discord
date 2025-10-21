@@ -86,22 +86,32 @@ def threedmark_gpu_performance_lookup(input):
 
 def web_research(input):
     """
-    Performs web research using Claude API with web search enabled.
+    Performs web research using Claude API with web search tool enabled.
     Returns formatted search results to the main conversation.
     """
     try:
         search_query = input.get("search_query")
         logger.info(f"Performing web research for query: {search_query}")
 
-        # Initialize Claude client for web search
+        # Initialize Claude client for web search with beta header
         ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-        client = Anthropic(api_key=ANTHROPIC_API_KEY)
+        client = Anthropic(
+            api_key=ANTHROPIC_API_KEY,
+            default_headers={"anthropic-beta": "web-search-2025-03-05"}
+        )
+
+        # Define the web search tool
+        web_search_tool = {
+            "type": "web_search_20250305",
+            "name": "web_search",
+            "max_uses": 5  # Limit searches per request
+        }
 
         # Create a message with web search enabled
         response = client.messages.create(
             model=config.MODEL_NAME,
             max_tokens=config.WEB_SEARCH_MAX_TOKENS,
-            anthropic_beta="web-search-2025-02-01",
+            tools=[web_search_tool],
             messages=[{
                 "role": "user",
                 "content": f"Search the web and provide a concise summary of the most relevant and current information about: {search_query}"
