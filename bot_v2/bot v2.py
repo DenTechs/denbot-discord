@@ -316,7 +316,10 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
                         "text": config.SYSTEM_PROMPT,
                         "cache_control": {"type": "ephemeral"}}],
                 messages=conversationToBot,
-                tools=TOOLS
+                tools=TOOLS,
+                extra_headers={
+                    "anthropic-beta": "web-fetch-2025-09-10"
+                }
             )
 
             #print(claudeResponse)
