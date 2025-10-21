@@ -103,11 +103,7 @@ def web_research(input):
         # Define the web search tool
         web_search_tool = {
             "type": "web_search_20250305",
-            "name": "web_search",
-            "max_uses": 5,  # Limit searches per request
-            "citations": {
-                "enabled": False
-            },
+            "name": "web_search"
         }
 
         # Create a message with web search enabled
