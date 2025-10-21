@@ -17,6 +17,7 @@ from PIL import Image
 import io
 import html
 import requests
+from datetime import datetime
 
 # Configure logging
 logging.basicConfig(filename=config.LOG_FILENAME, level=config.LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s', filemode='a')
@@ -313,7 +314,7 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
                 #     "budget_tokens": 1024
                 # },
                 system=[{"type": "text",
-                        "text": config.SYSTEM_PROMPT,
+                        "text": config.SYSTEM_PROMPT.format(current_date=datetime.now().strftime("%B %d, %Y")),
                         "cache_control": {"type": "ephemeral"}}],
                 messages=conversationToBot,
                 tools=TOOLS

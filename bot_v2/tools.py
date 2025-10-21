@@ -6,6 +6,7 @@ from thefuzz import fuzz
 import json
 from thefuzz import process
 from anthropic import Anthropic
+from datetime import datetime
 
 # Configure logging
 logging.basicConfig(filename=config.LOG_FILENAME, level=config.LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s', filemode='a')
@@ -107,9 +108,11 @@ def web_research(input):
         }
 
         # Create a message with web search enabled
+        current_date = datetime.now().strftime("%B %d, %Y")
         response = client.messages.create(
             model=config.SUBAGENT_MODEL_NAME,
             max_tokens=config.WEB_SEARCH_MAX_TOKENS,
+            system=f"You are a helpful AI assistant. Current date: {current_date}",
             tools=[web_search_tool],
             messages=[{
                 "role": "user",
@@ -160,9 +163,11 @@ def website_summary(input):
         }
 
         # Create a message with web fetch enabled
+        current_date = datetime.now().strftime("%B %d, %Y")
         response = client.messages.create(
             model=config.SUBAGENT_MODEL_NAME,
             max_tokens=config.WEB_SEARCH_MAX_TOKENS,
+            system=f"You are a helpful AI assistant. Current date: {current_date}",
             tools=[web_fetch_tool],
             messages=[{
                 "role": "user",
