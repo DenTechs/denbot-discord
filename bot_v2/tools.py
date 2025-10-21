@@ -112,7 +112,7 @@ def web_research(input):
 
         # Create a message with web search enabled
         response = client.messages.create(
-            model=config.MODEL_NAME,
+            model=config.SUBAGENT_MODEL_NAME,
             max_tokens=config.WEB_SEARCH_MAX_TOKENS,
             tools=[web_search_tool],
             messages=[{
@@ -165,7 +165,7 @@ def website_summary(input):
 
         # Create a message with web fetch enabled
         response = client.messages.create(
-            model=config.MODEL_NAME,
+            model=config.SUBAGENT_MODEL_NAME,
             max_tokens=config.WEB_SEARCH_MAX_TOKENS,
             tools=[web_fetch_tool],
             messages=[{
