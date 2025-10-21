@@ -353,10 +353,6 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
                         continue
                     logger.info(f"Found tool: {content.name} with input: {content.input}")
                     
-                    # Update status to show current tool being executed
-                    current_tool_message = f"DenBot is executing {content.name}..."
-                    await status_followup.edit(content=current_tool_message)
-                    
                     tool_result = await execute_tool(content.name, content.input)
                     tool_content.append({"type": "tool_result", 
                                          "tool_use_id": content.id,
