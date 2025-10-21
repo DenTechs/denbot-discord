@@ -46,8 +46,19 @@
         }
     },
     {
-        "type": "web_fetch_20250910",
-        "name": "web_fetch",
-        "max_uses": 5
+        "name": "website_summary",
+        "description": "Fetch and summarize the content of a website. This tool should ALWAYS be used whenever a URL or web link is found in the user's prompt. It retrieves the full content from the specified webpage and provides a concise summary including the page title, main topic, key points, and important information. Use this tool automatically for any URLs mentioned, regardless of the context.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "description": "The URL of the website to fetch and summarize"
+                }
+            },
+            "required": [
+                "url"
+            ]
+        }
     }
 ]

@@ -135,3 +135,56 @@ def web_research(input):
     except Exception as e:
         logger.error(f"Error performing web research: {e}")
         return f"Error performing web research: {str(e)}"
+
+def website_summary(input):
+    """
+    Fetches and summarizes website content using Claude API with web fetch tool enabled.
+    Returns a concise summary of the website's main content, title, and key points.
+    """
+    try:
+        url = input.get("url")
+        logger.info(f"Fetching website summary for URL: {url}")
+
+        # Initialize Claude client for web fetch with beta header
+        ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+        client = Anthropic(
+            api_key=ANTHROPIC_API_KEY,
+            default_headers={"anthropic-beta": "web-fetch-2025-09-10"}
+        )
+
+        # Define the web fetch tool
+        web_fetch_tool = {
+            "type": "web_fetch_20250910",
+            "name": "web_fetch",
+            "max_uses": 3,  # Limit fetches per request
+            "citations": {
+                "enabled": False
+            },
+            "max_content_tokens": 10000  # Limit content size
+        }
+
+        # Create a message with web fetch enabled
+        response = client.messages.create(
+            model=config.MODEL_NAME,
+            max_tokens=config.WEB_SEARCH_MAX_TOKENS,
+            tools=[web_fetch_tool],
+            messages=[{
+                "role": "user",
+                "content": f"Please fetch the content from {url} and provide a concise summary including: 1) The page title, 2) Main topic/purpose, 3) Key points or highlights, 4) Any important information. Keep the summary brief but informative."
+            }]
+        )
+
+        # Extract the text response
+        result_text = ""
+        for content_block in response.content:
+            if content_block.type == "text":
+                result_text += content_block.text
+
+        logger.info(f"Website summary completed successfully")
+        logger.debug(f"Website summary result: {result_text}")
+
+        return result_text if result_text else "Unable to fetch or summarize the website content."
+
+    except Exception as e:
+        logger.error(f"Error fetching website summary: {e}")
+        return f"Error fetching website summary: {str(e)}"
