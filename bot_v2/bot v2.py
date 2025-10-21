@@ -323,9 +323,25 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
 
             if claudeResponse.stop_reason == "tool_use":
                 logger.info("Detected tool call(s)")
-                # Only do followup once, dont send it multiple times
+                
+                # Collect tool names for dynamic message
+                tool_names = []
+                for content in claudeResponse.content:
+                    if content.type == "tool_use":
+                        tool_names.append(content.name)
+                
+                # Create dynamic status message
+                if len(tool_names) == 1:
+                    status_message = f"DenBot is using {tool_names[0]}..."
+                else:
+                    status_message = f"DenBot is using {len(tool_names)} tools: {', '.join(tool_names)}..."
+                
+                # Send or update status message
                 if status_followup is None:
-                    status_followup = await interaction.followup.send("DenBot is processing tool calls...")
+                    status_followup = await interaction.followup.send(status_message)
+                else:
+                    await status_followup.edit(content=status_message)
+                
                 conversationToBot.append({"role": "assistant", "content": claudeResponse.content})
 
                 tool_content = []
@@ -335,6 +351,11 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
                         logger.debug(f"not tool, skipping")
                         continue
                     logger.info(f"Found tool: {content.name} with input: {content.input}")
+                    
+                    # Update status to show current tool being executed
+                    current_tool_message = f"DenBot is executing {content.name}..."
+                    await status_followup.edit(content=current_tool_message)
+                    
                     tool_result = await execute_tool(content.name, content.input)
                     tool_content.append({"type": "tool_result", 
                                          "tool_use_id": content.id,
