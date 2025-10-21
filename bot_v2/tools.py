@@ -5,6 +5,7 @@ import logging
 from thefuzz import fuzz
 import json
 from thefuzz import process
+from anthropic import Anthropic
 
 # Configure logging
 logging.basicConfig(filename=config.LOG_FILENAME, level=config.LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s', filemode='a')
@@ -82,3 +83,42 @@ def threedmark_gpu_performance_lookup(input):
     except Exception as e:
         logger.error(f"Error getting gpu performance: {e}")
         return f"Error getting gpu performance: {e}"
+
+def web_research(input):
+    """
+    Performs web research using Claude API with web search enabled.
+    Returns formatted search results to the main conversation.
+    """
+    try:
+        search_query = input.get("search_query")
+        logger.info(f"Performing web research for query: {search_query}")
+
+        # Initialize Claude client for web search
+        ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+        client = Anthropic(api_key=ANTHROPIC_API_KEY)
+
+        # Create a message with web search enabled
+        response = client.messages.create(
+            model=config.MODEL_NAME,
+            max_tokens=config.WEB_SEARCH_MAX_TOKENS,
+            anthropic_beta="web-search-2025-02-01",
+            messages=[{
+                "role": "user",
+                "content": f"Search the web and provide a concise summary of the most relevant and current information about: {search_query}"
+            }]
+        )
+
+        # Extract the text response
+        result_text = ""
+        for content_block in response.content:
+            if content_block.type == "text":
+                result_text += content_block.text
+
+        logger.info(f"Web research completed successfully")
+        logger.debug(f"Web research result: {result_text}")
+
+        return result_text if result_text else "No results found for the search query."
+
+    except Exception as e:
+        logger.error(f"Error performing web research: {e}")
+        return f"Error performing web research: {str(e)}"

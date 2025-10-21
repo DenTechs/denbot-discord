@@ -28,5 +28,21 @@
                 "gpu_model"
             ]
         }
+    },
+    {
+        "name": "web_research",
+        "description": "Search the web for current information, news, facts, or recent events. Only use this tool if specifically asked by the user. This tool is helpful when you need up-to-date information that may not be in your training data, such as current events, recent product releases, latest tech news, real-time data, or any information that changes frequently. The tool will perform a web search and return relevant results.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "search_query": {
+                    "type": "string",
+                    "description": "The search query to look up on the web"
+                }
+            },
+            "required": [
+                "search_query"
+            ]
+        }
     }
 ]

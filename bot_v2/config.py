@@ -5,6 +5,7 @@ MAX_ATTEMPTS = 3
 MODEL_NAME = "claude-haiku-4-5-20251001"
 
 WOLFRAM_MAX_CHARS = 500
+WEB_SEARCH_MAX_TOKENS = 1024  # Maximum tokens for web search responses
 
 MAX_CONVERSATION_LENGTH = 30  # Maximum number of messages per user conversation
 
