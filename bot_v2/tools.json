@@ -60,5 +60,26 @@
                 "url"
             ]
         }
+    },
+    {
+        "name": "code_execution",
+        "description": "Execute code in a secure sandbox environment. This tool can run Python scripts, JavaScript code, bash commands, perform data analysis, and handle complex calculations. Use this tool when users ask to run code, analyze data, perform calculations, or any task that requires computational work. The tool supports multiple programming languages and returns execution results including output, and errors.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string",
+                    "description": "The code to execute"
+                },
+                "language": {
+                    "type": "string",
+                    "description": "The programming language (python, javascript, bash, etc.). Defaults to python if not specified.",
+                    "enum": ["python", "py", "javascript", "js", "node", "bash", "shell", "sh"]
+                }
+            },
+            "required": [
+                "code"
+            ]
+        }
     }
 ]

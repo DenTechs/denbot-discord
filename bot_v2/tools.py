@@ -112,7 +112,7 @@ def web_research(input):
         response = client.messages.create(
             model=config.SUBAGENT_MODEL_NAME,
             max_tokens=config.WEB_SEARCH_MAX_TOKENS,
-            system=f"You are a helpful AI assistant. Current date: {current_date}",
+            system=f"You are a helpful AI sub-agent providing information to a master agent. Current date: {current_date}",
             tools=[web_search_tool],
             messages=[{
                 "role": "user",
@@ -167,7 +167,7 @@ def website_summary(input):
         response = client.messages.create(
             model=config.SUBAGENT_MODEL_NAME,
             max_tokens=config.WEB_SEARCH_MAX_TOKENS,
-            system=f"You are a helpful AI assistant. Current date: {current_date}",
+            system=f"You are a helpful AI sub-agent providing information to a master agent. Current date: {current_date}",
             tools=[web_fetch_tool],
             messages=[{
                 "role": "user",
@@ -189,3 +189,80 @@ def website_summary(input):
     except Exception as e:
         logger.error(f"Error fetching website summary: {e}")
         return f"Error fetching website summary: {str(e)}"
+
+def code_execution(input):
+    """
+    Executes code using Claude's code execution tool in a secure sandbox environment.
+    Supports Python, JavaScript, bash commands, file operations, and data analysis.
+    Returns execution results including output, errors, and any generated files.
+    """
+    try:
+        code = input.get("code", "")
+        language = input.get("language", "python")  # Default to python if not specified
+        logger.info(f"Executing {language} code: {code[:100]}...")
+
+        # Initialize Claude client for code execution with beta header
+        ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+        client = Anthropic(
+            api_key=ANTHROPIC_API_KEY,
+            default_headers={"anthropic-beta": "code-execution-2025-08-25"}
+        )
+
+        # Define the code execution tool
+        code_execution_tool = {
+            "type": "code_execution_20250825",
+            "name": "code_execution"
+        }
+
+        # Create a message with code execution enabled
+        current_date = datetime.now().strftime("%B %d, %Y")
+        
+        # Format the request based on language
+        if language.lower() in ["python", "py"]:
+            prompt = f"Execute this Python code and provide the results:\n\n```python\n{code}\n```"
+        elif language.lower() in ["javascript", "js", "node"]:
+            prompt = f"Execute this JavaScript code and provide the results:\n\n```javascript\n{code}\n```"
+        elif language.lower() in ["bash", "shell", "sh"]:
+            prompt = f"Execute this bash command and provide the results:\n\n```bash\n{code}\n```"
+        else:
+            prompt = f"Execute this {language} code and provide the results:\n\n```\n{code}\n```"
+
+        response = client.messages.create(
+            model=config.SUBAGENT_MODEL_NAME,
+            max_tokens=config.CODE_EXECUTION_MAX_TOKENS,
+            system=f"You are a helpful AI sub-agent with code execution capabilities providing information to a master agent. Current date: {current_date}",
+            tools=[code_execution_tool],
+            messages=[{
+                "role": "user",
+                "content": prompt
+            }]
+        )
+
+        # Extract the text response and any tool results
+        result_text = ""
+        execution_output = ""
+        
+        for content_block in response.content:
+            if content_block.type == "text":
+                result_text += content_block.text
+            elif hasattr(content_block, 'type') and content_block.type in ["bash_code_execution_tool_result", "text_editor_code_execution_tool_result"]:
+                # Extract execution results
+                if hasattr(content_block, 'content'):
+                    if hasattr(content_block.content, 'stdout'):
+                        execution_output += f"Output: {content_block.content.stdout}\n"
+                    if hasattr(content_block.content, 'stderr') and content_block.content.stderr:
+                        execution_output += f"Errors: {content_block.content.stderr}\n"
+
+        # Combine results
+        final_result = result_text
+        if execution_output:
+            final_result += f"\n\nExecution Details:\n{execution_output}"
+
+        logger.info(f"Code execution completed successfully")
+        logger.debug(f"Code execution result: {final_result}")
+
+        return final_result if final_result else "Code executed but no output was generated."
+
+    except Exception as e:
+        logger.error(f"Error executing code: {e}")
+        return f"Error executing code: {str(e)}"
