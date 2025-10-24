@@ -345,18 +345,34 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
                 
                 conversationToBot.append({"role": "assistant", "content": claudeResponse.content})
 
-                tool_content = []
+                # Collect all tool calls for parallel execution
+                tool_calls = []
                 for content in claudeResponse.content:
                     logger.debug(f"Found content: {content.type}")
                     if content.type != "tool_use":
                         logger.debug(f"not tool, skipping")
                         continue
                     logger.info(f"Found tool: {content.name} with input: {content.input}")
+                    tool_calls.append(content)
+                
+                # Execute all tools in parallel
+                if tool_calls:
+                    tool_tasks = [execute_tool(call.name, call.input) for call in tool_calls]
+                    tool_results = await asyncio.gather(*tool_tasks, return_exceptions=True)
                     
-                    tool_result = await execute_tool(content.name, content.input)
-                    tool_content.append({"type": "tool_result", 
-                                         "tool_use_id": content.id,
-                                         "content": tool_result})
+                    # Build tool content with proper mapping and error handling
+                    tool_content = []
+                    for call, result in zip(tool_calls, tool_results):
+                        # Handle exceptions gracefully
+                        if isinstance(result, Exception):
+                            logger.error(f"Tool {call.name} failed with exception: {result}")
+                            result = f"Error executing tool {call.name}: {str(result)}"
+                        
+                        tool_content.append({"type": "tool_result",
+                                             "tool_use_id": call.id,
+                                             "content": result})
+                else:
+                    tool_content = []
                     
                 conversationToBot.append({"role": "user",
                                           "content": tool_content})

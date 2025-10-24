@@ -2,8 +2,8 @@ AI_BASE_URL = "http://localhost:1234/v1"
 MAX_TOKENS = 512
 TEMPERATURE = 0.6
 MAX_ATTEMPTS = 3
-MODEL_NAME = "claude-haiku-4-5-20251001"
-SUBAGENT_MODEL_NAME = "claude-haiku-4-5-20251001"
+MODEL_NAME = "claude-sonnet-4-5"
+SUBAGENT_MODEL_NAME = "claude-haiku-4-5"
 
 WOLFRAM_MAX_CHARS = 500
 WEB_SEARCH_MAX_TOKENS = 1024  # Maximum tokens for web search responses
