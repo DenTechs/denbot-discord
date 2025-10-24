@@ -309,10 +309,10 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
             claudeResponse = await claudeClient.messages.create(
                 model=config.MODEL_NAME,
                 max_tokens=4096,
-                thinking={
-                    "type": "enabled",
-                    "budget_tokens": 2048
-                },
+                # thinking={
+                #     "type": "enabled",
+                #     "budget_tokens": 2048
+                # },
                 system=[{"type": "text",
                         "text": config.SYSTEM_PROMPT.format(current_date=datetime.now().strftime("%B %d, %Y")),
                         "cache_control": {"type": "ephemeral"}}],
