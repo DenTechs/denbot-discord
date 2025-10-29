@@ -1,0 +1,8 @@
+discord.py
+anthropic
+python-dotenv
+youtube-transcript-api
+moondream
+Pillow
+requests
+thefuzz
