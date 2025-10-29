@@ -13,7 +13,6 @@ load_dotenv()
 WOLFRAM_MAX_CHARS = int(os.getenv("WOLFRAM_MAX_CHARS"))
 SUBAGENT_MODEL_NAME = os.getenv("SUBAGENT_MODEL_NAME")
 WEB_SEARCH_MAX_TOKENS = int(os.getenv("WEB_SEARCH_MAX_TOKENS"))
-LOG_LEVEL = os.getenv("LOG_LEVEL")
 LOG_FILENAME = os.getenv("LOG_FILENAME")
 
 # Configure logging to stdout for Docker

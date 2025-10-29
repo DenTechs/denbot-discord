@@ -1,7 +1,7 @@
 services:
   denbot:
-    build: .
+    image: dentechs/denbot-discord:latest
     container_name: denbot-discord
     env_file:
-      - .env
+      - stack.env
     restart: unless-stopped

@@ -34,7 +34,6 @@ WOLFRAM_MAX_CHARS = int(os.getenv("WOLFRAM_MAX_CHARS"))
 WEB_SEARCH_MAX_TOKENS = int(os.getenv("WEB_SEARCH_MAX_TOKENS"))
 MAX_CONVERSATION_LENGTH = int(os.getenv("MAX_CONVERSATION_LENGTH"))
 LOG_LEVEL = os.getenv("LOG_LEVEL")
-LOG_FILENAME = os.getenv("LOG_FILENAME")
 SYSTEM_PROMPT = os.getenv("SYSTEM_PROMPT")
 
 # Configure logging to stdout for Docker
