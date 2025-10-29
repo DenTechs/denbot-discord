@@ -10,14 +10,14 @@ from datetime import datetime
 from dotenv import load_dotenv
 
 load_dotenv()
-WOLFRAM_MAX_CHARS = os.getenv("WOLFRAM_MAX_CHARS")
+WOLFRAM_MAX_CHARS = int(os.getenv("WOLFRAM_MAX_CHARS"))
 SUBAGENT_MODEL_NAME = os.getenv("SUBAGENT_MODEL_NAME")
-WEB_SEARCH_MAX_TOKENS = os.getenv("WEB_SEARCH_MAX_TOKENS")
+WEB_SEARCH_MAX_TOKENS = int(os.getenv("WEB_SEARCH_MAX_TOKENS"))
 LOG_LEVEL = os.getenv("LOG_LEVEL")
 LOG_FILENAME = os.getenv("LOG_FILENAME")
 
-# Configure logging
-logging.basicConfig(filename=LOG_FILENAME, level=LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s', filemode='a')
+# Configure logging to stdout for Docker
+logging.basicConfig(level=LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 def wolfram(search_query):

@@ -1,0 +1,7 @@
+services:
+  denbot:
+    build: .
+    container_name: denbot-discord
+    env_file:
+      - .env
+    restart: unless-stopped

@@ -27,18 +27,18 @@ ALLOWED_CHANNELS = json.loads(os.getenv("ALLOWED_CHANNELS"))
 OVERRIDE_USERS = json.loads(os.getenv("OVERRIDE_USERS"))
 WOLFRAM_APPID = os.getenv("WOLFRAM_APPID")
 MOONDREAM_API_KEY = os.getenv("MOONDREAM_API_KEY")
-MAX_TOKENS = os.getenv("MAX_TOKENS")
+MAX_TOKENS = int(os.getenv("MAX_TOKENS"))
 MODEL_NAME = os.getenv("MODEL_NAME")
 SUBAGENT_MODEL_NAME = os.getenv("SUBAGENT_MODEL_NAME")
-WOLFRAM_MAX_CHARS = os.getenv("WOLFRAM_MAX_CHARS")
-WEB_SEARCH_MAX_TOKENS = os.getenv("WEB_SEARCH_MAX_TOKENS")
-MAX_CONVERSATION_LENGTH = os.getenv("MAX_CONVERSATION_LENGTH")
+WOLFRAM_MAX_CHARS = int(os.getenv("WOLFRAM_MAX_CHARS"))
+WEB_SEARCH_MAX_TOKENS = int(os.getenv("WEB_SEARCH_MAX_TOKENS"))
+MAX_CONVERSATION_LENGTH = int(os.getenv("MAX_CONVERSATION_LENGTH"))
 LOG_LEVEL = os.getenv("LOG_LEVEL")
 LOG_FILENAME = os.getenv("LOG_FILENAME")
 SYSTEM_PROMPT = os.getenv("SYSTEM_PROMPT")
 
-# Configure logging
-logging.basicConfig(filename=LOG_FILENAME, level=LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s', filemode='a')
+# Configure logging to stdout for Docker
+logging.basicConfig(level=LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 with open("tools.json") as file:
@@ -382,8 +382,8 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
                 return final_text, status_followup
             
     except Exception as e:
-        logger.error(f"Error: {e}")
-        return f"Failed to generate text", None
+        logger.error(f"Error in send_to_ai: {e}", exc_info=True)
+        return f"Failed to generate text: {str(e)}", None
 
 async def preprocess_user_message(newUserMessage: discord.message) -> str:
     messageToBot = newUserMessage.content
@@ -448,8 +448,11 @@ async def ask_denbot_error(interaction: discord.Interaction, error: app_commands
         logger.info(f"User {interaction.user.name} tried to ask denbot but did not have permission.")
         await interaction.response.send_message("You do not have permission to use this.", ephemeral=True)
     else:
-        # Handle other errors or re-raise
-        raise error
+        logger.error(f"Error in ask_denbot: {error}", exc_info=True)
+        try:
+            await interaction.followup.send("An error occurred while processing your request.", ephemeral=True)
+        except:
+            pass
 
 @client.tree.context_menu(name="2) Continue conversation")
 @app_commands.allowed_installs(guilds=True, users=True)
@@ -473,8 +476,11 @@ async def continue_conversation_error(interaction: discord.Interaction, error: a
         logger.info(f"User {interaction.user.name} tried to continue their conversation history but did not have permission.")
         await interaction.response.send_message("You do not have permission to use this.", ephemeral=True)
     else:
-        # Handle other errors or re-raise
-        raise error   
+        logger.error(f"Error in continue_conversation: {error}", exc_info=True)
+        try:
+            await interaction.followup.send("An error occurred while processing your request.", ephemeral=True)
+        except:
+            pass   
     
 @client.tree.context_menu(name="3) Add to conversation history")
 @app_commands.allowed_installs(guilds=True, users=True)
@@ -499,8 +505,11 @@ async def add_to_convo_error(interaction: discord.Interaction, error: app_comman
         logger.info(f"User {interaction.user.name} tried to add to their conversation history but did not have permission.")
         await interaction.response.send_message("You do not have permission to use this.", ephemeral=True)
     else:
-        # Handle other errors or re-raise
-        raise error
+        logger.error(f"Error in add_to_convo: {error}", exc_info=True)
+        try:
+            await interaction.followup.send("An error occurred while processing your request.", ephemeral=True)
+        except:
+            pass
     
 @client.tree.context_menu(name="4) Clear conversation history")
 @app_commands.allowed_installs(guilds=True, users=True)
@@ -517,8 +526,11 @@ async def clear_convo_error(interaction: discord.Interaction, error: app_command
         logger.info(f"User {interaction.user.name} tried to clear their conversation history but did not have permission.")
         await interaction.response.send_message("You do not have permission to use this.", ephemeral=True)
     else:
-        # Handle other errors or re-raise
-        raise error
+        logger.error(f"Error in clear_convo: {error}", exc_info=True)
+        try:
+            await interaction.followup.send("An error occurred while processing your request.", ephemeral=True)
+        except:
+            pass
 
 
 client.run(BOT_API_KEY)
