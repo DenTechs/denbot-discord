@@ -134,7 +134,7 @@ def trim_conversation(conversation: list) -> list:
     logger.info(f"Trimmed conversation from {len(conversation)} to {len(trimmed)} messages")
     return trimmed
 
-def process_youtube(messageToBot: str, message: discord.message):
+async def process_youtube(messageToBot: str, message: discord.message):
     # searches received message for youtube link, if found appends the transcript to the end of the message
     # returns message regardless of if its been modified
 
@@ -385,11 +385,12 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
         return f"Failed to generate text: {str(e)}", None
 
 async def preprocess_user_message(newUserMessage: discord.message) -> str:
-    messageToBot = newUserMessage.content
-    messageToBot = process_youtube(messageToBot, newUserMessage)
+    messageToBot = f"<username>{newUserMessage.author.display_name}</username><message>"
+    messageToBot += newUserMessage.content
+    messageToBot = await process_youtube(messageToBot, newUserMessage)
     messageToBot = await process_reddit(messageToBot, newUserMessage)
-
     messageToBot = await process_attachments(messageToBot, newUserMessage)
+    messageToBot += "</message>"
 
     return messageToBot
 
