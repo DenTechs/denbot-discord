@@ -14,6 +14,7 @@ WOLFRAM_MAX_CHARS = int(os.getenv("WOLFRAM_MAX_CHARS"))
 SUBAGENT_MODEL_NAME = os.getenv("SUBAGENT_MODEL_NAME")
 WEB_SEARCH_MAX_TOKENS = int(os.getenv("WEB_SEARCH_MAX_TOKENS"))
 LOG_FILENAME = os.getenv("LOG_FILENAME")
+LOG_LEVEL = os.getenv("LOG_LEVEL")
 
 # Configure logging to stdout for Docker
 logging.basicConfig(level=LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s')
