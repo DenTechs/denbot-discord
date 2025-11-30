@@ -6,15 +6,16 @@ from thefuzz import fuzz
 import json
 from thefuzz import process
 from anthropic import Anthropic
+from typing import Any
 from datetime import datetime
 from dotenv import load_dotenv
 
 load_dotenv()
-WOLFRAM_MAX_CHARS = int(os.getenv("WOLFRAM_MAX_CHARS"))
-SUBAGENT_MODEL_NAME = os.getenv("SUBAGENT_MODEL_NAME")
-WEB_SEARCH_MAX_TOKENS = int(os.getenv("WEB_SEARCH_MAX_TOKENS"))
-LOG_FILENAME = os.getenv("LOG_FILENAME")
-LOG_LEVEL = os.getenv("LOG_LEVEL")
+WOLFRAM_MAX_CHARS:int = int(os.getenv("WOLFRAM_MAX_CHARS") or "")
+SUBAGENT_MODEL_NAME:str = os.getenv("SUBAGENT_MODEL_NAME") or ""
+WEB_SEARCH_MAX_TOKENS:int = int(os.getenv("WEB_SEARCH_MAX_TOKENS") or "")
+LOG_FILENAME:str = os.getenv("LOG_FILENAME") or ""
+LOG_LEVEL:str = os.getenv("LOG_LEVEL") or ""
 
 # Configure logging to stdout for Docker
 logging.basicConfig(level=LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -65,7 +66,7 @@ def threedmark_gpu_performance_lookup(input):
             "Accept": "application/json, text/javascript, */*; q=0.01"
         }
 
-        with open("bot_v2/gpu_id_list.json", "r") as file:
+        with open("gpu_id_list.json", "r") as file:
             gpu_id_list = json.load(file)
 
         name_to_id = {gpu.get("name"): gpu.get("id") for gpu in gpu_id_list}
@@ -73,7 +74,10 @@ def threedmark_gpu_performance_lookup(input):
 
         best_match = process.extractOne(input.get("gpu_model"), gpu_name_list, scorer=custom_fuzzy_scorer)
 
-        gpu_name, score = best_match
+        if best_match is None:
+            return "Error: GPU model not found in database"
+
+        gpu_name, score = best_match[0], best_match[1]
         gpu_id = name_to_id[gpu_name]
 
         # gpu_id_query = f"""https://www.3dmark.com/proxycon/ajax/search/gpuname?term={input.get("gpu_model")}"""
@@ -110,7 +114,7 @@ def web_research(input):
         )
 
         # Define the web search tool
-        web_search_tool = {
+        web_search_tool: dict[str, Any] = {
             "type": "web_search_20250305",
             "name": "web_search"
         }
@@ -121,7 +125,7 @@ def web_research(input):
             model=SUBAGENT_MODEL_NAME,
             max_tokens=WEB_SEARCH_MAX_TOKENS,
             system=f"You are a helpful AI assistant. Current date: {current_date}",
-            tools=[web_search_tool],
+            tools=[web_search_tool],  # type: ignore[arg-type]
             messages=[{
                 "role": "user",
                 "content": f"Search the web and provide a concise summary of the most relevant and current information about: {search_query}"
@@ -160,7 +164,7 @@ def website_summary(input):
         )
 
         # Define the web fetch tool
-        web_fetch_tool = {
+        web_fetch_tool: dict[str, Any] = {
             "type": "web_fetch_20250910",
             "name": "web_fetch",
             "max_uses": 3,  # Limit fetches per request
@@ -176,7 +180,7 @@ def website_summary(input):
             model=SUBAGENT_MODEL_NAME,
             max_tokens=WEB_SEARCH_MAX_TOKENS,
             system=f"You are a helpful AI assistant. Current date: {current_date}",
-            tools=[web_fetch_tool],
+            tools=[web_fetch_tool],  # type: ignore[arg-type]
             messages=[{
                 "role": "user",
                 "content": f"Please fetch the content from {url} and provide a concise summary including: 1) The page title, 2) Main topic/purpose, 3) Key points or highlights, 4) Any important information. Keep the summary brief but informative."

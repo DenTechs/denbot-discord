@@ -6,7 +6,7 @@ import logging
 from anthropic import AsyncAnthropic
 import discord
 from discord import app_commands
-from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api._api import YouTubeTranscriptApi
 from dotenv import load_dotenv
 import config
 import json
@@ -21,20 +21,20 @@ from datetime import datetime
 
 # Load Environment Keys
 load_dotenv()
-BOT_API_KEY = os.getenv("BOT_API_KEY")
-ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-ALLOWED_CHANNELS = json.loads(os.getenv("ALLOWED_CHANNELS"))
-OVERRIDE_USERS = json.loads(os.getenv("OVERRIDE_USERS"))
-WOLFRAM_APPID = os.getenv("WOLFRAM_APPID")
-MOONDREAM_API_KEY = os.getenv("MOONDREAM_API_KEY")
-MAX_TOKENS = int(os.getenv("MAX_TOKENS"))
-MODEL_NAME = os.getenv("MODEL_NAME")
-SUBAGENT_MODEL_NAME = os.getenv("SUBAGENT_MODEL_NAME")
-WOLFRAM_MAX_CHARS = int(os.getenv("WOLFRAM_MAX_CHARS"))
-WEB_SEARCH_MAX_TOKENS = int(os.getenv("WEB_SEARCH_MAX_TOKENS"))
-MAX_CONVERSATION_LENGTH = int(os.getenv("MAX_CONVERSATION_LENGTH"))
-LOG_LEVEL = os.getenv("LOG_LEVEL")
-SYSTEM_PROMPT = os.getenv("SYSTEM_PROMPT")
+BOT_API_KEY:str = os.getenv("BOT_API_KEY") or ""
+ANTHROPIC_API_KEY:str = os.getenv("ANTHROPIC_API_KEY") or ""
+ALLOWED_CHANNELS:list = json.loads(os.getenv("ALLOWED_CHANNELS") or "[]")
+OVERRIDE_USERS:list = json.loads(os.getenv("OVERRIDE_USERS") or "[]")
+WOLFRAM_APPID:str = os.getenv("WOLFRAM_APPID") or ""
+MOONDREAM_API_KEY:str = os.getenv("MOONDREAM_API_KEY") or ""
+MAX_TOKENS:int = int(os.getenv("MAX_TOKENS") or 0)
+MODEL_NAME:str = os.getenv("MODEL_NAME") or ""
+SUBAGENT_MODEL_NAME:str = os.getenv("SUBAGENT_MODEL_NAME") or ""
+WOLFRAM_MAX_CHARS:int = int(os.getenv("WOLFRAM_MAX_CHARS") or 0)
+WEB_SEARCH_MAX_TOKENS:int = int(os.getenv("WEB_SEARCH_MAX_TOKENS") or 0)
+MAX_CONVERSATION_LENGTH:int = int(os.getenv("MAX_CONVERSATION_LENGTH") or 0)
+LOG_LEVEL:str = os.getenv("LOG_LEVEL") or ""
+SYSTEM_PROMPT:str = os.getenv("SYSTEM_PROMPT") or ""
 
 # Configure logging to stdout for Docker
 logging.basicConfig(level=LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -85,7 +85,7 @@ def channel_check(interaction: discord.Interaction) -> bool:
     
 def get_user_context(userID: int) -> list:
     if userID in userConversations:
-        return userConversations.get(userID)
+        return userConversations[userID]
     else:
         return []
     
@@ -134,7 +134,7 @@ def trim_conversation(conversation: list) -> list:
     logger.info(f"Trimmed conversation from {len(conversation)} to {len(trimmed)} messages")
     return trimmed
 
-async def process_youtube(messageToBot: str, message: discord.message):
+async def process_youtube(messageToBot: str, message: discord.Message):
     # searches received message for youtube link, if found appends the transcript to the end of the message
     # returns message regardless of if its been modified
 
@@ -175,7 +175,7 @@ async def process_youtube(messageToBot: str, message: discord.message):
     logger.info("No youtube links found in message")
     return messageToBot # return unmodified message if youtube link not found
 
-async def process_reddit(messageToBot: str, message: discord.message) -> str:
+async def process_reddit(messageToBot: str, message: discord.Message) -> str:
     text = message.content
     pattern = r'https?://(?:www\.)?(?:reddit|rxddit)\.com[^\s]*'
 
@@ -261,7 +261,7 @@ async def process_reddit(messageToBot: str, message: discord.message) -> str:
     return messageToBot
         
 
-async def process_attachments(messageToBot: str, message: discord.message):
+async def process_attachments(messageToBot: str, message: discord.Message):
     if not message.attachments:
         # no attachments found, return messsage without edits
         logger.info(F"No attachments found")
@@ -269,7 +269,7 @@ async def process_attachments(messageToBot: str, message: discord.message):
     
     for attachment in message.attachments:
         try:
-            if "image" in attachment.content_type:
+            if attachment.content_type is not None and "image" in attachment.content_type:
                 logger.info(f"Found image attachment: {attachment.filename} ({attachment.content_type})")
                 # download attachment and store it in variable to process
                 image_data = await attachment.read()
@@ -350,7 +350,7 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
                 
                 # Send or update status message
                 if status_followup is None:
-                    status_followup = await interaction.followup.send(status_message)
+                    status_followup = await interaction.followup.send(status_message, wait=True)
                 else:
                     await status_followup.edit(content=status_message)
                 
@@ -374,6 +374,7 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
                 
             else:
                 # No tool calls, send final message
+                final_text = ""
                 for content in claudeResponse.content:
                     if content.type == "text":
                         final_text = content.text
@@ -384,7 +385,7 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
         logger.error(f"Error in send_to_ai: {e}", exc_info=True)
         return f"Failed to generate text: {str(e)}", None
 
-async def preprocess_user_message(newUserMessage: discord.message) -> str:
+async def preprocess_user_message(newUserMessage: discord.Message) -> str:
     messageToBot = f"<username>{newUserMessage.author.display_name}</username><message>"
     messageToBot += newUserMessage.content
     messageToBot = await process_youtube(messageToBot, newUserMessage)
@@ -395,7 +396,7 @@ async def preprocess_user_message(newUserMessage: discord.message) -> str:
     return messageToBot
 
     
-async def handle_chat_request(interaction: discord.Interaction, newUserMessage: discord.message, continueConversation = False) -> tuple[str, Optional[discord.Message]]:
+async def handle_chat_request(interaction: discord.Interaction, newUserMessage: discord.Message, continueConversation = False) -> tuple[str, Optional[discord.Message]]:
     logger.info(f"Received message '{newUserMessage.content}'")
 
     latestMessageToBot = await preprocess_user_message(newUserMessage)
