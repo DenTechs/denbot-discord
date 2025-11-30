@@ -9,6 +9,7 @@ from anthropic import Anthropic
 from typing import Any
 from datetime import datetime
 from dotenv import load_dotenv
+import re
 
 load_dotenv()
 WOLFRAM_MAX_CHARS:int = int(os.getenv("WOLFRAM_MAX_CHARS") or "")
@@ -40,22 +41,42 @@ def wolfram(search_query):
 
 # custom fuzzy sort scored for 3dmark lookup
 def custom_fuzzy_scorer(query, choice):
-    base_score = fuzz.token_set_ratio(query, choice)
+    # Step 1: Extract VRAM from query
+    vram_pattern = r'\b(\d+)\s*gb\b'
+    vram_match = re.search(vram_pattern, query.lower())
+    query_vram = vram_match.group(1) if vram_match else None
+
+    # Step 2: Clean query (remove VRAM tokens)
+    clean_query = re.sub(vram_pattern, '', query, flags=re.IGNORECASE).strip()
+
+    # Step 3: Calculate base score with cleaned query
+    base_score = fuzz.token_set_ratio(clean_query, choice)
+
     if base_score == 100:
-        if query.lower() in choice.lower():
+        if clean_query.lower() in choice.lower():
             word_count = len(choice.split())
             score = 100 - (word_count - 4) * 0.5
-           
+
             # Tiebreaker: prefer standard naming patterns
             choice_lower = choice.lower()
             if 'geforce' in choice_lower and not any(x in choice_lower for x in ['(', ')', 'notebook', 'mobile', 'ti', 'super']):
                 score += 0.1  # Small bonus for clean GeForce naming
             elif '(' in choice_lower or ')' in choice_lower:
                 score -= 0.1  # Small penalty for parenthetical versions
-               
+
+            # VRAM tiebreaker: match VRAM specifications
+            if query_vram:
+                choice_vram_match = re.search(r'\b(\d+)\s*gb\b', choice_lower)
+                if choice_vram_match:
+                    choice_vram = choice_vram_match.group(1)
+                    if choice_vram != query_vram:
+                        score -= 5  # Penalize explicit mismatch
+                    else:
+                        score += 2  # Bonus for explicit match
+
             return score
         else:
-            query_tokens = len(query.split())
+            query_tokens = len(clean_query.split())
             choice_tokens = len(choice.split())
             return max(0, base_score - (choice_tokens - query_tokens))
     return base_score
@@ -92,7 +113,7 @@ def threedmark_gpu_performance_lookup(input):
         logger.info(f"Got response back from 3dmark: {json_data_perf}")
         gpu_performance = round(json_data_perf.get("median"))
 
-        return f"{gpu_name} median performance score is: {gpu_performance} and the name lookup accuracy score is {score}"
+        return f"{gpu_name} median performance score is: {gpu_performance}"
     except Exception as e:
         logger.error(f"Error getting gpu performance: {e}")
         return f"Error getting gpu performance: {e}"
