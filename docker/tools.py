@@ -110,7 +110,7 @@ def threedmark_gpu_performance_lookup(input):
         gpu_performance_query = f"https://www.3dmark.com/proxycon/ajax/medianscore?test=spy%20P&gpuId={gpu_id}&country=&scoreType=graphicsScore"
         reponse_perf = requests.get(gpu_performance_query, headers=headers)
         json_data_perf = reponse_perf.json()
-        logger.info(f"Got response back from 3dmark: {json_data_perf}")
+        logger.info(f"Got response back for {gpu_name} from 3dmark: {json_data_perf}")
         gpu_performance = round(json_data_perf.get("median"))
 
         return f"{gpu_name} median performance score is: {gpu_performance}"
