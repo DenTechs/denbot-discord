@@ -8,11 +8,10 @@ import discord
 from discord import app_commands
 from youtube_transcript_api._api import YouTubeTranscriptApi
 from dotenv import load_dotenv
-import config
+import base64
 import json
 import time
 import tools
-import moondream as md
 from PIL import Image
 import io
 import html
@@ -26,7 +25,7 @@ ANTHROPIC_API_KEY:str = os.getenv("ANTHROPIC_API_KEY") or ""
 ALLOWED_CHANNELS:list = json.loads(os.getenv("ALLOWED_CHANNELS") or "[]")
 OVERRIDE_USERS:list = json.loads(os.getenv("OVERRIDE_USERS") or "[]")
 WOLFRAM_APPID:str = os.getenv("WOLFRAM_APPID") or ""
-MOONDREAM_API_KEY:str = os.getenv("MOONDREAM_API_KEY") or ""
+IMAGE_MAX_SIZE:int = int(os.getenv("IMAGE_MAX_SIZE") or 800)
 MAX_TOKENS:int = int(os.getenv("MAX_TOKENS") or 0)
 MODEL_NAME:str = os.getenv("MODEL_NAME") or ""
 SUBAGENT_MODEL_NAME:str = os.getenv("SUBAGENT_MODEL_NAME") or ""
@@ -46,9 +45,6 @@ with open("tools.json") as file:
 claudeClient = AsyncAnthropic(
     api_key = ANTHROPIC_API_KEY
 )
-
-# Initialize moondream image recgocnition
-moondream_model = md.vl(api_key=MOONDREAM_API_KEY)
 
 ytt_api = YouTubeTranscriptApi()
 
@@ -84,12 +80,15 @@ def channel_check(interaction: discord.Interaction) -> bool:
         return False
     
 def get_user_context(userID: int) -> list:
+    """Get a copy of the user's conversation history."""
     if userID in userConversations:
-        return userConversations[userID]
+        return userConversations[userID].copy()
     else:
         return []
     
-def add_user_context(userID: int, userMessage: str, botResponse:str):
+def add_user_context(userID: int, userMessage: list | str, botResponse: str):
+    """Add user message and bot response to conversation history.
+    userMessage can be a string or list of content blocks (for images)."""
     if userID in userConversations:
         userConversations[userID].append({"role": "user", "content": userMessage})
         userConversations[userID].append({"role": "assistant", "content": botResponse})
@@ -99,7 +98,9 @@ def add_user_context(userID: int, userMessage: str, botResponse:str):
         userConversations[userID] = [{"role": "user", "content": userMessage},
                                      {"role": "assistant", "content": botResponse}]
         
-def append_user_context(userID: int, userMessage: str):
+def append_user_context(userID: int, userMessage: list | str):
+    """Append user message to conversation history.
+    userMessage can be a string or list of content blocks (for images)."""
     if userID in userConversations:
         userConversations[userID].append({"role": "user", "content": userMessage})
         # Trim conversation if it exceeds the limit
@@ -108,7 +109,9 @@ def append_user_context(userID: int, userMessage: str):
         userConversations[userID] = [{"role": "user", "content": userMessage}]
 
         
-def set_user_context(userID: int, userMessage: str, botResponse:str):
+def set_user_context(userID: int, userMessage: list | str, botResponse: str):
+    """Set new conversation history with user message and bot response.
+    userMessage can be a string or list of content blocks (for images)."""
     conversation = [{"role": "user", "content": userMessage},
                    {"role": "assistant", "content": botResponse}]
     # Apply trimming even for new conversations (shouldn't be needed but for consistency)
@@ -175,9 +178,11 @@ async def process_youtube(messageToBot: str, message: discord.Message):
     logger.info("No youtube links found in message")
     return messageToBot # return unmodified message if youtube link not found
 
-async def process_reddit(messageToBot: str, message: discord.Message) -> str:
+async def process_reddit(messageToBot: str, message: discord.Message) -> tuple[str, list]:
+    """Process Reddit links and return text info plus image blocks for Claude API."""
     text = message.content
     pattern = r'https?://(?:www\.)?(?:reddit|rxddit)\.com[^\s]*'
+    image_blocks = []
 
     matches = re.findall(pattern, text)
     for link in matches:
@@ -212,80 +217,119 @@ async def process_reddit(messageToBot: str, message: discord.Message) -> str:
             if body_text:
                 reddit_info += f"\nText: {body_text}"
             
-            # Check for image and process with moondream if available
-            image_description = ""
+            # Check for image and process for Claude API
             preview = post.get("preview")
             if preview and preview.get("images"):
                 try:
-                    # Look for image with width 640
                     images = preview.get("images", [])
                     if images and images[0].get("resolutions"):
                         resolutions = images[0].get("resolutions", [])
                         image_url = None
                         
-                        # Find resolution with width 640
+                        # Find resolution with width 640 or closest
                         for resolution in resolutions:
                             if resolution.get("width") == 640:
                                 image_url = resolution.get("url")
                                 break
                         
-                        # If no 640 width found, use the first available resolution
                         if not image_url and resolutions:
-                            image_url = resolutions[0].get("url")
+                            image_url = resolutions[-1].get("url")  # Use highest resolution available
                             
                         if image_url:
-                            # Unescape HTML entities in the URL
                             image_url = html.unescape(image_url)
                             logger.info(f"Found Reddit image URL: {image_url}")
                             
-                            # Download and process the image with moondream
                             image_response = requests.get(image_url, headers=headers)
                             if image_response.status_code == 200:
-                                image = Image.open(io.BytesIO(image_response.content))
-                                MDResult = moondream_model.caption(image, length="normal")
-                                image_caption = MDResult.get("caption", "Unable to generate caption")
-                                image_description = f"\nImage: {image_caption}"
-                                logger.info(f"Generated caption for Reddit image: {image_caption}")
+                                image_block = await process_image_for_claude(image_response.content)
+                                if image_block:
+                                    image_blocks.append(image_block)
+                                    reddit_info += "\n(Reddit post image attached)"
+                                    logger.info(f"Processed Reddit image for Claude API")
                             else:
                                 logger.warning(f"Failed to download Reddit image: {image_response.status_code}")
                 except Exception as e:
                     logger.error(f"Error processing Reddit image: {e}")
-                    image_description = "\nImage: Unable to process image"
             
-            messageToBot += reddit_info + image_description + "\n"
+            messageToBot += reddit_info + "\n"
             
         except Exception as e:
             logger.error(f"Error processing Reddit link {link}: {e}")
             messageToBot += f" A reddit link was found but could not be processed.\n"
     
-    return messageToBot
+    return messageToBot, image_blocks
         
 
-async def process_attachments(messageToBot: str, message: discord.Message):
+async def process_image_for_claude(image_data: bytes) -> dict | None:
+    """Process image data and return a Claude API image block.
+    Resizes image to fit within IMAGE_MAX_SIZE and converts to base64."""
+    try:
+        image = Image.open(io.BytesIO(image_data))
+        
+        # Convert to RGB if necessary (handles RGBA, P mode, etc.)
+        if image.mode in ('RGBA', 'P', 'LA'):
+            # Create white background for transparency
+            background = Image.new('RGB', image.size, (255, 255, 255))
+            if image.mode == 'P':
+                image = image.convert('RGBA')
+            background.paste(image, mask=image.split()[-1] if image.mode in ('RGBA', 'LA') else None)
+            image = background
+        elif image.mode != 'RGB':
+            image = image.convert('RGB')
+        
+        # Resize if larger than IMAGE_MAX_SIZE
+        width, height = image.size
+        if width > IMAGE_MAX_SIZE or height > IMAGE_MAX_SIZE:
+            if width > height:
+                new_width = IMAGE_MAX_SIZE
+                new_height = int(height * (IMAGE_MAX_SIZE / width))
+            else:
+                new_height = IMAGE_MAX_SIZE
+                new_width = int(width * (IMAGE_MAX_SIZE / height))
+            image = image.resize((new_width, new_height), Image.Resampling.LANCZOS)
+            logger.info(f"Resized image from {width}x{height} to {new_width}x{new_height}")
+        
+        # Convert to base64
+        buffer = io.BytesIO()
+        image.save(buffer, format='JPEG', quality=85)
+        base64_data = base64.b64encode(buffer.getvalue()).decode('utf-8')
+        
+        return {
+            "type": "image",
+            "source": {
+                "type": "base64",
+                "media_type": "image/jpeg",
+                "data": base64_data
+            }
+        }
+    except Exception as e:
+        logger.error(f"Error processing image for Claude: {e}")
+        return None
+
+
+async def process_attachments(message: discord.Message) -> list:
+    """Process message attachments and return list of image blocks for Claude API."""
+    image_blocks = []
+    
     if not message.attachments:
-        # no attachments found, return messsage without edits
-        logger.info(F"No attachments found")
-        return messageToBot
+        logger.info("No attachments found")
+        return image_blocks
     
     for attachment in message.attachments:
         try:
             if attachment.content_type is not None and "image" in attachment.content_type:
                 logger.info(f"Found image attachment: {attachment.filename} ({attachment.content_type})")
-                # download attachment and store it in variable to process
                 image_data = await attachment.read()
-                image = Image.open(io.BytesIO(image_data))
-
-                MDResult = moondream_model.caption(image, length="normal")
-                imageCaption = MDResult.get("caption")
-                messageToBot = messageToBot + f" (An attached image shows: {imageCaption})"
-                logger.info(f"Generated caption for image {attachment.filename}: {imageCaption}")
+                image_block = await process_image_for_claude(image_data)
+                if image_block:
+                    image_blocks.append(image_block)
+                    logger.info(f"Processed image {attachment.filename} for Claude API")
             else:
                 logger.info(f"Skipping non-image attachment: {attachment.filename} ({attachment.content_type})")
         except Exception as e:
             logger.error(f"Error processing attachment {attachment.filename}: {e}")
-            messageToBot = messageToBot + f" (An attached image could not be processed: {attachment.filename})"
 
-    return messageToBot
+    return image_blocks
 
 async def execute_tool(tool_name, tool_input):
     try:
@@ -385,21 +429,40 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
         logger.error(f"Error in send_to_ai: {e}", exc_info=True)
         return f"Failed to generate text: {str(e)}", None
 
-async def preprocess_user_message(newUserMessage: discord.Message) -> str:
-    messageToBot = f"<username>{newUserMessage.author.display_name}</username><message>"
-    messageToBot += newUserMessage.content
-    messageToBot = await process_youtube(messageToBot, newUserMessage)
-    messageToBot = await process_reddit(messageToBot, newUserMessage)
-    messageToBot = await process_attachments(messageToBot, newUserMessage)
-    messageToBot += "</message>"
-
-    return messageToBot
+async def preprocess_user_message(newUserMessage: discord.Message) -> list:
+    """Process user message and return list of content blocks for Claude API.
+    Returns a list containing text block and any image blocks from attachments."""
+    content_blocks = []
+    image_blocks = []
+    
+    # Build text content
+    messageText = f"<username>{newUserMessage.author.display_name}</username><message>"
+    messageText += newUserMessage.content
+    messageText = await process_youtube(messageText, newUserMessage)
+    
+    # Process Reddit (returns text and image blocks)
+    messageText, reddit_images = await process_reddit(messageText, newUserMessage)
+    image_blocks.extend(reddit_images)
+    
+    # Process attachments (returns image blocks)
+    attachment_images = await process_attachments(newUserMessage)
+    image_blocks.extend(attachment_images)
+    
+    messageText += "</message>"
+    
+    # Add text block first
+    content_blocks.append({"type": "text", "text": messageText})
+    
+    # Add image blocks
+    content_blocks.extend(image_blocks)
+    
+    return content_blocks
 
     
 async def handle_chat_request(interaction: discord.Interaction, newUserMessage: discord.Message, continueConversation = False) -> tuple[str, Optional[discord.Message]]:
     logger.info(f"Received message '{newUserMessage.content}'")
 
-    latestMessageToBot = await preprocess_user_message(newUserMessage)
+    latestMessageContent = await preprocess_user_message(newUserMessage)
 
     if continueConversation:
         conversationToBot = get_user_context(interaction.user.id)
@@ -408,21 +471,21 @@ async def handle_chat_request(interaction: discord.Interaction, newUserMessage: 
         conversationToBot = []
         logger.info("Starting new conversation")
 
-    conversationToBot.append({"role": "user", "content": latestMessageToBot})
+    conversationToBot.append({"role": "user", "content": latestMessageContent})
 
     logger.debug(f"sending the following conversation to bot:\n{conversationToBot}")
     reply, status_message = await send_to_ai(conversationToBot, interaction)
 
     if continueConversation:
-        add_user_context(interaction.user.id, latestMessageToBot, reply)
+        add_user_context(interaction.user.id, latestMessageContent, reply)
         logger.info(f"Added processed message to conversation history for user {interaction.user.id}")
     else:
-        set_user_context(interaction.user.id, latestMessageToBot, reply)
+        set_user_context(interaction.user.id, latestMessageContent, reply)
         logger.info(f"Set new conversation history for user {interaction.user.id}")
     
-    # Log if the processed message differs from original (indicates attachment processing occurred)
-    if latestMessageToBot != newUserMessage.content:
-        logger.info(f"Processed message differs from original - attachments were processed and stored")
+    # Log if images were included in the message
+    if len(latestMessageContent) > 1:
+        logger.info(f"Message included {len(latestMessageContent) - 1} image(s)")
 
     return reply, status_message
 
