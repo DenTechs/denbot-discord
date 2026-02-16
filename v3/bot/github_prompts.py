@@ -40,7 +40,7 @@ async def _fetch_file_from_github(session: aiohttp.ClientSession, filename: str)
         - content is the file content (or None if unchanged/error)
         - changed is True if the file was modified, False if 304 Not Modified
     """
-    url = f"https://api.github.com/repos/{Config.GITHUB_REPO}/contents/v2/prompts/{filename}"
+    url = f"https://api.github.com/repos/{Config.GITHUB_REPO}/contents/v3/prompts/{filename}"
     params = {"ref": Config.GITHUB_BRANCH}
     headers = {
         "Accept": "application/vnd.github.raw+json",  # Get raw content directly

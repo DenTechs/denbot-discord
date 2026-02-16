@@ -44,3 +44,7 @@ class Config:
 
     # Logging
     LOGGING_LEVEL:str = os.getenv("LOGGING_LEVEL") or "INFO"
+
+    # Image Processing
+    IMAGE_MAX_DIMENSIONS: int = int(os.getenv("IMAGE_MAX_DIMENSIONS") or 800)
+    IMAGE_MAX_FILE_SIZE_MB: int = int(os.getenv("IMAGE_MAX_FILE_SIZE_MB") or 20)

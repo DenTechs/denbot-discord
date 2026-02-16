@@ -9,15 +9,15 @@ import bot.client as bot_client
 def setup(discord_client: DiscordClient):
 
     async def handle_ask_denbot(interaction: discord.Interaction, newUserMessage: discord.Message, additional_context: str = "") -> str:
-        content = newUserMessage.content
+        content = f"{newUserMessage.author.display_name}: {newUserMessage.content}"
         if additional_context:
-            content = f"Additional context: {additional_context}\n\n{content}"
+            content = f"Additional context from {interaction.user.display_name}: {additional_context}\n\n{content}"
         messages = [{"role": "user", "content": content}]
         system_prompt =  bot_client.PROMPT_FILES["faqsystemprompt.txt"]
-        return await get_llm_response(messages, system_prompt)
+        return await get_llm_response(messages, system_prompt, discord_message=newUserMessage)
 
-    class AskFAQModal(discord.ui.Modal, title="Ask FAQ"):
-        """Modal for Ask FAQ with optional additional context."""
+    class AskFAQModal(discord.ui.Modal, title="Ask DenBot"):
+        """Modal for Ask DenBot with optional additional context."""
 
         additional_context = discord.ui.TextInput(
             label="Additional Context",
@@ -32,7 +32,7 @@ def setup(discord_client: DiscordClient):
             self.target_message = message
 
         async def on_submit(self, interaction: discord.Interaction):
-            logger.info(f"""FAQ modal submitted by user {interaction.user.name} with message: ({self.target_message.content}) and additional context: ({self.additional_context.value})""")
+            logger.info(f"""Ask DenBot modal submitted by user {interaction.user.name} with message: ({self.target_message.content}) and additional context: ({self.additional_context.value})""")
             await interaction.response.defer(thinking=True)
 
             reply = await handle_ask_denbot(
@@ -47,12 +47,12 @@ def setup(discord_client: DiscordClient):
     @discord.app_commands.allowed_installs(guilds=True, users=True)
     @discord.app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
     @discord.app_commands.check(channel_check)
-    async def ask_BubblesBot(interaction: discord.Interaction, message: discord.Message):
+    async def ask_denbot(interaction: discord.Interaction, message: discord.Message):
         logger.info(f"User {interaction.user.name} used Ask DenBot")
         await interaction.response.send_modal(AskFAQModal(message))
 
-    @ask_BubblesBot.error
-    async def ask_BubblesBot_error(interaction: discord.Interaction, error: discord.app_commands.AppCommandError):
+    @ask_denbot.error
+    async def ask_denbot_error(interaction: discord.Interaction, error: discord.app_commands.AppCommandError):
         if isinstance(error, discord.app_commands.CheckFailure):
             logger.warning("Permission denied for user %s in channel %s (Ask DenBot)", interaction.user.name, interaction.channel_id)
             if interaction.response.is_done():

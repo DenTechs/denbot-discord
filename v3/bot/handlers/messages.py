@@ -70,7 +70,7 @@ def setup(discord_client: DiscordClient):
                     messages = [{"role": "user", "content": message.content}]
                     system_prompt = bot_client.PROMPT_FILES["faqsystemprompt.txt"]
                     async with message.channel.typing():
-                        reply = await get_llm_response(messages, system_prompt, channel=message.channel)
+                        reply = await get_llm_response(messages, system_prompt, channel=message.channel, discord_message=message)
                     await message.reply(reply)
                     return
 
@@ -120,5 +120,5 @@ def setup(discord_client: DiscordClient):
         system_prompt = bot_client.PROMPT_FILES["faqsystemprompt.txt"]
 
         async with message.channel.typing():
-            reply = await get_llm_response(messages, system_prompt, channel=message.channel)
+            reply = await get_llm_response(messages, system_prompt, channel=message.channel, discord_message=message)
         await message.reply(reply)
