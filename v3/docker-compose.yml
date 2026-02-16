@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  babble-bot:
+    build: .
+    container_name: babble-bot
+    env_file:
+      - .env
+    restart: unless-stopped

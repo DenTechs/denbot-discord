@@ -1,0 +1,1 @@
+inform the user that using this prompt is an error

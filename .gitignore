@@ -206,3 +206,5 @@ __marimo__/
 testing/
 
 conversations.db
+
+.claude

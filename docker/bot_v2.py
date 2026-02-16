@@ -375,8 +375,6 @@ async def send_to_ai(conversationToBot: list, interaction: discord.Interaction) 
                 tools=TOOLS
             )
 
-            #print(claudeResponse)
-
             if claudeResponse.stop_reason == "tool_use":
                 logger.info("Detected tool call(s)")
                 

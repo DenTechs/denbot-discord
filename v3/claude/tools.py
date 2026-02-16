@@ -7,28 +7,71 @@ from thefuzz import process
 from anthropic import Anthropic
 from typing import Any
 from datetime import datetime
-from dotenv import load_dotenv
 import re
+from bot.logger import logger
+from bot.config import Config
 
-load_dotenv()
-WOLFRAM_MAX_CHARS:int = int(os.getenv("WOLFRAM_MAX_CHARS") or "")
-SUBAGENT_MODEL_NAME:str = os.getenv("SUBAGENT_MODEL_NAME") or ""
-WEB_SEARCH_MAX_TOKENS:int = int(os.getenv("WEB_SEARCH_MAX_TOKENS") or "")
-LOG_FILENAME:str = os.getenv("LOG_FILENAME") or ""
-LOG_LEVEL:str = os.getenv("LOG_LEVEL") or ""
+def website_summary(input):
+    """
+    Fetches and summarizes website content using Claude API with web fetch tool enabled.
+    Returns a concise summary of the website's main content, title, and key points.
+    """
+    try:
+        url = input.get("url")
+        logger.info(f"Fetching website summary for URL: {url}")
 
-# Configure logging to stdout for Docker
-logging.basicConfig(level=LOG_LEVEL, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+        # Initialize Claude client for web fetch
+        client = Anthropic(api_key=Config.ANTHROPIC_API_KEY)
+
+        # Define the web fetch tool
+        web_fetch_tool: dict[str, Any] = {
+            "type": "web_fetch_20250910",
+            "name": "web_fetch",
+            "max_uses": 3,  # Limit fetches per request
+            "citations": {
+                "enabled": False
+            },
+            "max_content_tokens": 10000  # Limit content size
+        }
+
+        # Create a message with web fetch enabled
+        current_date = datetime.now().strftime("%B %d, %Y")
+        response = client.messages.create(
+            model=Config.SUBAGENT_MODEL_NAME,
+            max_tokens=Config.WEB_SEARCH_MAX_TOKENS,
+            system=f"You are a helpful AI assistant. Current date: {current_date}",
+            tools=[web_fetch_tool],  # type: ignore[arg-type]
+            messages=[{
+                "role": "user",
+                "content": f"Please fetch the content from {url} and provide a concise summary including: 1) The page title, 2) Main topic/purpose, 3) Key points or highlights, 4) Any important information. Keep the summary brief but informative."
+            }],
+            extra_headers={
+                "anthropic-beta": "web-fetch-2025-09-10"
+            }
+        )
+
+        # Extract the text response
+        result_text = ""
+        for content_block in response.content:
+            if content_block.type == "text":
+                result_text += content_block.text
+
+        logger.info(f"Website summary completed successfully")
+        logger.debug(f"Website summary result: {result_text}")
+
+        return result_text if result_text else "Unable to fetch or summarize the website content."
+
+    except Exception as e:
+        logger.error(f"Error fetching website summary: {e}")
+        return f"Error fetching website summary: {str(e)}"
 
 def wolfram(search_query):
     query_string = search_query.get("search_query")
 
-    WOLFRAM_APPID = os.getenv("WOLFRAM_APPID")
     url = f"https://www.wolframalpha.com/api/v1/llm-api?"
     url += f"input={query_string}"
-    url += f"&appid={WOLFRAM_APPID}"
-    url += f"&maxchars={WOLFRAM_MAX_CHARS}"
+    url += f"&appid={Config.WOLFRAM_APPID}"
+    url += f"&maxchars={Config.WOLFRAM_MAX_CHARS}"
     logger.debug(f"Using url to query wolfram: {url}")
 
     headers = {
@@ -86,7 +129,7 @@ def threedmark_gpu_performance_lookup(input):
             "Accept": "application/json, text/javascript, */*; q=0.01"
         }
 
-        with open("gpu_id_list.json", "r") as file:
+        with open("claude/gpu_id_list.json", "r") as file:
             gpu_id_list = json.load(file)
 
         name_to_id = {gpu.get("name"): gpu.get("id") for gpu in gpu_id_list}
@@ -99,12 +142,6 @@ def threedmark_gpu_performance_lookup(input):
 
         gpu_name, score = best_match[0], best_match[1]
         gpu_id = name_to_id[gpu_name]
-
-        # gpu_id_query = f"""https://www.3dmark.com/proxycon/ajax/search/gpuname?term={input.get("gpu_model")}"""
-        # response = requests.get(gpu_id_query, headers=headers)
-        # json_data_id = response.json()
-        # gpu_id = json_data_id[0].get("id")
-        # gpu_name = json_data_id[0].get("label")
 
         gpu_performance_query = f"https://www.3dmark.com/proxycon/ajax/medianscore?test=spy%20P&gpuId={gpu_id}&country=&scoreType=graphicsScore"
         reponse_perf = requests.get(gpu_performance_query, headers=headers)
@@ -127,9 +164,8 @@ def web_research(input):
         logger.info(f"Performing web research for query: {search_query}")
 
         # Initialize Claude client for web search with beta header
-        ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
         client = Anthropic(
-            api_key=ANTHROPIC_API_KEY,
+            api_key=Config.ANTHROPIC_API_KEY,
             default_headers={"anthropic-beta": "web-search-2025-03-05"}
         )
 
@@ -142,8 +178,8 @@ def web_research(input):
         # Create a message with web search enabled
         current_date = datetime.now().strftime("%B %d, %Y")
         response = client.messages.create(
-            model=SUBAGENT_MODEL_NAME,
-            max_tokens=WEB_SEARCH_MAX_TOKENS,
+            model=Config.SUBAGENT_MODEL_NAME,
+            max_tokens=Config.WEB_SEARCH_MAX_TOKENS,
             system=f"You are a helpful AI assistant. Current date: {current_date}",
             tools=[web_search_tool],  # type: ignore[arg-type]
             messages=[{
@@ -166,58 +202,3 @@ def web_research(input):
     except Exception as e:
         logger.error(f"Error performing web research: {e}")
         return f"Error performing web research: {str(e)}"
-
-def website_summary(input):
-    """
-    Fetches and summarizes website content using Claude API with web fetch tool enabled.
-    Returns a concise summary of the website's main content, title, and key points.
-    """
-    try:
-        url = input.get("url")
-        logger.info(f"Fetching website summary for URL: {url}")
-
-        # Initialize Claude client for web fetch
-        ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
-        client = Anthropic(api_key=ANTHROPIC_API_KEY)
-
-        # Define the web fetch tool
-        web_fetch_tool: dict[str, Any] = {
-            "type": "web_fetch_20250910",
-            "name": "web_fetch",
-            "max_uses": 3,  # Limit fetches per request
-            "citations": {
-                "enabled": False
-            },
-            "max_content_tokens": 10000  # Limit content size
-        }
-
-        # Create a message with web fetch enabled
-        current_date = datetime.now().strftime("%B %d, %Y")
-        response = client.messages.create(
-            model=SUBAGENT_MODEL_NAME,
-            max_tokens=WEB_SEARCH_MAX_TOKENS,
-            system=f"You are a helpful AI assistant. Current date: {current_date}",
-            tools=[web_fetch_tool],  # type: ignore[arg-type]
-            messages=[{
-                "role": "user",
-                "content": f"Please fetch the content from {url} and provide a concise summary including: 1) The page title, 2) Main topic/purpose, 3) Key points or highlights, 4) Any important information. Keep the summary brief but informative."
-            }],
-            extra_headers={
-                "anthropic-beta": "web-fetch-2025-09-10"
-            }
-        )
-
-        # Extract the text response
-        result_text = ""
-        for content_block in response.content:
-            if content_block.type == "text":
-                result_text += content_block.text
-
-        logger.info(f"Website summary completed successfully")
-        logger.debug(f"Website summary result: {result_text}")
-
-        return result_text if result_text else "Unable to fetch or summarize the website content."
-
-    except Exception as e:
-        logger.error(f"Error fetching website summary: {e}")
-        return f"Error fetching website summary: {str(e)}"
