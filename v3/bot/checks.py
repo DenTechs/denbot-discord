@@ -13,6 +13,11 @@ async def channel_check(interaction: discord.Interaction) -> bool:
         logger.info("Access granted for override user %s", interaction.user.name)
         return True
 
+    # Check if user is in an authorized server
+    if interaction.guild and interaction.guild.id in Config.AUTHORIZED_SERVERS:
+        logger.info("Access granted for user %s in authorized server %s", interaction.user.name, interaction.guild.name)
+        return True
+
     # Get member roles if in a guild
     if interaction.guild:
         member = interaction.guild.get_member(interaction.user.id)

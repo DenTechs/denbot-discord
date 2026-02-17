@@ -9,9 +9,9 @@ import bot.client as bot_client
 def setup(discord_client: DiscordClient):
 
     async def handle_ask_denbot(interaction: discord.Interaction, newUserMessage: discord.Message, additional_context: str = "") -> str:
-        content = f"{newUserMessage.author.display_name}: {newUserMessage.content}"
+        content = f"{newUserMessage.author.display_name} says: {newUserMessage.content}"
         if additional_context:
-            content = f"Additional context from {interaction.user.display_name}: {additional_context}\n\n{content}"
+            content = f"{content}\n\nAdditional instructions from {interaction.user.display_name}: {additional_context}"
         messages = [{"role": "user", "content": content}]
         system_prompt =  bot_client.PROMPT_FILES["faqsystemprompt.txt"]
         return await get_llm_response(messages, system_prompt, discord_message=newUserMessage)

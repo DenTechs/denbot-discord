@@ -31,6 +31,7 @@ class Config:
     ALLOWED_ROLES:list = json.loads(os.getenv("ALLOWED_ROLES") or "[]")
     OVERRIDE_USERS:list = json.loads(os.getenv("OVERRIDE_USERS") or "[]")
     ALLOWED_FORUM_CHANNELS:list = json.loads(os.getenv("ALLOWED_FORUM_CHANNELS") or "[]")
+    AUTHORIZED_SERVERS:list = json.loads(os.getenv("AUTHORIZED_SERVERS") or "[]")
 
     # Feature Flags
     FORUM_REPLIES_ENABLED:bool = os.getenv("FORUM_REPLIES_ENABLED", "").lower() in ("true", "1", "yes")

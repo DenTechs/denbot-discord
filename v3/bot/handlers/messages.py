@@ -94,7 +94,10 @@ def setup(discord_client: DiscordClient):
             else:
                 logger.debug("on_message: could not get member object for user %s (id=%s)", message.author.name, message.author.id)
 
-        if not has_allowed_role and message.channel.id not in Config.ALLOWED_CHANNELS and message.channel.id not in Config.ALLOWED_FORUM_CHANNELS:
+        # Check if user is in an authorized server
+        in_authorized_server = message.guild and message.guild.id in Config.AUTHORIZED_SERVERS
+
+        if not has_allowed_role and not in_authorized_server and message.channel.id not in Config.ALLOWED_CHANNELS and message.channel.id not in Config.ALLOWED_FORUM_CHANNELS:
             # Check if it's a thread inside an allowed forum channel
             if isinstance(message.channel, discord.Thread) and message.channel.parent_id in Config.ALLOWED_FORUM_CHANNELS:
                 pass

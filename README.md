@@ -20,6 +20,7 @@ A Discord bot that uses AI to respond to messages with multi-LLM provider suppor
   - Channel-specific permissions
   - User override capabilities
   - Forum channel whitelist
+  - Server/guild-wide access control
 - **GitHub Integration**: Automatic system prompt synchronization from GitHub repositories
 
 ## Setup
@@ -59,6 +60,7 @@ Environment variables in `v3/.env`:
 - `ALLOWED_ROLES`: JSON array of role IDs that can use the bot anywhere
 - `OVERRIDE_USERS`: JSON array of user IDs that bypass all restrictions
 - `ALLOWED_FORUM_CHANNELS`: JSON array of forum channel IDs for auto-replies
+- `AUTHORIZED_SERVERS`: JSON array of server/guild IDs where all members can use the bot
 
 **Feature Flags:**
 - `FORUM_REPLIES_ENABLED`: Enable auto-replies in forum channels (`true`/`false`, default: `false`)
