@@ -13,7 +13,7 @@ def setup(discord_client: DiscordClient):
         if additional_context:
             content = f"{content}\n\nAdditional instructions from {interaction.user.display_name}: {additional_context}"
         messages = [{"role": "user", "content": content}]
-        system_prompt =  bot_client.PROMPT_FILES["faqsystemprompt.txt"]
+        system_prompt =  bot_client.PROMPT_FILES["mainsystemprompt.txt"]
         return await get_llm_response(messages, system_prompt, discord_message=newUserMessage)
 
     class AskFAQModal(discord.ui.Modal, title="Ask DenBot"):

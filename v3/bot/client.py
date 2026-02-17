@@ -35,7 +35,7 @@ discord_client = DiscordClient(intents=intents)
 
 PROMPT_FILES = {
     "forumsystemprompt.txt": "",
-    "faqsystemprompt.txt": "",
+    "mainsystemprompt.txt": "",
     "autoreplyregex.txt": "",
 }
 
