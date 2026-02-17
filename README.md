@@ -1,47 +1,121 @@
 # DenBot Discord Bot
 
-A Discord bot that uses AI to respond to messages, process YouTube links, analyze images, and provide tools like Wolfram Alpha and GPU performance lookups. Immitates an exagerated version of DenTech's personality.
+A Discord bot that uses AI to respond to messages with multi-LLM provider support (Claude or OpenAI-compatible), analyze images, and provide tools like Wolfram Alpha, GPU performance lookups, and web search. Imitates an exaggerated version of DenTech's personality.
 
 ## Features
 
-- AI-powered responses using Anthropic Claude
-- YouTube transcript processing
-- Image recognition and captioning with Moondream
-- Reddit post reading with image recognition
-- Tool integration (Wolfram Alpha, 3DMark GPU lookup)
-- Conversation history management
-- Channel and user permission controls
+- **Multi-LLM Provider Support**: Choose between Anthropic Claude or OpenAI-compatible local LLMs (LM Studio, Ollama, vLLM, etc.)
+- **AI-Powered Responses**: Context-aware conversation using Discord reply chains for history
+- **Image Processing**: Analyze and describe images via Claude API (when using Anthropic provider)
+- **Tool Integration**:
+  - Wolfram Alpha for computational queries
+  - 3DMark GPU performance lookup with fuzzy matching
+  - Web search capabilities
+  - Website content summarization
+- **Auto-Reply Features**:
+  - Forum channel auto-replies for new posts
+  - Regex-triggered automatic responses
+- **Permission System**:
+  - Role-based access control
+  - Channel-specific permissions
+  - User override capabilities
+  - Forum channel whitelist
+- **GitHub Integration**: Automatic system prompt synchronization from GitHub repositories
 
 ## Setup
 
 1. Clone the repository
-2. Install dependencies: `pip install -r requirements.txt`
-3. Copy `bot_v2/example.env` to `bot_v2/.env` and fill in your API keys
-4. Run the bot: `python bot_v2/bot\ v2.py`
+2. Install dependencies: `pip install -r v3/requirements.txt`
+3. Copy `v3/.env.example` to `v3/.env` and configure:
+   - Set `LLM_PROVIDER` to either `anthropic` (Claude) or `openai` (for local LLMs)
+   - Fill in the appropriate API keys and settings for your chosen provider
+   - Configure Discord permissions and channels
+4. Run the bot: `python v3/main.py`
 
 ## Configuration
 
-Required environment variables in `.env`:
+Environment variables in `v3/.env`:
+
+### Required Variables
 
 - `BOT_API_KEY`: Discord bot token
+- `LLM_PROVIDER`: LLM provider to use (`anthropic` or `openai`)
+- `ALLOWED_CHANNELS`: JSON array of channel IDs where bot responds to @mentions (e.g., `["123456789"]`)
+- `WOLFRAM_APPID`: Wolfram Alpha API key for computational queries
+
+**When `LLM_PROVIDER=anthropic`:**
 - `ANTHROPIC_API_KEY`: Anthropic API key
-- `ALLOWED_CHANNELS`: JSON list of allowed channel IDs
-- `OVERRIDE_USERS`: JSON list of user IDs that can override restrictions
-- `WOLFRAM_APPID`: Wolfram Alpha API key
-- `MOONDREAM_API_KEY`: Moondream API key
+- `MODEL_NAME`: Claude model to use (e.g., `claude-haiku-4-5`)
+- `SUBAGENT_MODEL_NAME`: Model for subagent tasks (e.g., `claude-haiku-4-5`)
+
+**When `LLM_PROVIDER=openai`:**
+- `OPENAI_BASE_URL`: Base URL for OpenAI-compatible API (e.g., `http://localhost:1234/v1`)
+- `OPENAI_MODEL_NAME`: Model identifier for your local LLM
+- `OPENAI_API_KEY`: API key (often `not-needed` for local servers)
+
+### Optional Variables
+
+**Permissions:**
+- `ALLOWED_ROLES`: JSON array of role IDs that can use the bot anywhere
+- `OVERRIDE_USERS`: JSON array of user IDs that bypass all restrictions
+- `ALLOWED_FORUM_CHANNELS`: JSON array of forum channel IDs for auto-replies
+
+**Feature Flags:**
+- `FORUM_REPLIES_ENABLED`: Enable auto-replies in forum channels (`true`/`false`, default: `false`)
+- `REGEX_REPLIES_ENABLED`: Enable regex-triggered auto-replies (`true`/`false`, default: `false`)
+
+**GitHub Integration:**
+- `GITHUB_TOKEN`: GitHub personal access token for prompt syncing
+- `GITHUB_REPO`: Repository in format `owner/repo`
+- `GITHUB_BRANCH`: Branch to sync from (default: `main`)
+- `PROMPT_POLL_INTERVAL`: Update check interval in seconds (default: `300`)
+
+**Response Configuration:**
+- `MAX_TOKENS`: Maximum tokens for responses (default: `1024`)
+- `WEB_SEARCH_MAX_TOKENS`: Max tokens for web search results (Anthropic only, default: `1024`)
+
+**Image Processing:**
+- `IMAGE_MAX_DIMENSIONS`: Maximum image width/height in pixels (default: `800`)
+- `IMAGE_MAX_FILE_SIZE_MB`: Maximum image file size in MB (default: `20`)
+
+**Other:**
+- `WOLFRAM_MAX_CHARS`: Maximum characters from Wolfram Alpha (default: `1024`)
+- `LOGGING_LEVEL`: Logging verbosity (`DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`, default: `INFO`)
 
 ## Usage
 
-Right-click on messages in Discord and use the context menu options:
+### Interaction Methods
 
-1. Ask DenBot - Start a new conversation
-2. Continue conversation - Continue existing chat
-3. Add to conversation history - Add message to history without responding
-4. Clear conversation history - Reset conversation
+**Context Menu:**
+- Right-click any message → Apps → **Ask DenBot**: Opens a modal to provide additional context, then the bot responds
 
-The bot processes YouTube links by fetching transcripts and images by generating captions.
+**@Mentions:**
+- Mention the bot in allowed channels to start a conversation
+- The bot uses Discord reply chains to track conversation history
+
+**Forum Auto-Replies:**
+- When `FORUM_REPLIES_ENABLED=true`, the bot automatically replies to new posts in `ALLOWED_FORUM_CHANNELS`
+
+**Regex Auto-Replies:**
+- When `REGEX_REPLIES_ENABLED=true`, the bot responds to messages matching configured patterns in `v3/regexreplies.json`
+
+**Image Analysis:**
+- Attach images to your messages (when using `LLM_PROVIDER=anthropic`)
+- The bot will analyze and describe images using Claude's vision capabilities
 
 ## Requirements
 
-- Only tested with Python 3.12
-- Dependencies listed in requirements.txt
+**Python Version:**
+- Python 3.12 (recommended and tested)
+
+**Dependencies:**
+- `discord.py ~=2.4.0` - Discord API wrapper
+- `anthropic ~=0.40.0` - Anthropic Claude API client
+- `openai >=1.0.0` - OpenAI-compatible API client
+- `python-dotenv ~=1.0.0` - Environment variable management
+- `requests ~=2.32.0` - HTTP library
+- `thefuzz[speedup] ~=0.22.0` - Fuzzy string matching (for GPU lookup)
+- `aiohttp ~=3.11.0` - Async HTTP client
+- `Pillow ~=11.0.0` - Image processing
+
+Install all dependencies with: `pip install -r v3/requirements.txt`
