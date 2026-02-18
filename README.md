@@ -25,13 +25,12 @@ A Discord bot that uses AI to respond to messages with multi-LLM provider suppor
 
 ## Setup
 
-1. Clone the repository
-2. Install dependencies: `pip install -r v3/requirements.txt`
-3. Copy `v3/.env.example` to `v3/.env` and configure:
+1. Copy `docker-compose.yml` to a folder
+2. Copy `.env.example` to `.env` in the same folder as the yml and configure:
    - Set `LLM_PROVIDER` to either `anthropic` (Claude) or `openai` (for local LLMs)
    - Fill in the appropriate API keys and settings for your chosen provider
    - Configure Discord permissions and channels
-4. Run the bot: `python v3/main.py`
+3. Run the bot: `docker compose up -d`
 
 ## Configuration
 

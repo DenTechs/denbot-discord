@@ -1,0 +1,7 @@
+services:
+  denbot-v3:
+    image: dentechs/denbot-discord:latest
+    container_name: denbot-v3
+    env_file:
+      - .env
+    restart: unless-stopped
