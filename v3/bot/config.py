@@ -49,3 +49,6 @@ class Config:
     # Image Processing
     IMAGE_MAX_DIMENSIONS: int = int(os.getenv("IMAGE_MAX_DIMENSIONS") or 800)
     IMAGE_MAX_FILE_SIZE_MB: int = int(os.getenv("IMAGE_MAX_FILE_SIZE_MB") or 20)
+
+    # YouTube Transcript
+    YOUTUBE_TRANSCRIPT_MAX_CHARS: int = int(os.getenv("YOUTUBE_TRANSCRIPT_MAX_CHARS") or 4000)

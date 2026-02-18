@@ -10,6 +10,54 @@ from datetime import datetime
 import re
 from bot.logger import logger
 from bot.config import Config
+from youtube_transcript_api import YouTubeTranscriptApi
+
+def youtube_context(input):
+    """
+    Fetches the title and transcript of a YouTube video.
+    Returns the video title plus the beginning and end of the transcript.
+    """
+    try:
+        url = input.get("url", "")
+
+        # Extract video ID (same patterns as bot_v2.py)
+        youtu_be_pattern = r'youtu\.be/([a-zA-Z0-9_-]{11})'
+        youtube_com_pattern = r'youtube\.com/watch\?v=([a-zA-Z0-9_-]{11})'
+        match = re.search(youtu_be_pattern, url) or re.search(youtube_com_pattern, url)
+
+        if not match:
+            return "Could not extract video ID from URL."
+
+        video_id = match.group(1)
+        logger.info(f"Fetching YouTube transcript for video ID: {video_id}")
+
+        # Fetch video title via YouTube oEmbed (no API key required)
+        title = "YouTube Video"
+        try:
+            oembed_url = f"https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v={video_id}&format=json"
+            oembed_response = requests.get(oembed_url, timeout=5)
+            if oembed_response.ok:
+                title = oembed_response.json().get("title", title)
+            logger.info(f"Found video title: {title}")
+        except Exception as e:
+            logger.warning(f"Could not fetch video title: {e}")
+
+        # Fetch transcript
+        ytt_api = YouTubeTranscriptApi()
+        fetched = ytt_api.fetch(video_id).to_raw_data()
+        transcript = " ".join(fragment.get("text", "") for fragment in fetched)
+
+        # Apply configurable char limit: half from start, half from end
+        max_chars = Config.YOUTUBE_TRANSCRIPT_MAX_CHARS
+        if len(transcript) > max_chars:
+            half = max_chars // 2
+            transcript = f"{transcript[:half]} [...] {transcript[-half:]}"
+
+        return f"Title: {title}\n\nTranscript:\n{transcript}"
+
+    except Exception as e:
+        logger.error(f"Error fetching YouTube transcript: {e}")
+        return f"Error fetching YouTube transcript: {str(e)}"
 
 def website_summary(input):
     """

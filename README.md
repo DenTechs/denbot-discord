@@ -12,6 +12,7 @@ A Discord bot that uses AI to respond to messages with multi-LLM provider suppor
   - 3DMark GPU performance lookup with fuzzy matching
   - Web search capabilities
   - Website content summarization
+  - YouTube video transcript context
 - **Auto-Reply Features**:
   - Forum channel auto-replies for new posts
   - Regex-triggered automatic responses
@@ -81,6 +82,7 @@ Environment variables in `v3/.env`:
 
 **Other:**
 - `WOLFRAM_MAX_CHARS`: Maximum characters from Wolfram Alpha (default: `1024`)
+- `YOUTUBE_TRANSCRIPT_MAX_CHARS`: Total transcript characters to include for YouTube links, split evenly between start and end (default: `4000`)
 - `LOGGING_LEVEL`: Logging verbosity (`DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`, default: `INFO`)
 
 ## Usage

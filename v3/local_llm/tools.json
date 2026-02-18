@@ -15,5 +15,22 @@
                 "required": ["url"]
             }
         }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "youtube_context",
+            "description": "Fetch the title and transcript of a YouTube video. This tool should ALWAYS be used whenever a YouTube URL (youtube.com or youtu.be) is found in the user's message. It returns the video title and a portion of the transcript so you can discuss the video content.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "description": "The YouTube URL (e.g. https://www.youtube.com/watch?v=... or https://youtu.be/...)"
+                    }
+                },
+                "required": ["url"]
+            }
+        }
     }
 ]

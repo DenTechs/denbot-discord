@@ -62,6 +62,20 @@
         }
     },
     {
+        "name": "youtube_context",
+        "description": "Fetch the title and transcript of a YouTube video. This tool should ALWAYS be used whenever a YouTube URL (youtube.com or youtu.be) is found in the user's message. It returns the video title and a portion of the transcript so you can discuss the video content.",
+        "input_schema": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "description": "The YouTube URL (e.g. https://www.youtube.com/watch?v=... or https://youtu.be/...)"
+                }
+            },
+            "required": ["url"]
+        }
+    },
+    {
         "name": "code_execution",
         "description": "Execute code in a secure sandbox environment. This tool can run Python scripts, JavaScript code, bash commands, perform data analysis, and handle complex calculations. Use this tool when users ask to run code, analyze data, perform calculations, or any task that requires computational work. The tool supports multiple programming languages and returns execution results including output, and errors.",
         "input_schema": {
