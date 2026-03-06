@@ -27,6 +27,7 @@ COPY --from=builder /opt/venv /opt/venv
 # Copy application code
 COPY bot/ ./bot/
 COPY claude/ ./claude/
+COPY local_llm/ ./local_llm/
 COPY prompts/ ./prompts/
 COPY main.py .
 

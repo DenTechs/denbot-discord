@@ -46,7 +46,11 @@ async def send_llm_reply(message: discord.Message, messages: list[dict], system_
     """Get LLM response and reply to the message."""
     async with message.channel.typing():
         reply = await get_llm_response(messages, system_prompt, channel=message.channel, discord_message=message)
-    await message.reply(reply)
+    if len(reply) > 2000:
+        logger.warning("Response too long (%d chars), notifying user", len(reply))
+        await message.reply("The generated message was too long to send.")
+    else:
+        await message.reply(reply)
 
 
 async def handle_regex_replies(message: discord.Message) -> bool:

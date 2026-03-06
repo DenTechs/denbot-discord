@@ -86,7 +86,7 @@ async def generate_openai_response(
             message = response.choices[0].message
             finish_reason = response.choices[0].finish_reason
 
-            if finish_reason == "tool_calls" and message.tool_calls:
+            if message.tool_calls:
                 logger.info("Detected tool call(s): %d tools", len(message.tool_calls))
 
                 # Add assistant message with tool calls to conversation
@@ -125,8 +125,16 @@ async def generate_openai_response(
                     })
 
             else:
-                # No tool calls, return final response
+                reasoning = getattr(message, "reasoning_content", None)
                 final_text = message.content or ""
+                if reasoning:
+                    logger.info(f"Reasoning: \n{reasoning}")
+                else:
+                    logger.info(f"No reasoning was used")
+                if not final_text and reasoning:
+                    logger.info("Model returned reasoning-only response, rerunning generation")
+                    continue  # loop again with the same conversation state
+
                 logger.info(f"Generated: \n{final_text}")
                 return final_text
 
