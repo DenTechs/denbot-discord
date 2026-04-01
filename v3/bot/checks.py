@@ -11,6 +11,7 @@ _rate_limit_state: dict[int, tuple[int, datetime]] = {}
 def is_rate_limited(user_id: int) -> tuple[bool, datetime | None]:
     """Returns (is_limited, reset_time). reset_time is None if not limited."""
     if user_id in Config.OVERRIDE_USERS:
+        logger.debug("Rate limit bypassed for override user %s", user_id)
         return False, None
 
     now = datetime.now(timezone.utc)
@@ -18,19 +19,24 @@ def is_rate_limited(user_id: int) -> tuple[bool, datetime | None]:
 
     if user_id not in _rate_limit_state:
         _rate_limit_state[user_id] = (1, now)
+        logger.debug("Rate limit: new window for user %s (1/%d)", user_id, limit)
         return False, None
 
     count, window_start = _rate_limit_state[user_id]
 
     if now - window_start > timedelta(hours=1):
         _rate_limit_state[user_id] = (1, now)
+        logger.debug("Rate limit: window expired, reset for user %s (1/%d)", user_id, limit)
         return False, None
 
     if count < limit:
         _rate_limit_state[user_id] = (count + 1, window_start)
+        logger.debug("Rate limit: user %s request %d/%d", user_id, count + 1, limit)
         return False, None
 
-    return True, window_start + timedelta(hours=1)
+    reset_time = window_start + timedelta(hours=1)
+    logger.warning("Rate limit exceeded for user %s (%d/%d), resets at %s", user_id, count, limit, reset_time.isoformat())
+    return True, reset_time
 
 async def channel_check(interaction: discord.Interaction) -> bool:
     logger.info("channel_check called: user=%s, channel_id=%s, guild=%s",
