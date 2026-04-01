@@ -5,6 +5,8 @@ from bot.client import DiscordClient
 import discord
 from bot.llm_router import get_llm_response
 import bot.client as bot_client
+from bot.config import Config
+from bot.checks import is_rate_limited
 
 def setup(discord_client: DiscordClient):
 
@@ -49,6 +51,14 @@ def setup(discord_client: DiscordClient):
     @discord.app_commands.check(channel_check)
     async def ask_denbot(interaction: discord.Interaction, message: discord.Message):
         logger.info(f"User {interaction.user.name} used Ask DenBot")
+        limited, reset_time = is_rate_limited(interaction.user.id)
+        if limited:
+            reset_str = f"<t:{int(reset_time.timestamp())}:R>"
+            await interaction.response.send_message(
+                f"You've reached the rate limit of {Config.RATE_LIMIT_PER_HOUR} requests per hour. Try again {reset_str}.",
+                ephemeral=True
+            )
+            return
         await interaction.response.send_modal(AskFAQModal(message))
 
     @ask_denbot.error

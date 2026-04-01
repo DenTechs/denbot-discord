@@ -2,6 +2,35 @@ import discord
 from bot.config import Config
 import logging
 from bot.logger import logger
+from datetime import datetime, timedelta, timezone
+
+# user_id -> (request_count, window_start: datetime)
+_rate_limit_state: dict[int, tuple[int, datetime]] = {}
+
+
+def is_rate_limited(user_id: int) -> tuple[bool, datetime | None]:
+    """Returns (is_limited, reset_time). reset_time is None if not limited."""
+    if user_id in Config.OVERRIDE_USERS:
+        return False, None
+
+    now = datetime.now(timezone.utc)
+    limit = Config.RATE_LIMIT_PER_HOUR
+
+    if user_id not in _rate_limit_state:
+        _rate_limit_state[user_id] = (1, now)
+        return False, None
+
+    count, window_start = _rate_limit_state[user_id]
+
+    if now - window_start > timedelta(hours=1):
+        _rate_limit_state[user_id] = (1, now)
+        return False, None
+
+    if count < limit:
+        _rate_limit_state[user_id] = (count + 1, window_start)
+        return False, None
+
+    return True, window_start + timedelta(hours=1)
 
 async def channel_check(interaction: discord.Interaction) -> bool:
     logger.info("channel_check called: user=%s, channel_id=%s, guild=%s",
