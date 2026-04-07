@@ -29,9 +29,10 @@ def setup(discord_client: DiscordClient):
             max_length=1000
         )
 
-        def __init__(self, message: discord.Message):
+        def __init__(self, message: discord.Message, is_last_request: bool = False):
             super().__init__()
             self.target_message = message
+            self.is_last_request = is_last_request
 
         async def on_submit(self, interaction: discord.Interaction):
             logger.info(f"""Ask DenBot modal submitted by user {interaction.user.name} with message: ({self.target_message.content}) and additional context: ({self.additional_context.value})""")
@@ -43,6 +44,8 @@ def setup(discord_client: DiscordClient):
                 self.additional_context.value
             )
 
+            if self.is_last_request:
+                reply = reply + f"\n\n(You have reached your {Config.RATE_LIMIT_WINDOW_HOURS} hour limit)"
             await interaction.followup.send(reply)
 
     @discord_client.tree.context_menu(name="Ask DenBot")
@@ -51,15 +54,15 @@ def setup(discord_client: DiscordClient):
     @discord.app_commands.check(channel_check)
     async def ask_denbot(interaction: discord.Interaction, message: discord.Message):
         logger.info(f"User {interaction.user.name} used Ask DenBot")
-        limited, reset_time = is_rate_limited(interaction.user.id)
+        limited, reset_time, is_last_request = is_rate_limited(interaction.user.id)
         if limited:
             reset_str = f"<t:{int(reset_time.timestamp())}:R>"
             await interaction.response.send_message(
-                f"You've reached the rate limit of {Config.RATE_LIMIT_PER_HOUR} requests per hour. Try again {reset_str}.",
+                f"You've reached the rate limit of {Config.RATE_LIMIT_REQUESTS} requests per {Config.RATE_LIMIT_WINDOW_HOURS} hours. Try again {reset_str}.",
                 ephemeral=True
             )
             return
-        await interaction.response.send_modal(AskFAQModal(message))
+        await interaction.response.send_modal(AskFAQModal(message, is_last_request))
 
     @ask_denbot.error
     async def ask_denbot_error(interaction: discord.Interaction, error: discord.app_commands.AppCommandError):

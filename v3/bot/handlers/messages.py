@@ -43,10 +43,12 @@ async def gather_reply_chain(message: discord.Message, bot_user_id: int, max_dep
     return merged
 
 
-async def send_llm_reply(message: discord.Message, messages: list[dict], system_prompt: str):
+async def send_llm_reply(message: discord.Message, messages: list[dict], system_prompt: str, notice: str = ""):
     """Get LLM response and reply to the message."""
     async with message.channel.typing():
         reply = await get_llm_response(messages, system_prompt, channel=message.channel, discord_message=message)
+    if notice:
+        reply = reply + "\n\n" + notice
     if len(reply) > 2000:
         logger.warning("Response too long (%d chars), notifying user", len(reply))
         await message.reply("The generated message was too long to send.")
@@ -108,10 +110,10 @@ def setup(discord_client: DiscordClient):
         if not has_permission(message):
             return
 
-        limited, reset_time = is_rate_limited(message.author.id)
+        limited, reset_time, is_last_request = is_rate_limited(message.author.id)
         if limited:
             reset_str = f"<t:{int(reset_time.timestamp())}:R>"
-            await message.reply(f"You've reached the rate limit of {Config.RATE_LIMIT_PER_HOUR} requests per hour. Try again {reset_str}.")
+            await message.reply(f"You've reached the rate limit of {Config.RATE_LIMIT_REQUESTS} requests per {Config.RATE_LIMIT_WINDOW_HOURS} hours. Try again {reset_str}.")
             return
 
         messages = await gather_reply_chain(message, discord_client.user.id)
@@ -126,4 +128,5 @@ def setup(discord_client: DiscordClient):
         logger.info("User %s mentioned bot. Chain: %d messages", message.author.name, len(messages))
         logger.debug("Conversation chain: %s", messages)
 
-        await send_llm_reply(message, messages, bot_client.PROMPT_FILES["mainsystemprompt.txt"])
+        notice = f"(You have reached your {Config.RATE_LIMIT_WINDOW_HOURS} hour limit)" if is_last_request else ""
+        await send_llm_reply(message, messages, bot_client.PROMPT_FILES["mainsystemprompt.txt"], notice=notice)

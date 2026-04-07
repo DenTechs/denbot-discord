@@ -1,6 +1,5 @@
 import discord
 from bot.config import Config
-import logging
 from bot.logger import logger
 from datetime import datetime, timedelta, timezone
 
@@ -8,35 +7,37 @@ from datetime import datetime, timedelta, timezone
 _rate_limit_state: dict[int, tuple[int, datetime]] = {}
 
 
-def is_rate_limited(user_id: int) -> tuple[bool, datetime | None]:
-    """Returns (is_limited, reset_time). reset_time is None if not limited."""
+def is_rate_limited(user_id: int) -> tuple[bool, datetime | None, bool]:
+    """Returns (is_limited, reset_time, is_last_request).
+    is_last_request is True when this request exhausts the user's quota."""
     if user_id in Config.OVERRIDE_USERS:
         logger.debug("Rate limit bypassed for override user %s", user_id)
-        return False, None
+        return False, None, False
 
     now = datetime.now(timezone.utc)
-    limit = Config.RATE_LIMIT_PER_HOUR
+    limit = Config.RATE_LIMIT_REQUESTS
+    window = timedelta(hours=Config.RATE_LIMIT_WINDOW_HOURS)
 
     if user_id not in _rate_limit_state:
         _rate_limit_state[user_id] = (1, now)
         logger.debug("Rate limit: new window for user %s (1/%d)", user_id, limit)
-        return False, None
+        return False, None, (1 == limit)
 
     count, window_start = _rate_limit_state[user_id]
 
-    if now - window_start > timedelta(hours=1):
+    if now - window_start > window:
         _rate_limit_state[user_id] = (1, now)
         logger.debug("Rate limit: window expired, reset for user %s (1/%d)", user_id, limit)
-        return False, None
+        return False, None, (1 == limit)
 
     if count < limit:
         _rate_limit_state[user_id] = (count + 1, window_start)
         logger.debug("Rate limit: user %s request %d/%d", user_id, count + 1, limit)
-        return False, None
+        return False, None, (count + 1 == limit)
 
-    reset_time = window_start + timedelta(hours=1)
+    reset_time = window_start + window
     logger.warning("Rate limit exceeded for user %s (%d/%d), resets at %s", user_id, count, limit, reset_time.isoformat())
-    return True, reset_time
+    return True, reset_time, False
 
 async def channel_check(interaction: discord.Interaction) -> bool:
     logger.info("channel_check called: user=%s, channel_id=%s, guild=%s",
