@@ -31,6 +31,10 @@ async def get_llm_response(
     provider = Config.LLM_PROVIDER.lower()
     logger.debug(f"Routing LLM request to provider: {provider}")
 
+    for message in messages:
+        if message.get("content") == "":
+            message["content"] = " "
+
     # Process images for Claude provider only
     if provider == "anthropic" and discord_message and discord_message.attachments:
         from bot.image_utils import is_image_attachment, process_discord_attachment
