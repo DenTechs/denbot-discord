@@ -101,7 +101,9 @@ def setup(discord_client: DiscordClient):
         if await handle_regex_replies(message):
             return
 
-        if not discord_client.user or discord_client.user not in message.mentions:
+        is_mention = discord_client.user and discord_client.user in message.mentions
+        is_hey_denbot = message.content.lower().startswith("hey denbot")
+        if not is_mention and not is_hey_denbot:
             return
 
         if not has_permission(message):
