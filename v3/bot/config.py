@@ -52,3 +52,7 @@ class Config:
 
     # YouTube Transcript
     YOUTUBE_TRANSCRIPT_MAX_CHARS: int = int(os.getenv("YOUTUBE_TRANSCRIPT_MAX_CHARS") or 4000)
+
+    # Rate Limiting
+    RATE_LIMIT_REQUESTS: int = int(os.getenv("RATE_LIMIT_REQUESTS", "5"))
+    RATE_LIMIT_WINDOW_HOURS: int = int(os.getenv("RATE_LIMIT_WINDOW_HOURS", "1"))
