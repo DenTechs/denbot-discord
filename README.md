@@ -53,6 +53,7 @@ Environment variables in `v3/.env`:
 - `OPENAI_BASE_URL`: Base URL for OpenAI-compatible API (e.g., `http://localhost:1234/v1`)
 - `OPENAI_MODEL_NAME`: Model identifier for your local LLM
 - `OPENAI_API_KEY`: API key (often `not-needed` for local servers)
+- `EXA_API_KEY`: Exa API key for local LLM web search and URL content retrieval tools
 
 ### Optional Variables
 
@@ -120,5 +121,6 @@ Environment variables in `v3/.env`:
 - `thefuzz[speedup] ~=0.22.0` - Fuzzy string matching (for GPU lookup)
 - `aiohttp ~=3.11.0` - Async HTTP client
 - `Pillow ~=11.0.0` - Image processing
+- `exa-py >=1.15.0` - Exa web search and URL content retrieval for local LLM tools
 
 Install all dependencies with: `pip install -r v3/requirements.txt`

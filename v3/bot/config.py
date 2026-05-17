@@ -26,6 +26,9 @@ class Config:
     OPENAI_BASE_URL:str = os.getenv("OPENAI_BASE_URL", "http://localhost:1234/v1")
     OPENAI_MODEL_NAME:str = os.getenv("OPENAI_MODEL_NAME", "local-model")
 
+    # Exa Search Configuration (for local LLM tools)
+    EXA_API_KEY:str = os.getenv("EXA_API_KEY") or ""
+
     # Discord Permissions
     ALLOWED_CHANNELS:list = json.loads(os.getenv("ALLOWED_CHANNELS") or "[]")
     ALLOWED_ROLES:list = json.loads(os.getenv("ALLOWED_ROLES") or "[]")
