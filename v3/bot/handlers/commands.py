@@ -7,11 +7,12 @@ from bot.llm_router import get_llm_response
 import bot.client as bot_client
 from bot.config import Config
 from bot.checks import is_rate_limited
+from bot.message_format import format_user_message
 
 def setup(discord_client: DiscordClient):
 
     async def handle_ask_denbot(interaction: discord.Interaction, newUserMessage: discord.Message, additional_context: str = "") -> str:
-        content = f"{newUserMessage.author.display_name} said: {newUserMessage.content}"
+        content = format_user_message(newUserMessage.author.display_name, newUserMessage.content)
         if additional_context:
             content = f"{content}\n\nAdditional instructions from {interaction.user.display_name}: {additional_context}"
         messages = [{"role": "user", "content": content}]

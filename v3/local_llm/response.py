@@ -80,7 +80,8 @@ async def generate_openai_response(
                 model=Config.OPENAI_MODEL_NAME,
                 max_tokens=Config.MAX_TOKENS,
                 messages=conversation,  # type: ignore[arg-type]
-                tools=TOOLS  # type: ignore[arg-type]
+                tools=TOOLS,  # type: ignore[arg-type]
+                extra_body={"thinking": {"type": "disabled"}}
             )
 
             message = response.choices[0].message
