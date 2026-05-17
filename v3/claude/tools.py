@@ -17,8 +17,6 @@ try:
 except ImportError:
     Exa = None
 
-EXA_CONTENT_MAX_CHARS = 8000
-
 def _get_exa_client():
     if Exa is None:
         return None
@@ -46,8 +44,6 @@ def _format_exa_result(result, include_text=False):
         text = getattr(result, "text", None)
         if text:
             text = text.strip()
-            if len(text) > EXA_CONTENT_MAX_CHARS:
-                text = f"{text[:EXA_CONTENT_MAX_CHARS]}..."
             lines.append("Text:")
             lines.append(text)
 
@@ -72,7 +68,13 @@ def exa_web_search(input):
         response = client.search(
             search_query,
             type="auto",
-            contents={"highlights": True}
+            num_results=Config.EXA_SEARCH_NUM_RESULTS,
+            contents={
+                "highlights": {
+                    "query": search_query,
+                    "max_characters": Config.EXA_SEARCH_HIGHLIGHT_MAX_CHARS,
+                }
+            }
         )
 
         results = getattr(response, "results", None) or []
@@ -114,8 +116,8 @@ def exa_get_contents(input):
         logger.info(f"Fetching Exa contents for {len(clean_urls)} URL(s)")
         response = client.get_contents(
             clean_urls,
-            text={"max_characters": EXA_CONTENT_MAX_CHARS},
-            highlights=True
+            text={"max_characters": Config.EXA_CONTENT_MAX_CHARS},
+            highlights={"max_characters": Config.EXA_SEARCH_HIGHLIGHT_MAX_CHARS}
         )
 
         results = getattr(response, "results", None) or []

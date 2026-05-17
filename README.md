@@ -76,6 +76,9 @@ Environment variables in `v3/.env`:
 **Response Configuration:**
 - `MAX_TOKENS`: Maximum tokens for responses (default: `1024`)
 - `WEB_SEARCH_MAX_TOKENS`: Max tokens for web search results (Anthropic only, default: `1024`)
+- `EXA_SEARCH_NUM_RESULTS`: Number of Exa web search results to return for local LLM tools (default: `3`)
+- `EXA_SEARCH_HIGHLIGHT_MAX_CHARS`: Maximum Exa highlight characters per search result (default: `1000`)
+- `EXA_CONTENT_MAX_CHARS`: Maximum Exa page text characters returned for URL content fetches (default: `1000`)
 
 **Image Processing:**
 - `IMAGE_MAX_DIMENSIONS`: Maximum image width/height in pixels (default: `800`)

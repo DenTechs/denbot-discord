@@ -28,6 +28,9 @@ class Config:
 
     # Exa Search Configuration (for local LLM tools)
     EXA_API_KEY:str = os.getenv("EXA_API_KEY") or ""
+    EXA_SEARCH_NUM_RESULTS:int = int(os.getenv("EXA_SEARCH_NUM_RESULTS") or 3)
+    EXA_SEARCH_HIGHLIGHT_MAX_CHARS:int = int(os.getenv("EXA_SEARCH_HIGHLIGHT_MAX_CHARS") or 1000)
+    EXA_CONTENT_MAX_CHARS:int = int(os.getenv("EXA_CONTENT_MAX_CHARS") or 1000)
 
     # Discord Permissions
     ALLOWED_CHANNELS:list = json.loads(os.getenv("ALLOWED_CHANNELS") or "[]")

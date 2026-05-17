@@ -3,6 +3,7 @@ LLM Router - Routes requests to appropriate LLM provider based on configuration.
 """
 from bot.config import Config
 from bot.logger import logger
+from bot.prompt_rendering import render_system_prompt
 from typing import Optional
 import discord
 
@@ -30,6 +31,7 @@ async def get_llm_response(
     """
     provider = Config.LLM_PROVIDER.lower()
     logger.debug(f"Routing LLM request to provider: {provider}")
+    system_prompt = render_system_prompt(system_prompt)
 
     for message in messages:
         if message.get("content") == "":
