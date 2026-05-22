@@ -6,6 +6,7 @@ from bot.logger import logger
 from bot.prompt_rendering import render_system_prompt
 from typing import Optional
 import discord
+from bot.memory import hindsight
 
 
 async def get_llm_response(
@@ -70,15 +71,37 @@ async def get_llm_response(
                 # Replace string content with content array
                 messages[-1]["content"] = content_blocks
 
+    if Config.HINDSIGHT_ENABLED and Config.HINDSIGHT_RECALL_ENABLED:
+        recall_query = hindsight.get_recall_query(messages)
+        recalled_memories = await hindsight.recall(
+            recall_query,
+            Config.HINDSIGHT_RECALL_MAX_TOKENS,
+        )
+        memory_prompt = hindsight.build_memory_prompt(recalled_memories)
+        if memory_prompt:
+            system_prompt = f"{system_prompt}\n\n{memory_prompt}"
+
     if provider == "anthropic":
         from claude.response import generate_claude_response
-        return await generate_claude_response(messages, system_prompt, channel)
+        reply = await generate_claude_response(messages, system_prompt, channel)
 
     elif provider == "openai":
         from local_llm.response import generate_openai_response
-        return await generate_openai_response(messages, system_prompt, channel)
+        reply = await generate_openai_response(messages, system_prompt, channel)
 
     else:
         error_msg = f"Unknown LLM_PROVIDER: {Config.LLM_PROVIDER}. Must be 'anthropic' or 'openai'"
         logger.error(error_msg)
         raise ValueError(error_msg)
+
+    if Config.HINDSIGHT_ENABLED and Config.HINDSIGHT_RETAIN_ENABLED:
+        retain_content = (
+            f"Conversation:\n{hindsight.messages_to_text(messages)}\n\n"
+            f"assistant: {reply}"
+        )
+        metadata = hindsight.build_discord_context(discord_message)
+        context = "Discord bot conversation turn"
+        import asyncio
+        asyncio.create_task(hindsight.retain(retain_content, context, metadata))
+
+    return reply

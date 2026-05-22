@@ -10,6 +10,7 @@ from datetime import datetime
 import re
 from bot.logger import logger
 from bot.config import Config
+from bot.memory import hindsight
 from youtube_transcript_api import YouTubeTranscriptApi
 
 try:
@@ -250,6 +251,20 @@ def wolfram(search_query):
     response = requests.get(url, headers=headers)
     logger.debug(f"response from wolfram: {response.text}")
     return response.text
+
+async def hindsight_retain(input):
+    content = input.get("content", "")
+    context = input.get("context", "Explicit memory retained by DenBot")
+    return await hindsight.retain(content, context)
+
+async def hindsight_recall(input):
+    query = input.get("query", "")
+    result = await hindsight.recall(query, Config.HINDSIGHT_RECALL_MAX_TOKENS)
+    return result if result else "No relevant Hindsight memories found."
+
+async def hindsight_reflect(input):
+    query = input.get("query", "")
+    return await hindsight.reflect(query)
 
 # custom fuzzy sort scored for 3dmark lookup
 def custom_fuzzy_scorer(query, choice):

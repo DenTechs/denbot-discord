@@ -32,6 +32,19 @@ class Config:
     EXA_SEARCH_HIGHLIGHT_MAX_CHARS:int = int(os.getenv("EXA_SEARCH_HIGHLIGHT_MAX_CHARS") or 1000)
     EXA_CONTENT_MAX_CHARS:int = int(os.getenv("EXA_CONTENT_MAX_CHARS") or 1000)
 
+    # Hindsight Memory Configuration
+    HINDSIGHT_API_KEY:str = os.getenv("HINDSIGHT_API_KEY") or ""
+    HINDSIGHT_API_URL:str = os.getenv("HINDSIGHT_API_URL", "https://api.hindsight.vectorize.io")
+    HINDSIGHT_BANK_ID:str = os.getenv("HINDSIGHT_BANK_ID", "denbot")
+    HINDSIGHT_ENABLED:bool = (
+        os.getenv("HINDSIGHT_ENABLED", "true").lower() in ("true", "1", "yes")
+        and bool(HINDSIGHT_API_KEY)
+    )
+    HINDSIGHT_RECALL_ENABLED:bool = os.getenv("HINDSIGHT_RECALL_ENABLED", "true").lower() in ("true", "1", "yes")
+    HINDSIGHT_RETAIN_ENABLED:bool = os.getenv("HINDSIGHT_RETAIN_ENABLED", "true").lower() in ("true", "1", "yes")
+    HINDSIGHT_RECALL_BUDGET:str = os.getenv("HINDSIGHT_RECALL_BUDGET", "mid")
+    HINDSIGHT_RECALL_MAX_TOKENS:int = int(os.getenv("HINDSIGHT_RECALL_MAX_TOKENS") or 2048)
+
     # Discord Permissions
     ALLOWED_CHANNELS:list = json.loads(os.getenv("ALLOWED_CHANNELS") or "[]")
     ALLOWED_ROLES:list = json.loads(os.getenv("ALLOWED_ROLES") or "[]")

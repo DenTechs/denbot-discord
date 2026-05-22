@@ -6,4 +6,5 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "exa-py>=2.13.0",
+    "hindsight-client>=0.4.22",
 ]

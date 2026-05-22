@@ -88,5 +88,66 @@
                 ]
             }
         }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "hindsight_retain",
+            "description": "Store an explicit long-term memory in Hindsight. Use this when the user tells you a stable preference, personal fact, project convention, correction, or durable instruction that should be remembered for future conversations.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "content": {
+                        "type": "string",
+                        "description": "The durable fact, preference, correction, or context to remember."
+                    },
+                    "context": {
+                        "type": "string",
+                        "description": "Optional short context explaining why this memory matters."
+                    }
+                },
+                "required": [
+                    "content"
+                ]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "hindsight_recall",
+            "description": "Search Hindsight long-term memory for relevant facts from prior conversations. Use this when past user preferences, prior project details, or earlier context would help answer accurately.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "The memory search query."
+                    }
+                },
+                "required": [
+                    "query"
+                ]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "hindsight_reflect",
+            "description": "Ask Hindsight to synthesize an answer or insight from long-term memory. Use this for deeper questions that require connecting multiple remembered facts.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string",
+                        "description": "The reflection question to answer using memory."
+                    }
+                },
+                "required": [
+                    "query"
+                ]
+            }
+        }
     }
 ]

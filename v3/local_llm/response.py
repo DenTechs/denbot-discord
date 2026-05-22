@@ -5,6 +5,7 @@ from bot.config import Config
 from openai import AsyncOpenAI
 from claude import tools
 import json
+import inspect
 
 # Initialize OpenAI-compatible client
 openaiClient = AsyncOpenAI(
@@ -40,6 +41,8 @@ async def execute_tool(tool_name, tool_input):
         if hasattr(tools, tool_name):
             tool_function = getattr(tools, tool_name)
             result = tool_function(tool_input)
+            if inspect.isawaitable(result):
+                result = await result
             result_str = str(result)
             logger.info("Tool '%s' returned result (%d chars)", tool_name, len(result_str))
             logger.debug("Full tool result for '%s': %s", tool_name, result_str)
