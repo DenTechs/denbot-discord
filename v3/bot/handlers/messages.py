@@ -4,7 +4,12 @@ from bot.config import Config
 from bot.logger import logger
 import bot.client as bot_client
 from bot.llm_router import get_llm_response
-from bot.checks import is_rate_limited
+from bot.checks import is_blocked_user, is_rate_limited
+from local_llm.conversation_state import (
+    get_discord_assistant_message,
+    pop_last_openai_assistant_message,
+    store_discord_assistant_message,
+)
 
 async def gather_reply_chain(message: discord.Message, bot_user_id: int, max_depth: int = 20) -> list[dict]:
     """Walk up the reply chain and return conversation list ordered oldest first."""
@@ -15,10 +20,21 @@ async def gather_reply_chain(message: discord.Message, bot_user_id: int, max_dep
     while current_msg and depth < max_depth:
         content = current_msg.content.replace(f"<@{bot_user_id}>", "").strip()
 
-        if content:
-            role = "assistant" if current_msg.author.id == bot_user_id else "user"
-            formatted = f"{current_msg.author.display_name} said: {content}" if role == "user" else content
-            chain.append({"role": role, "content": formatted})
+        if current_msg.author.id == bot_user_id:
+            if Config.LLM_PROVIDER.lower() == "openai":
+                assistant_message = get_discord_assistant_message(current_msg.id)
+                if assistant_message:
+                    chain.append(assistant_message)
+                else:
+                    logger.warning(
+                        "Skipping assistant message %s in OpenAI reply chain because cached reasoning metadata is unavailable",
+                        current_msg.id
+                    )
+            elif content:
+                chain.append({"role": "assistant", "content": content})
+        elif content:
+            formatted = f"{current_msg.author.display_name} said: {content}"
+            chain.append({"role": "user", "content": formatted})
 
         if current_msg.reference and current_msg.reference.message_id:
             try:
@@ -47,13 +63,18 @@ async def send_llm_reply(message: discord.Message, messages: list[dict], system_
     """Get LLM response and reply to the message."""
     async with message.channel.typing():
         reply = await get_llm_response(messages, system_prompt, channel=message.channel, discord_message=message)
+    assistant_message = pop_last_openai_assistant_message()
     if notice:
         reply = reply + "\n\n" + notice
+        if assistant_message:
+            assistant_message["content"] = reply
     if len(reply) > 2000:
         logger.warning("Response too long (%d chars), notifying user", len(reply))
         await message.reply("The generated message was too long to send.")
     else:
-        await message.reply(reply)
+        sent_message = await message.reply(reply)
+        if assistant_message:
+            store_discord_assistant_message(sent_message.id, assistant_message)
 
 
 async def handle_regex_replies(message: discord.Message) -> bool:
@@ -99,6 +120,10 @@ def setup(discord_client: DiscordClient):
     async def on_message(message: discord.Message):
         """Handle messages that @mention the bot, with reply context if present."""
         if message.author.bot:
+            return
+
+        if is_blocked_user(message.author.id):
+            logger.info("Message ignored from blocked user %s", message.author.name)
             return
 
         if await handle_regex_replies(message):

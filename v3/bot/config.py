@@ -30,6 +30,7 @@ class Config:
     ALLOWED_CHANNELS:list = json.loads(os.getenv("ALLOWED_CHANNELS") or "[]")
     ALLOWED_ROLES:list = json.loads(os.getenv("ALLOWED_ROLES") or "[]")
     OVERRIDE_USERS:list = json.loads(os.getenv("OVERRIDE_USERS") or "[]")
+    BLOCKED_USERS:list = json.loads(os.getenv("BLOCKED_USERS") or "[]")
     ALLOWED_FORUM_CHANNELS:list = json.loads(os.getenv("ALLOWED_FORUM_CHANNELS") or "[]")
     AUTHORIZED_SERVERS:list = json.loads(os.getenv("AUTHORIZED_SERVERS") or "[]")
 

@@ -5,6 +5,8 @@ from bot.config import Config
 import asyncio
 from bot.llm_router import get_llm_response
 from bot.client import PROMPT_FILES
+from bot.checks import is_blocked_user
+from local_llm.conversation_state import pop_last_openai_assistant_message, store_discord_assistant_message
 
 async def generate_forum_reply(thread: discord.Thread) -> str:
     """Generate a reply for forum posts using the configured LLM with tool support."""
@@ -57,14 +59,20 @@ def setup(discord_client: DiscordClient):
 
         # Process the starter message with comprehensive error handling
         try:
-            if starter_message and not starter_message.author.bot:
+            if starter_message and is_blocked_user(starter_message.author.id):
+                logger.info("Forum reply skipped: starter message from blocked user '%s' in thread '%s'",
+                            starter_message.author.name, thread.name)
+            elif starter_message and not starter_message.author.bot:
                 logger.debug("Generating forum reply for thread '%s' (author: %s)",
                             thread.name, starter_message.author.name)
 
                 reply = await generate_forum_reply(thread)
+                assistant_message = pop_last_openai_assistant_message()
 
                 logger.debug("Sending new reply to thread '%s'", thread.name)
-                await thread.send(reply)
+                sent_message = await thread.send(reply)
+                if assistant_message:
+                    store_discord_assistant_message(sent_message.id, assistant_message)
 
                 logger.info("Forum reply sent to thread '%s' in %s", thread.name, thread.parent.name)
 

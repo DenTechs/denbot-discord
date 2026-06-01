@@ -4,6 +4,7 @@ from typing import Optional, Any
 from bot.config import Config
 from openai import AsyncOpenAI
 from claude import tools
+from local_llm.conversation_state import set_last_openai_assistant_message
 import json
 
 # Initialize OpenAI-compatible client
@@ -68,8 +69,35 @@ async def generate_openai_response(
     Returns:
         The response text from the LLM
     """
+    set_last_openai_assistant_message(None)
+
     # Prepend system message to conversation (OpenAI format)
     conversation: list[dict[str, Any]] = [{"role": "system", "content": system_prompt}] + messages.copy()
+
+    def build_assistant_message(message: Any) -> dict[str, Any]:
+        assistant_msg: dict[str, Any] = {
+            "role": "assistant",
+            "content": message.content or ""
+        }
+
+        reasoning = getattr(message, "reasoning_content", None)
+        if reasoning:
+            assistant_msg["reasoning_content"] = reasoning
+
+        if message.tool_calls:
+            assistant_msg["tool_calls"] = [
+                {
+                    "id": tc.id,
+                    "type": "function",
+                    "function": {
+                        "name": tc.function.name,  # type: ignore[union-attr]
+                        "arguments": tc.function.arguments  # type: ignore[union-attr]
+                    }
+                }
+                for tc in message.tool_calls
+            ]
+
+        return assistant_msg
 
     try:
         while True:
@@ -90,21 +118,7 @@ async def generate_openai_response(
                 logger.info("Detected tool call(s): %d tools", len(message.tool_calls))
 
                 # Add assistant message with tool calls to conversation
-                assistant_msg = {
-                    "role": "assistant",
-                    "content": message.content or "",
-                    "tool_calls": [
-                        {
-                            "id": tc.id,
-                            "type": "function",
-                            "function": {
-                                "name": tc.function.name,  # type: ignore[union-attr]
-                                "arguments": tc.function.arguments  # type: ignore[union-attr]
-                            }
-                        }
-                        for tc in message.tool_calls
-                    ]
-                }
+                assistant_msg = build_assistant_message(message)
                 conversation.append(assistant_msg)
 
                 # Execute each tool and collect results
@@ -125,19 +139,23 @@ async def generate_openai_response(
                     })
 
             else:
-                reasoning = getattr(message, "reasoning_content", None)
-                final_text = message.content or ""
+                assistant_msg = build_assistant_message(message)
+                reasoning = assistant_msg.get("reasoning_content")
+                final_text = assistant_msg["content"]
                 if reasoning:
                     logger.info(f"Reasoning: \n{reasoning}")
                 else:
                     logger.info(f"No reasoning was used")
                 if not final_text and reasoning:
                     logger.info("Model returned reasoning-only response, rerunning generation")
+                    conversation.append(assistant_msg)
                     continue  # loop again with the same conversation state
 
+                set_last_openai_assistant_message(assistant_msg)
                 logger.info(f"Generated: \n{final_text}")
                 return final_text
 
     except Exception as e:
+        set_last_openai_assistant_message(None)
         logger.error(f"Error in generate_openai_response: {e}", exc_info=True)
         return f"Failed to generate text: {str(e)}"

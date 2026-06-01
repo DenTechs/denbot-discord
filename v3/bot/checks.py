@@ -7,6 +7,11 @@ from datetime import datetime, timedelta, timezone
 _rate_limit_state: dict[int, tuple[int, datetime]] = {}
 
 
+def is_blocked_user(user_id: int) -> bool:
+    """Return whether the user is configured to receive no bot responses."""
+    return user_id in Config.BLOCKED_USERS or str(user_id) in Config.BLOCKED_USERS
+
+
 def is_rate_limited(user_id: int) -> tuple[bool, datetime | None, bool]:
     """Returns (is_limited, reset_time, is_last_request).
     is_last_request is True when this request exhausts the user's quota."""
@@ -42,6 +47,11 @@ def is_rate_limited(user_id: int) -> tuple[bool, datetime | None, bool]:
 async def channel_check(interaction: discord.Interaction) -> bool:
     logger.info("channel_check called: user=%s, channel_id=%s, guild=%s",
                 interaction.user.name, interaction.channel_id, interaction.guild.name if interaction.guild else None)
+    if is_blocked_user(interaction.user.id):
+        logger.info("Access denied for blocked user %s", interaction.user.name)
+        await interaction.response.defer(ephemeral=True)
+        return False
+
     if interaction.channel_id in Config.ALLOWED_CHANNELS:
         logger.info("Access granted for user %s in allowed channel %s", interaction.user.name, interaction.channel_id)
         return True

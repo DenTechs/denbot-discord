@@ -59,6 +59,7 @@ Environment variables in `v3/.env`:
 **Permissions:**
 - `ALLOWED_ROLES`: JSON array of role IDs that can use the bot anywhere
 - `OVERRIDE_USERS`: JSON array of user IDs that bypass all restrictions
+- `BLOCKED_USERS`: JSON array of user IDs whose messages and interactions the bot ignores
 - `ALLOWED_FORUM_CHANNELS`: JSON array of forum channel IDs for auto-replies
 - `AUTHORIZED_SERVERS`: JSON array of server/guild IDs where all members can use the bot
 

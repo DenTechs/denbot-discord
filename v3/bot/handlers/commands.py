@@ -6,7 +6,8 @@ import discord
 from bot.llm_router import get_llm_response
 import bot.client as bot_client
 from bot.config import Config
-from bot.checks import is_rate_limited
+from bot.checks import is_blocked_user, is_rate_limited
+from local_llm.conversation_state import pop_last_openai_assistant_message, store_discord_assistant_message
 
 def setup(discord_client: DiscordClient):
 
@@ -43,10 +44,16 @@ def setup(discord_client: DiscordClient):
                 self.target_message,
                 self.additional_context.value
             )
+            assistant_message = pop_last_openai_assistant_message()
 
             if self.is_last_request:
                 reply = reply + f"\n\n(You have reached your {Config.RATE_LIMIT_WINDOW_HOURS} hour limit)"
-            await interaction.followup.send(reply)
+                if assistant_message:
+                    assistant_message["content"] = reply
+
+            sent_message = await interaction.followup.send(reply, wait=True)
+            if assistant_message:
+                store_discord_assistant_message(sent_message.id, assistant_message)
 
     @discord_client.tree.context_menu(name="Ask DenBot")
     @discord.app_commands.allowed_installs(guilds=True, users=True)
@@ -67,6 +74,10 @@ def setup(discord_client: DiscordClient):
     @ask_denbot.error
     async def ask_denbot_error(interaction: discord.Interaction, error: discord.app_commands.AppCommandError):
         if isinstance(error, discord.app_commands.CheckFailure):
+            if is_blocked_user(interaction.user.id):
+                logger.info("Ask DenBot ignored for blocked user %s", interaction.user.name)
+                return
+
             logger.warning("Permission denied for user %s in channel %s (Ask DenBot)", interaction.user.name, interaction.channel_id)
             if interaction.response.is_done():
                 await interaction.followup.send("You don't have permission to use this command here.", ephemeral=True)
