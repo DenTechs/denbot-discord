@@ -5,6 +5,7 @@ from bot.logger import logger
 import bot.client as bot_client
 from bot.llm_router import get_llm_response
 from bot.checks import is_blocked_user, is_rate_limited
+from bot.message_format import format_user_message
 from local_llm.conversation_state import (
     get_discord_assistant_message,
     pop_last_openai_assistant_message,
@@ -33,7 +34,7 @@ async def gather_reply_chain(message: discord.Message, bot_user_id: int, max_dep
             elif content:
                 chain.append({"role": "assistant", "content": content})
         elif content:
-            formatted = f"{current_msg.author.display_name} said: {content}"
+            formatted = format_user_message(current_msg.author.display_name, content)
             chain.append({"role": "user", "content": formatted})
 
         if current_msg.reference and current_msg.reference.message_id:
@@ -85,7 +86,7 @@ async def handle_regex_replies(message: discord.Message) -> bool:
     for pattern in bot_client.AUTO_REPLY_COMPILED:
         if pattern.search(message.content):
             logger.info("Auto-reply triggered: regex '%s' matched message from %s", pattern.pattern, message.author.name)
-            messages = [{"role": "user", "content": f"{message.author.display_name} said: {message.content}"}]
+            messages = [{"role": "user", "content": format_user_message(message.author.display_name, message.content)}]
             await send_llm_reply(message, messages, bot_client.PROMPT_FILES["mainsystemprompt.txt"])
             return True
 
@@ -129,7 +130,9 @@ def setup(discord_client: DiscordClient):
         if await handle_regex_replies(message):
             return
 
-        if not discord_client.user or discord_client.user not in message.mentions:
+        is_mention = discord_client.user and discord_client.user in message.mentions
+        is_hey_denbot = message.content.lower().startswith("hey denbot")
+        if not is_mention and not is_hey_denbot:
             return
 
         if not has_permission(message):
@@ -148,7 +151,7 @@ def setup(discord_client: DiscordClient):
 
         if not messages:
             content = message.content.replace(f"<@{discord_client.user.id}>", "").strip()
-            messages = [{"role": "user", "content": f"{message.author.display_name} said: {content}"}]
+            messages = [{"role": "user", "content": format_user_message(message.author.display_name, content)}]
 
         logger.info("User %s mentioned bot. Chain: %d messages", message.author.name, len(messages))
         logger.debug("Conversation chain: %s", messages)

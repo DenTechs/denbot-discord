@@ -13,6 +13,7 @@ A Discord bot that uses AI to respond to messages with multi-LLM provider suppor
   - Web search capabilities
   - Website content summarization
   - YouTube video transcript context
+  - Hindsight long-term memory recall, retention, and reflection
 - **Auto-Reply Features**:
   - Forum channel auto-replies for new posts
   - Regex-triggered automatic responses
@@ -53,6 +54,7 @@ Environment variables in `v3/.env`:
 - `OPENAI_BASE_URL`: Base URL for OpenAI-compatible API (e.g., `http://localhost:1234/v1`)
 - `OPENAI_MODEL_NAME`: Model identifier for your local LLM
 - `OPENAI_API_KEY`: API key (often `not-needed` for local servers)
+- `EXA_API_KEY`: Exa API key for local LLM web search and URL content retrieval tools
 
 ### Optional Variables
 
@@ -76,6 +78,19 @@ Environment variables in `v3/.env`:
 **Response Configuration:**
 - `MAX_TOKENS`: Maximum tokens for responses (default: `1024`)
 - `WEB_SEARCH_MAX_TOKENS`: Max tokens for web search results (Anthropic only, default: `1024`)
+- `EXA_SEARCH_NUM_RESULTS`: Number of Exa web search results to return for local LLM tools (default: `3`)
+- `EXA_SEARCH_HIGHLIGHT_MAX_CHARS`: Maximum Exa highlight characters per search result (default: `1000`)
+- `EXA_CONTENT_MAX_CHARS`: Maximum Exa page text characters returned for URL content fetches (default: `1000`)
+
+**Hindsight Memory:**
+- `HINDSIGHT_ENABLED`: Enable hybrid Hindsight memory when an API key is configured (`true`/`false`, default: `true`)
+- `HINDSIGHT_API_KEY`: Hindsight Cloud API key
+- `HINDSIGHT_API_URL`: Hindsight API URL (default: `https://api.hindsight.vectorize.io`)
+- `HINDSIGHT_BANK_ID`: Memory bank ID (default: `denbot`)
+- `HINDSIGHT_RECALL_ENABLED`: Recall memories before replies (default: `true`)
+- `HINDSIGHT_RETAIN_ENABLED`: Retain conversation turns after replies (default: `true`)
+- `HINDSIGHT_RECALL_BUDGET`: Recall budget (`low`, `mid`, `high`; default: `mid`)
+- `HINDSIGHT_RECALL_MAX_TOKENS`: Maximum tokens for recalled memory context (default: `2048`)
 
 **Image Processing:**
 - `IMAGE_MAX_DIMENSIONS`: Maximum image width/height in pixels (default: `800`)
@@ -121,5 +136,7 @@ Environment variables in `v3/.env`:
 - `thefuzz[speedup] ~=0.22.0` - Fuzzy string matching (for GPU lookup)
 - `aiohttp ~=3.11.0` - Async HTTP client
 - `Pillow ~=11.0.0` - Image processing
+- `exa-py >=1.15.0` - Exa web search and URL content retrieval for local LLM tools
+- `hindsight-client >=0.4.22` - Hindsight long-term memory client
 
 Install all dependencies with: `pip install -r v3/requirements.txt`

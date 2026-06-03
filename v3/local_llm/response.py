@@ -6,6 +6,7 @@ from openai import AsyncOpenAI
 from claude import tools
 from local_llm.conversation_state import set_last_openai_assistant_message
 import json
+import inspect
 
 # Initialize OpenAI-compatible client
 openaiClient = AsyncOpenAI(
@@ -41,6 +42,8 @@ async def execute_tool(tool_name, tool_input):
         if hasattr(tools, tool_name):
             tool_function = getattr(tools, tool_name)
             result = tool_function(tool_input)
+            if inspect.isawaitable(result):
+                result = await result
             result_str = str(result)
             logger.info("Tool '%s' returned result (%d chars)", tool_name, len(result_str))
             logger.debug("Full tool result for '%s': %s", tool_name, result_str)
@@ -108,7 +111,8 @@ async def generate_openai_response(
                 model=Config.OPENAI_MODEL_NAME,
                 max_tokens=Config.MAX_TOKENS,
                 messages=conversation,  # type: ignore[arg-type]
-                tools=TOOLS  # type: ignore[arg-type]
+                tools=TOOLS,  # type: ignore[arg-type]
+                extra_body={"thinking": {"type": "disabled"}}
             )
 
             message = response.choices[0].message

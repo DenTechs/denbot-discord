@@ -10,7 +10,130 @@ from datetime import datetime
 import re
 from bot.logger import logger
 from bot.config import Config
+from bot.memory import hindsight
 from youtube_transcript_api import YouTubeTranscriptApi
+
+try:
+    from exa_py import Exa
+except ImportError:
+    Exa = None
+
+def _get_exa_client():
+    if Exa is None:
+        return None
+    if not Config.EXA_API_KEY:
+        return None
+    return Exa(api_key=Config.EXA_API_KEY)
+
+def _format_exa_result(result, include_text=False):
+    lines = []
+    title = getattr(result, "title", None) or "Untitled"
+    url = getattr(result, "url", None) or "No URL"
+    published_date = getattr(result, "published_date", None)
+    lines.append(f"Title: {title}")
+    lines.append(f"URL: {url}")
+    if published_date:
+        lines.append(f"Published: {published_date}")
+
+    highlights = getattr(result, "highlights", None) or []
+    if highlights:
+        lines.append("Highlights:")
+        for highlight in highlights:
+            lines.append(f"- {highlight}")
+
+    if include_text:
+        text = getattr(result, "text", None)
+        if text:
+            text = text.strip()
+            lines.append("Text:")
+            lines.append(text)
+
+    return "\n".join(lines)
+
+def exa_web_search(input):
+    """
+    Performs web search using Exa for local LLM tool calls.
+    """
+    try:
+        search_query = input.get("search_query")
+        if not search_query:
+            return "Error: search_query is required."
+
+        client = _get_exa_client()
+        if client is None:
+            if Exa is None:
+                return "Error: exa-py is not installed."
+            return "Error: EXA_API_KEY is not configured."
+
+        logger.info(f"Performing Exa web search for query: {search_query}")
+        response = client.search(
+            search_query,
+            type="auto",
+            num_results=Config.EXA_SEARCH_NUM_RESULTS,
+            contents={
+                "highlights": {
+                    "query": search_query,
+                    "max_characters": Config.EXA_SEARCH_HIGHLIGHT_MAX_CHARS,
+                }
+            }
+        )
+
+        results = getattr(response, "results", None) or []
+        if not results:
+            return "No results found for the search query."
+
+        formatted_results = [
+            f"Result {index}:\n{_format_exa_result(result)}"
+            for index, result in enumerate(results, start=1)
+        ]
+        return "\n\n".join(formatted_results)
+
+    except Exception as e:
+        logger.error(f"Error performing Exa web search: {e}")
+        return f"Error performing Exa web search: {str(e)}"
+
+def exa_get_contents(input):
+    """
+    Fetches content for one or more URLs using Exa for local LLM tool calls.
+    """
+    try:
+        urls = input.get("urls")
+        if isinstance(urls, str):
+            urls = [urls]
+
+        if not urls or not isinstance(urls, list):
+            return "Error: urls must be a URL string or a list of URL strings."
+
+        clean_urls = [url for url in urls if isinstance(url, str) and url.strip()]
+        if not clean_urls:
+            return "Error: no valid URLs provided."
+
+        client = _get_exa_client()
+        if client is None:
+            if Exa is None:
+                return "Error: exa-py is not installed."
+            return "Error: EXA_API_KEY is not configured."
+
+        logger.info(f"Fetching Exa contents for {len(clean_urls)} URL(s)")
+        response = client.get_contents(
+            clean_urls,
+            text={"max_characters": Config.EXA_CONTENT_MAX_CHARS},
+            highlights={"max_characters": Config.EXA_SEARCH_HIGHLIGHT_MAX_CHARS}
+        )
+
+        results = getattr(response, "results", None) or []
+        if not results:
+            return "No content found for the provided URL(s)."
+
+        formatted_results = [
+            f"URL Content {index}:\n{_format_exa_result(result, include_text=True)}"
+            for index, result in enumerate(results, start=1)
+        ]
+        return "\n\n".join(formatted_results)
+
+    except Exception as e:
+        logger.error(f"Error fetching Exa contents: {e}")
+        return f"Error fetching Exa contents: {str(e)}"
 
 def youtube_context(input):
     """
@@ -128,6 +251,20 @@ def wolfram(search_query):
     response = requests.get(url, headers=headers)
     logger.debug(f"response from wolfram: {response.text}")
     return response.text
+
+async def hindsight_retain(input):
+    content = input.get("content", "")
+    context = input.get("context", "Explicit memory retained by DenBot")
+    return await hindsight.retain(content, context)
+
+async def hindsight_recall(input):
+    query = input.get("query", "")
+    result = await hindsight.recall(query, Config.HINDSIGHT_RECALL_MAX_TOKENS)
+    return result if result else "No relevant Hindsight memories found."
+
+async def hindsight_reflect(input):
+    query = input.get("query", "")
+    return await hindsight.reflect(query)
 
 # custom fuzzy sort scored for 3dmark lookup
 def custom_fuzzy_scorer(query, choice):
